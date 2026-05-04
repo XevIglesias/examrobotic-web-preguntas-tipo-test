@@ -1,0 +1,91 @@
+{
+  "adiple": {
+    "1": "Economía y administración: nociones básicas",
+    "2": "El sistema fiscal",
+    "3": "Concepto de marketing y análisis de mercado",
+    "4": "Plan de Marketing",
+    "5": "Los RRHH en la empresa",
+    "6": "La importancia de las habilidades interpersonales"
+  },
+  "dt": {
+    "1": "Identificación de la documentación técnico-administrativa de las instalaciones y sistemas",
+    "2": "Representación de las instalaciones y sistemas automatizados",
+    "3": "Elaboración de la documentación gráfica con AutoCAD",
+    "4": "Elaboración de la documentación gráfica de proyectos de instalaciones automáticas con CADeSIMU",
+    "5": "Confección de presupuestos de instalaciones y sistemas automáticos",
+    "6": "Elaboración de documentos del proyecto y manuales"
+  },
+  "ii": {
+    "1": "Introducción a los sistemas informáticos industriales",
+    "2": "Montaje y configuración de un sistema informático",
+    "3": "Instalación y configuración del software del sistema informático",
+    "4": "Instalación y configuración de las redes locales de los ordenadores",
+    "5": "Programación de equipos y sistemas industriales",
+    "6": "Configuración de páginas web industriales",
+    "7": "Diagnóstico de averías en sistemas y programas informáticos\n                        Gestión de mantenimientos (correctivo, preventivo, predictivo), protocolos de diagnóstico de hardware/software y herramientas de reparación.\n                    \n                    \n                        Iniciar →\n                    \n                \n            \n            \n            \n                \n                    \n                        E\n                    \n                    \n                        Examen de PRÁCTICA"
+  },
+  "ip": {
+    "1": "Living in the Present",
+    "2": "What do you like",
+    "3": "Exploring the past",
+    "4": "What's next?",
+    "5": "Expressing purpose",
+    "6": "Work smarter"
+  },
+  "iplei": {
+    "1": "Empleo y competencias profesionales actuales",
+    "2": "Evaluación de riesgos profesionales",
+    "3": "Medidas de prevención y protección en la empresa",
+    "4": "Condiciones laborales (I)",
+    "5": "Condiciones laborales (II)",
+    "6": "Condiciones laborales (III)",
+    "7": "Seguridad social",
+    "8": "Potencial profesional y auto-orientación laboral",
+    "9": "Aprendizaje autónomo y herramientas digitales"
+  },
+  "sdmyr": {
+    "1": "Introducción a la regulación y control automático",
+    "2": "Reconocimiento de los dispositivos de medida y regulación",
+    "3": "Actuadores y preactuadores industriales",
+    "4": "Tratamiento de datos: regulación automática",
+    "5": "Montaje y desarrollo de sistemas de medida y regulación",
+    "6": "Puesta en servicio de los sistemas de medida y regulación",
+    "7": "Diagnóstico de averías en los sistemas de medida y regulación",
+    "8": "Prevención de riesgos, seguridad y protección medioambiental"
+  },
+  "sdp": {
+    "1": "Determinación de los parámetros característicos de los sistemas eléctricos en corriente alterna",
+    "2": "Reconocimiento del funcionamiento de las máquinas eléctricas",
+    "3": "Determinación de las características de los accionamientos eléctricos y electrónicos de potencia",
+    "4": "Instalación y conexionado de motores eléctricos",
+    "5": "Verificación y puesta en marcha de un sistema de potencia",
+    "6": "Mantenimiento de máquinas eléctricas",
+    "7": "Prevención de riesgos, seguridad y protección medioambiental"
+  },
+  "seneh": {
+    "1": "Introducción a los sistemas electromecánicos, neumáticos e hidráulicos",
+    "2": "Reconocimiento de dispositivos electromecánicos, neumáticos e hidráulicos",
+    "3": "Dibujo de croquis y esquemas de sistemas de control eléctrico cableados, neumáticos e hidráulicos",
+    "4": "Procedimientos para el arranque de motores",
+    "5": "Elementos de protección y medida",
+    "6": "Circuitos combinacionales",
+    "7": "Sistemas de numeración y códigos",
+    "8": "Autómatas programables",
+    "9": "Programación de esquemas cableados",
+    "10": "Programación con OMRON",
+    "11": "Ejemplos de programas",
+    "12": "Elementos de neumática",
+    "13": "Hidráulica aplicada"
+  },
+  "ssp": {
+    "1": "Lógica digital",
+    "2": "Autómatas programables industriales",
+    "3": "Programación de relés programables en FBD",
+    "4": "Programación en STEP 7 (I)",
+    "5": "Programación en STEP 7 (II)",
+    "6": "GRAFCET",
+    "7": "GRAFCET en lenguaje de contactos (KOP)",
+    "8": "Modos de funcionamiento y estructuración en GRAFCET",
+    "9": "Tratamiento de datos y señales analógicas en STEP 7"
+  }
+}

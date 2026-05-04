@@ -1,0 +1,18 @@
+[[redirects]]
+  from = "/backend/*"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.env"
+  to = "/index.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
