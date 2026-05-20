@@ -180,7 +180,6 @@
             <div class="qty-row">
                 <button class="qty-btn" id="qty-10" onclick="setQty(10)">10<span class="qty-sub">Repaso rápido</span></button>
                 <button class="qty-btn active" id="qty-40" onclick="setQty(40)">40<span class="qty-sub">Examen oficial</span></button>
-                <button class="qty-btn" id="qty-all" onclick="setQty('all')">Todas<span class="qty-sub" id="qty-all-count"></span></button>
             </div>
         </div>
 
@@ -290,16 +289,13 @@ function toggleAll(val) {
 }
 
 function updateAllCount() {
-    const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c=>c.value);
-    document.getElementById('qty-all-count').textContent = checked.length + ' asig.';
 }
 
 function setQty(n) {
     selectedQty = n;
     document.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
-    if (n === 10)   document.getElementById('qty-10').classList.add('active');
-    else if (n===40) document.getElementById('qty-40').classList.add('active');
-    else             document.getElementById('qty-all').classList.add('active');
+    if (n === 10) document.getElementById('qty-10').classList.add('active');
+    else          document.getElementById('qty-40').classList.add('active');
 }
 
 function toggleCorr() {
