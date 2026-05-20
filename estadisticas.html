@@ -98,6 +98,45 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
         @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
 
+        /* ── Sync card ── */
+        .sync-card {
+            border-radius: var(--radius-xl);
+            padding: 16px 20px;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+        }
+        .sync-card.sync-ok {
+            border-color: color-mix(in oklch, var(--success) 40%, transparent);
+            background: color-mix(in oklch, var(--success) 8%, var(--surface));
+            font-size: 13.5px; color: var(--ink);
+        }
+        .sync-card.sync-off {
+            flex-direction: column; align-items: flex-start; gap: 12px;
+        }
+        .sync-card.sync-off strong { font-size: 14px; color: var(--ink); }
+        .sync-card.sync-off p { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+        .sync-row { display: flex; gap: 8px; width: 100%; }
+        .sync-input {
+            flex: 1; padding: 9px 13px; border-radius: 10px;
+            border: 1.5px solid var(--line); background: var(--bg);
+            color: var(--ink); font-size: 13px; font-family: inherit;
+            outline: none; min-width: 0;
+        }
+        .sync-input:focus { border-color: var(--accent); }
+        .sync-btn {
+            padding: 9px 18px; border-radius: 10px; border: none;
+            background: var(--accent); color: #fff;
+            font-size: 13px; font-weight: 700; cursor: pointer;
+            white-space: nowrap; font-family: inherit;
+        }
+        .sync-btn-sm {
+            margin-left: auto; padding: 5px 12px; border-radius: 8px;
+            border: 1px solid var(--line); background: var(--bg);
+            color: var(--muted); font-size: 11.5px; cursor: pointer;
+            font-family: inherit;
+        }
+
         .panel {
             background: var(--surface);
             border: 1px solid var(--line);
@@ -297,6 +336,8 @@
 </header>
 
 <main class="page">
+
+    <div id="sync-card" style="margin-bottom:20px;"></div>
 
     <div class="stats-hero">
         <div class="stats-hero-inner">
@@ -567,6 +608,56 @@ function confirmClear() {
 
 render();
 UserStats.syncFromCloud && UserStats.syncFromCloud().then(loaded => { if (loaded) render(); });
+
+// ── Sync card ────────────────────────────────────────────────────
+function renderSyncCard() {
+    const card = document.getElementById('sync-card');
+    if (!card) return;
+    const email = UserStats.getSyncEmail ? UserStats.getSyncEmail() : null;
+    if (email) {
+        card.innerHTML = `<div class="sync-card sync-ok">
+            <span>☁️ Sincronizando con <strong>${email}</strong></span>
+            <button onclick="disconnectSync()" class="sync-btn-sm">Desconectar</button>
+        </div>`;
+    } else {
+        card.innerHTML = `<div class="sync-card sync-off">
+            <div>
+                <strong>📲 Activa la sincronización entre dispositivos</strong>
+                <p>Introduce tu email para guardar el progreso en la nube y verlo en móvil y ordenador.</p>
+            </div>
+            <div class="sync-row">
+                <input type="email" id="sync-email-input" placeholder="tu@email.com" class="sync-input"
+                    onkeydown="if(event.key==='Enter')doSync()">
+                <button onclick="doSync()" class="sync-btn">Activar</button>
+            </div>
+        </div>`;
+    }
+}
+
+function doSync() {
+    const input = document.getElementById('sync-email-input');
+    const email = input ? input.value.trim() : '';
+    if (!UserStats.setSyncEmail || !UserStats.setSyncEmail(email)) {
+        if (input) { input.style.borderColor = 'var(--danger)'; input.focus(); }
+        return;
+    }
+    const btn = document.querySelector('.sync-btn');
+    if (btn) { btn.textContent = 'Conectando…'; btn.disabled = true; }
+    UserStats.syncToCloud().then(() => {
+        UserStats.syncFromCloud().then(loaded => {
+            if (loaded) render();
+            renderSyncCard();
+        });
+    });
+}
+
+function disconnectSync() {
+    if (!confirm('¿Desconectar la sincronización? Tus datos locales se conservarán.')) return;
+    UserStats.clearSyncEmail && UserStats.clearSyncEmail();
+    renderSyncCard();
+}
+
+renderSyncCard();
 </script>
 <script src="assets/js/stats-animate.js"></script>
 <script src="assets/js/analytics.js"></script>

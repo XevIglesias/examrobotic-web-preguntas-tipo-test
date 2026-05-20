@@ -558,10 +558,7 @@ main > .panel:last-child { animation-delay: 0.8s; }
   transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0s;
 }
 
-/* Selected option — a thin glowing border that pulses once */
-.option.selected {
-  animation: optSelectPulse 0.5s cubic-bezier(0.16,1,0.3,1);
-}
+/* optSelectPulse — used programmatically when user confirms answer */
 @keyframes optSelectPulse {
   0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 40%, transparent); }
   60%  { box-shadow: 0 0 0 8px color-mix(in oklch, var(--accent) 0%, transparent); }

@@ -569,24 +569,43 @@ function move(d) {
 function renderDots() {
     const grid = document.getElementById('dot-grid');
     if (!grid) return;
-    grid.innerHTML = '';
-    activeQs.forEach((q, i) => {
+
+    // Compute the class string for dot i
+    function dotClass(i) {
+        const q = activeQs[i];
         let cls = 'dot';
         if (i === current) cls += ' active';
-        
         if (isFinished) {
-            if (userAns[i] === null) cls += ' empty';
-            else if (userAns[i] === q.ans) cls += ' correct-dot';
-            else cls += ' incorrect-dot';
+            if (userAns[i] === null)          cls += ' empty';
+            else if (userAns[i] === q.ans)    cls += ' correct-dot';
+            else                              cls += ' incorrect-dot';
         } else if (instantCorrection && instantCheckedQs.has(i)) {
-            if (userAns[i] === q.ans) cls += ' correct-dot';
-            else cls += ' incorrect-dot';
+            if (userAns[i] === q.ans)         cls += ' correct-dot';
+            else                              cls += ' incorrect-dot';
         } else {
-            if (userAns[i] !== null) cls += ' done';
+            if (userAns[i] !== null)          cls += ' done';
         }
-        
-        grid.innerHTML += `<div class="${cls}" onclick="current=${i};showQ()">${i + 1}</div>`;
+        return cls;
+    }
+
+    const existing = grid.querySelectorAll('.dot');
+    if (existing.length === totalQs) {
+        // Update classes in-place — preserves DOM so CSS animations don't re-fire
+        existing.forEach((dot, i) => { dot.className = dotClass(i); });
+        return;
+    }
+
+    // Initial build: create all dots and wire animation helpers
+    let html = '';
+    activeQs.forEach((_, i) => {
+        html += `<div class="${dotClass(i)}" onclick="current=${i};showQ()">${i + 1}</div>`;
     });
+    grid.innerHTML = html;
+
+    if (window.ExamRoboticAnims) {
+        ExamRoboticAnims.wireDotGrid(grid);
+        ExamRoboticAnims.wireDotStateMarkers(grid);
+    }
 }
 
 function finish() {

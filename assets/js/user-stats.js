@@ -4,12 +4,16 @@ const _FB_DB = 'https://examrobotic-f7f25-default-rtdb.europe-west1.firebasedata
 
 function _fbKey() {
     try {
+        // 1) Logged-in user via api.js
         const u = typeof currentUser === 'function' ? currentUser() : null;
-        if (!u) return null;
-        const raw = u.id || u.email || null;
-        if (!raw) return null;
-        // Firebase no permite . # $ [ ] / en rutas
-        return String(raw).replace(/[.#$[\]/]/g, '_');
+        if (u) {
+            const raw = u.id || u.email || null;
+            if (raw) return String(raw).replace(/[.#$[\]/]/g, '_');
+        }
+        // 2) Manually set sync email (cross-device without full login)
+        const syncEmail = localStorage.getItem('er_sync_email');
+        if (syncEmail) return String(syncEmail).replace(/[.#$[\]/]/g, '_');
+        return null;
     } catch { return null; }
 }
 
@@ -151,6 +155,24 @@ const UserStats = {
         if (this.data.history.length > 100) this.data.history.shift();
 
         this.save();
+    },
+
+    // ── Sync email helpers ─────────────────────────────────────────
+    setSyncEmail(email) {
+        const clean = (email || '').trim().toLowerCase();
+        if (!clean || !clean.includes('@')) return false;
+        localStorage.setItem('er_sync_email', clean);
+        return true;
+    },
+    getSyncEmail() {
+        if (typeof currentUser === 'function') {
+            const u = currentUser();
+            if (u && u.email) return u.email;
+        }
+        return localStorage.getItem('er_sync_email') || null;
+    },
+    clearSyncEmail() {
+        localStorage.removeItem('er_sync_email');
     },
 
     getReviewQuestions(count, subject) {
