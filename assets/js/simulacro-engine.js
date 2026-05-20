@@ -58,8 +58,19 @@ async function initSimulacro() {
                         (typeof EXAM_DATA !== 'undefined' && EXAM_DATA.length > 0);
         if (hasData) {
             clearInterval(checkData);
+            // Support external instant correction flag (test-libre.html)
+            if (typeof window._freeTestInstantCorr !== 'undefined') {
+                instantCorrection = window._freeTestInstantCorr;
+            }
             if (mode === 'review') {
                 startReview();
+            } else if (window._skipSetup) {
+                // test-libre.html: data already prepped, start exam directly
+                startExam(
+                    window._freeTestCount || 40,
+                    'all',
+                    false
+                );
             } else {
                 showSetupScreen();
             }

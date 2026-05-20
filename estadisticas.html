@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Estadísticas · ExamRobotic</title>
+    <meta name="description" content="Panel de estadísticas de tu rendimiento en ExamRobotic. Analiza tus fallos, tus puntos fuertes y tu progreso por asignatura.">
+    <link rel="icon" href="assets/img/images/logo/logorobot.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/user-stats.js"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0;
+            --text: #0f172a; --muted: #64748b; --primary: #3b82f6;
+            --primary-dark: #1d4ed8; --success: #10b981; --danger: #ef4444;
+            --warning: #f59e0b; --radius: 1.25rem;
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --surface: #1e293b; --border: #334155;
+            --text: #e2e8f0; --muted: #94a3b8;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--surface); border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 50;
+        }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+            height: 4.5rem; display: flex; align-items: center; justify-content: space-between;
+        }
+        .header-left { display: flex; align-items: center; gap: 0.75rem; }
+        .back-btn {
+            width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); cursor: pointer; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+            text-decoration: none;
+        }
+        .back-btn:hover { background: var(--border); }
+        .header-title { font-size: 1.1rem; font-weight: 800; }
+        .header-sub { font-size: 0.7rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+        .theme-btn {
+            width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); cursor: pointer; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+        }
+        .theme-btn:hover { background: var(--border); }
+
+        /* ── LAYOUT ── */
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .page-title { font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .page-sub { color: var(--muted); margin-bottom: 2.5rem; }
+
+        /* ── KPI GRID ── */
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
+        .kpi-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
+        }
+        .kpi-icon { font-size: 2rem; }
+        .kpi-value { font-size: 2.25rem; font-weight: 900; line-height: 1; }
+        .kpi-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        .kpi-card.primary { background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-color: transparent; color: white; }
+        .kpi-card.primary .kpi-label { color: rgba(255,255,255,0.7); }
+        .kpi-card.success { background: linear-gradient(135deg, #10b981, #059669); border-color: transparent; color: white; }
+        .kpi-card.success .kpi-label { color: rgba(255,255,255,0.7); }
+        .kpi-card.warning { background: linear-gradient(135deg, #f59e0b, #d97706); border-color: transparent; color: white; }
+        .kpi-card.warning .kpi-label { color: rgba(255,255,255,0.7); }
+
+        /* ── SECTIONS ── */
+        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        @media (max-width: 768px) { .section-grid { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.75rem;
+        }
+        .card-title {
+            font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--primary); margin-bottom: 1.5rem;
+        }
+
+        /* ── BAR CHART ── */
+        .bar-item { margin-bottom: 1.25rem; }
+        .bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+        .bar-label { font-size: 0.85rem; font-weight: 600; }
+        .bar-score { font-size: 0.85rem; font-weight: 800; }
+        .bar-track { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 999px; transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
+
+        /* ── FAILURES TABLE ── */
+        .failure-item {
+            display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .failure-item:last-child { border-bottom: none; }
+        .failure-count {
+            min-width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+            background: #fef2f2; color: #ef4444; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        [data-theme="dark"] .failure-count { background: #450a0a; color: #fca5a5; }
+        .failure-text { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
+        .failure-unit { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+
+        /* ── HISTORY ── */
+        .history-item {
+            display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .history-item:last-child { border-bottom: none; }
+        .history-dot {
+            width: 2.5rem; height: 2.5rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 0.85rem; flex-shrink: 0;
+        }
+        .history-dot.pass { background: #d1fae5; color: #059669; }
+        .history-dot.fail { background: #fee2e2; color: #dc2626; }
+        [data-theme="dark"] .history-dot.pass { background: #064e3b; color: #6ee7b7; }
+        [data-theme="dark"] .history-dot.fail { background: #450a0a; color: #fca5a5; }
+        .history-info { flex: 1; }
+        .history-subject { font-size: 0.85rem; font-weight: 700; }
+        .history-date { font-size: 0.75rem; color: var(--muted); }
+        .history-score { font-size: 1.1rem; font-weight: 900; }
+
+        /* ── TOPIC HEAT MAP ── */
+        .topic-bar { margin-bottom: 1rem; }
+        .topic-header { display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: 0.82rem; font-weight: 600; }
+        .topic-track { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; }
+        .topic-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #ef4444, #f97316); }
+
+        /* ── EMPTY STATE ── */
+        .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+        .empty-state-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .empty-state-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+
+        /* ── CLEAR BTN ── */
+        .btn-clear {
+            background: none; border: 1px solid var(--border); color: var(--muted);
+            padding: 0.5rem 1rem; border-radius: 0.75rem; cursor: pointer; font-size: 0.8rem;
+            font-weight: 700; transition: all 0.2s; font-family: inherit;
+        }
+        .btn-clear:hover { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+
+        /* ── SUBJECT SELECTOR ── */
+        .subject-selector {
+            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+        }
+        .subj-chip {
+            padding: 0.35rem 0.85rem; border-radius: 999px; border: 1.5px solid var(--border);
+            background: var(--bg); color: var(--muted); font-size: 0.78rem; font-weight: 700;
+            cursor: pointer; transition: all 0.2s; font-family: inherit;
+        }
+        .subj-chip.active { background: var(--primary); border-color: var(--primary); color: white; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        .card { animation: fadeUp 0.4s ease both; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <div class="header-left">
+            <a href="index.html" class="back-btn" title="Volver al inicio">←</a>
+            <div>
+                <div class="header-title">Estadísticas</div>
+                <div class="header-sub">Motor de Análisis Personal</div>
+            </div>
+        </div>
+        <button class="theme-btn" onclick="toggleTheme()" title="Cambiar tema">
+            <script>document.write(document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙');</script>
+        </button>
+    </div>
+</header>
+
+<main>
+    <div>
+        <h1 class="page-title">📊 Mi Rendimiento</h1>
+        <p class="page-sub">Análisis automático de tus sesiones de estudio. Cuanto más practiques, más preciso será.</p>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid" id="kpi-grid"></div>
+
+    <!-- Subject Performance -->
+    <div class="section-grid">
+        <div class="card" style="animation-delay:0.05s">
+            <div class="card-title">📈 Nota Media por Asignatura</div>
+            <div id="subject-bars"></div>
+        </div>
+        <div class="card" style="animation-delay:0.1s">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <div class="card-title" style="margin-bottom:0">🔴 Preguntas Más Falladas</div>
+                <select id="subj-filter" onchange="renderFailures()" style="border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:0.5rem; padding:0.3rem 0.5rem; font-size:0.8rem; font-family:inherit; cursor:pointer;">
+                    <option value="all">Todas</option>
+                </select>
+            </div>
+            <div id="failures-list"></div>
+        </div>
+    </div>
+
+    <div class="section-grid">
+        <div class="card" style="animation-delay:0.15s">
+            <div class="card-title">🔥 Temas con Más Fallos</div>
+            <div id="topic-heatmap"></div>
+        </div>
+        <div class="card" style="animation-delay:0.2s">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <div class="card-title" style="margin-bottom:0">🕐 Historial de Sesiones</div>
+                <button class="btn-clear" onclick="confirmClear()">Borrar Todo</button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+    </div>
+</main>
+
+<script>
+const SUBJECT_NAMES = {
+    ip:    'Inglés Profesional',
+    sdmyr: 'Sistemas de Medida',
+    dt:    'Documentación Técnica',
+    ii:    'Informática Industrial',
+    seneh: 'Sist. Eléctricos, N. e H.',
+    iplei: 'Itinerario Personal',
+    ssp:   'Sist. Sec. Programables',
+    sdp:   'Sistemas de Potencia',
+    adiple:'Ampliación Itinerario',
+    ipe:   'Itinerario Personal Emp.',
+    unknown:'Sin clasificar'
+};
+
+function fmtDate(ts) {
+    const d = new Date(ts);
+    return d.toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' })
+        + ' ' + d.toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
+}
+
+function scoreColor(s) {
+    if (s >= 7) return '#10b981';
+    if (s >= 5) return '#f59e0b';
+    return '#ef4444';
+}
+
+function render() {
+    const stats = UserStats.data;
+    const subjects = stats.subjects || {};
+    const failures = stats.failures || {};
+    const history  = [...(stats.history || [])].reverse();
+
+    /* ── KPIs ── */
+    const totalSessions = history.length;
+    const allScores = Object.values(subjects).flatMap(s => s.scores || []);
+    const globalAvg = allScores.length ? (allScores.reduce((a,b)=>a+b,0)/allScores.length).toFixed(2) : '—';
+    const totalFailed = Object.values(failures).reduce((a,s) => a + Object.values(s).filter(q=>q.count>0).length, 0);
+    const bestSubj = Object.entries(subjects).sort((a,b)=>(b[1].avgScore||0)-(a[1].avgScore||0))[0];
+    const worstSubj = Object.entries(subjects).sort((a,b)=>(a[1].avgScore||0)-(b[1].avgScore||0))[0];
+
+    document.getElementById('kpi-grid').innerHTML = `
+        <div class="kpi-card primary"><div class="kpi-icon">📚</div><div class="kpi-value">${totalSessions}</div><div class="kpi-label">Sesiones totales</div></div>
+        <div class="kpi-card success"><div class="kpi-icon">⭐</div><div class="kpi-value">${globalAvg}</div><div class="kpi-label">Nota media global</div></div>
+        <div class="kpi-card warning"><div class="kpi-icon">❌</div><div class="kpi-value">${totalFailed}</div><div class="kpi-label">Preguntas falladas</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-value" style="font-size:1rem;margin-top:0.25rem">${bestSubj ? SUBJECT_NAMES[bestSubj[0]]||bestSubj[0] : '—'}</div><div class="kpi-label">Mejor asignatura</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⚠️</div><div class="kpi-value" style="font-size:1rem;margin-top:0.25rem">${worstSubj ? SUBJECT_NAMES[worstSubj[0]]||worstSubj[0] : '—'}</div><div class="kpi-label">Asignatura a reforzar</div></div>
+    `;
+
+    /* ── SUBJECT BARS ── */
+    const subjEntries = Object.entries(subjects).sort((a,b)=>(b[1].avgScore||0)-(a[1].avgScore||0));
+    if (subjEntries.length === 0) {
+        document.getElementById('subject-bars').innerHTML = emptyState('Aún no hay datos', 'Completa algunos tests para ver tu rendimiento por asignatura.');
+    } else {
+        document.getElementById('subject-bars').innerHTML = subjEntries.map(([slug, s]) => {
+            const avg = (s.avgScore||0).toFixed(2);
+            const pct = Math.min(100, (s.avgScore||0) * 10);
+            const color = scoreColor(s.avgScore||0);
+            return `<div class="bar-item">
+                <div class="bar-header">
+                    <span class="bar-label">${SUBJECT_NAMES[slug]||slug}</span>
+                    <span class="bar-score" style="color:${color}">${avg} / 10</span>
+                </div>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width:${pct}%;background:${color}"></div>
+                </div>
+                <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem">${s.totalAttempts||0} sesión(es)</div>
+            </div>`;
+        }).join('');
+    }
+
+    /* ── SUBJECT FILTER ── */
+    const sel = document.getElementById('subj-filter');
+    const existingSlugs = Object.keys(failures).filter(s => Object.values(failures[s]).some(q=>q.count>0));
+    sel.innerHTML = '<option value="all">Todas</option>' + existingSlugs.map(s => `<option value="${s}">${SUBJECT_NAMES[s]||s}</option>`).join('');
+    renderFailures();
+
+    /* ── TOPIC HEATMAP ── */
+    const topicMap = {};
+    Object.entries(failures).forEach(([slug, qs]) => {
+        Object.values(qs).forEach(f => {
+            if (f.count > 0) topicMap[f.unit] = (topicMap[f.unit]||0) + f.count;
+        });
+    });
+    const topicEntries = Object.entries(topicMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
+    const maxCount = topicEntries[0]?.[1] || 1;
+    if (topicEntries.length === 0) {
+        document.getElementById('topic-heatmap').innerHTML = emptyState('Sin datos', '¡Bien hecho! No hay temas con errores acumulados.');
+    } else {
+        document.getElementById('topic-heatmap').innerHTML = topicEntries.map(([unit, cnt]) => `
+            <div class="topic-bar">
+                <div class="topic-header"><span>${unit}</span><span style="color:#ef4444;font-weight:800">${cnt} fallo${cnt!==1?'s':''}</span></div>
+                <div class="topic-track"><div class="topic-fill" style="width:${(cnt/maxCount*100).toFixed(0)}%"></div></div>
+            </div>`).join('');
+    }
+
+    /* ── HISTORY ── */
+    if (history.length === 0) {
+        document.getElementById('history-list').innerHTML = emptyState('Sin historial', 'Completa tu primer test para registrar tu progreso.');
+    } else {
+        document.getElementById('history-list').innerHTML = history.slice(0,15).map(h => {
+            const pass = h.score >= 5;
+            return `<div class="history-item">
+                <div class="history-dot ${pass?'pass':'fail'}">${h.score?.toFixed(1)||'—'}</div>
+                <div class="history-info">
+                    <div class="history-subject">${SUBJECT_NAMES[h.subject]||h.subject}</div>
+                    <div class="history-date">${fmtDate(h.date)}</div>
+                </div>
+                <div class="history-score" style="color:${scoreColor(h.score||0)}">${h.score?.toFixed(2)||'—'}</div>
+            </div>`;
+        }).join('');
+    }
+}
+
+function renderFailures() {
+    const filter = document.getElementById('subj-filter').value;
+    const failures = UserStats.data.failures || {};
+    let allFails = [];
+    Object.entries(failures).forEach(([slug, qs]) => {
+        if (filter !== 'all' && slug !== filter) return;
+        Object.values(qs).forEach(f => {
+            if (f.count > 0) allFails.push({...f, slug});
+        });
+    });
+    allFails.sort((a,b) => b.count - a.count);
+    if (allFails.length === 0) {
+        document.getElementById('failures-list').innerHTML = emptyState('¡Sin fallos!', 'No hay preguntas falladas en esta selección. 🏅');
+    } else {
+        document.getElementById('failures-list').innerHTML = allFails.slice(0,8).map(f => `
+            <div class="failure-item">
+                <div class="failure-count">${f.count}</div>
+                <div>
+                    <div class="failure-text">${f.text}</div>
+                    <div class="failure-unit">${SUBJECT_NAMES[f.slug]||f.slug} · ${f.unit}</div>
+                </div>
+            </div>`).join('');
+    }
+}
+
+function emptyState(title, sub) {
+    return `<div class="empty-state">
+        <div class="empty-state-icon">📭</div>
+        <div class="empty-state-title">${title}</div>
+        <p style="font-size:0.85rem">${sub}</p>
+    </div>`;
+}
+
+function confirmClear() {
+    if (!confirm('¿Borrar todo el historial y estadísticas? Esta acción no se puede deshacer.')) return;
+    UserStats.data = { subjects: {}, failures: {}, history: [] };
+    UserStats.save();
+    render();
+}
+
+render();
+</script>
+<script src="assets/js/analytics.js"></script>
+</body>
+</html>
