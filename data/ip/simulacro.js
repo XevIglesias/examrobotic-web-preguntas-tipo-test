@@ -719,4 +719,486 @@ const EXAM_DATA = [
         "ans": 1,
         "exp": ""
     }
+,
+
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct answer:",
+        "opts": [
+            "I think it going to be sunny tomorrow.",
+            "She is going to visit her cousins next weekend.",
+            "Look at those clouds! It goes to rain this afternoon.",
+            "We are going to watch a movie last night."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct passive form of the sentence:\"They will publish the results next week\".",
+        "opts": [
+            "The results are published next week.",
+            "The results were published next week.",
+            "The results are being published next week.",
+            "The results will be published next week."
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct prepositions of place for this sentence: \"The children are playing ________ the garden ________ the big tree.\"",
+        "opts": [
+            "in / under",
+            "on / next to",
+            "at / near to",
+            "on / between"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct reported version of the following command: \"Close the door\", she said to me.",
+        "opts": [
+            "She said to close the door.",
+            "She told me to close the door.",
+            "She told me to closing the door.",
+            "She said to closed the door."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct Second Conditional sentence.",
+        "opts": [
+            "If I have a million dollars, I buy a big house.",
+            "If I had a million dollars, I would buy a big house.",
+            "If I has a million dollars, I bought a big house.",
+            "If I had a million dollars, I buy a big house."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct sentence in the Past Simple tense.",
+        "opts": [
+            "We watch a great movie yesterday.",
+            "She study for the exam last night.",
+            "They played football in the park last week.",
+            "He stops at the supermarket on his way home."
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct sentence in the Present Simple:",
+        "opts": [
+            "She go always to the gym.",
+            "She goes always to the gym.",
+            "She always goes to the gym.",
+            "She always go to the gym."
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct sentence using the verb To Be in the past tense.",
+        "opts": [
+            "They wasn't at home last night.",
+            "We was at the cinema.",
+            "I was late for the meeting.",
+            "She were very tired after work."
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the correct superlative adjective to complete the sentence:\"That was ___________ movie I have ever seen!\"",
+        "opts": [
+            "Funnier",
+            "the most funny",
+            "the funniest",
+            "funnier than"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the right answer:",
+        "opts": [
+            "She be a doctor.",
+            "She is a doctor.",
+            "She are a doctor.",
+            "She am a doctor."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the right relative pronoun below:",
+        "opts": [
+            "That was the year when I started learning English.",
+            "That year was the day which I started learning English.",
+            "That year was the day who I started learning English.",
+            "That year was the day where I started learning English."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the WRONG sentence.",
+        "opts": [
+            "He hasn't got a pet snake.",
+            "We don't have a house at the beach.",
+            "Does she have a brother?",
+            "I don't have got a motorbike."
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Choose the WRONG sentence.",
+        "opts": [
+            "I go to the cinema usually.",
+            "Sometimes, she watches anime.",
+            "He plays tennis very often.",
+            "They rarely listen to rock music."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence using the Past Simple and the Past Continuous: \"While my brother __________ TV, the phone __________.\"",
+        "opts": [
+            "watched / rang",
+            "was watching / rang",
+            "watching / ring",
+            "was watched / was ringing"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence using the Present Simple to talk about a future event: \"The plane ________ at 10:00 a.m. tomorrow.\"",
+        "opts": [
+            "arrive",
+            "arrives",
+            "arriving",
+            "will arrive"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence with a suitable indefinite pronoun: \"_____________ is knocking at the door\".",
+        "opts": [
+            "Anywhere",
+            "Somewhere",
+            "Someone",
+            "Anything"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence: \"She _________ you as soon as she arrives.\"",
+        "opts": [
+            "will called",
+            "are calling",
+            "called",
+            "will call"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence: \"She ___________ sushi in her life\"",
+        "opts": [
+            "has never eaten",
+            "have never eaten",
+            "has ever eat",
+            "have never ate"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete the sentence: \"When we were kids, we _________ cartoons every morning\"",
+        "opts": [
+            "used to watch",
+            "use to watched",
+            "was used to watch",
+            "using to watch"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Complete this sentence with a question tag: \"You've been to Japan, ________?",
+        "opts": [
+            "don't you",
+            "didn't you",
+            "haven't you",
+            "will you"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Fill in the gap with an appropriate connector: \"I wanted to go to the party. __________, I had to finish my homework first\".",
+        "opts": [
+            "For instance",
+            "Because",
+            "However",
+            "Moreover"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Fill in the gap with the correct comparative form of the adjective \"bad\": \"The weather today is _________ than it was yesterday\".",
+        "opts": [
+            "badder",
+            "worse",
+            "more bad",
+            "baddest"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Find the correct sentence:",
+        "opts": [
+            "There is some apples on the table.",
+            "Are there any apples on the table?",
+            "There isn't some milk in the fridge.",
+            "Is there some oranges in the box?"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Find the incorrect question.",
+        "opts": [
+            "Why do you study in the library?",
+            "When she takes her last exam?",
+            "Who is your brother?",
+            "Where does she live?"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Find the INCORRECT sentence.",
+        "opts": [
+            "There are many papers on the table.",
+            "Are there any papers on the table?",
+            "There aren't no papers on the table.",
+            "There aren't any papers on the table."
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Identify the sentence that correctly uses the imperative form.",
+        "opts": [
+            "You must to close the door.",
+            "Please, close the door!",
+            "She is closing the door.",
+            "You should closing the door."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Pick the correct preposition of movement to complete the sentence: \"She walked _________the bridge to get to the other side.\"",
+        "opts": [
+            "Off",
+            "into",
+            "through",
+            "across"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Transform the words of this sentence into a question: She / like / travel / around the world / ?",
+        "opts": [
+            "Does she like travelling around the world?",
+            "Do she like travelling around the world?",
+            "Does she likes travelling around the world?",
+            "Does she like travel around the world?"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "What is the most appropriate connector for adding information?",
+        "opts": [
+            "Although",
+            "Besides",
+            "Instead",
+            "Therefore"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which gerund form is correct?",
+        "opts": [
+            "Crying",
+            "Runing",
+            "Makeing",
+            "Swiming"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which is the right adjective?",
+        "opts": [
+            "I was very frightened after watching that horror film.",
+            "I was very frightening after watching that horror film.",
+            "I was very frighten after watching that horror film.",
+            "I was very frightful after watching that horror film."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which of the following is NOT a use of the Present Continuous?",
+        "opts": [
+            "To describe actions happening at the moment of speaking.",
+            "To express temporary actions.",
+            "To talk about future arrangements or plans.",
+            "To talk about habits and routines."
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which of these indefinite pronouns refer to people?",
+        "opts": [
+            "Something",
+            "Anywhere",
+            "Nobody",
+            "Everything"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which of these words is a possessive pronoun?",
+        "opts": [
+            "Me",
+            "She",
+            "Their",
+            "Theirs"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which quantifier is used with countable nouns?",
+        "opts": [
+            "Much",
+            "Little",
+            "Many",
+            "A little"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which quantifier would you use for a sufficient amount of something?",
+        "opts": [
+            "The bag is too heavy.",
+            "The coffee has too much sugar.",
+            "There are too many chairs in this classroom.",
+            "We don t have enough time to be on time."
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which sentence correctly uses a stative verb?",
+        "opts": [
+            "He is wanting ice cream.",
+            "I remember your face.",
+            "That car is belonging to me.",
+            "You are liking football."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which sentence is an example of the First Conditional?",
+        "opts": [
+            "If it rains, the ground gets well.",
+            "If you study, you will pass the exam.",
+            "If she had a car, she would drive to work.",
+            "She will go to the party if you invites her."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which sentence is correct?",
+        "opts": [
+            "There are too many people in the room. We need more space.",
+            "There are too much people in the room. We need more space.",
+            "There are too enough people in the room. We need more space.",
+            "There are very people in the room. We need more space."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Which type of speech uses quotation marks (\"\")?",
+        "opts": [
+            "Reported speech",
+            "Direct speech",
+            "Indirect speech",
+            "All answers are correct"
+        ],
+        "ans": 1,
+        "exp": ""
+    }
 ];

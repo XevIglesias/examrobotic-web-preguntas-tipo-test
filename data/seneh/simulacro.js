@@ -1559,4 +1559,486 @@ const EXAM_DATA = [
         "ans": 2,
         "exp": ""
     }
+,
+
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿A qué elemento corresponde la siguiente figura?",
+        "opts": [
+            "Electroválvula",
+            "Relé",
+            "Contactor",
+            "Transductor"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿A qué se considera un sistema electromecánico?:",
+        "opts": [
+            "Un sistema eléctrico que se apoya de un sistema mecánico para la generación de la corriente",
+            "Un sistema mecánico que también combina electricidad y electrónica",
+            "Un sistema mecánico que se alimenta con electricidad",
+            "Un sistema electrónico que se apoya de un sistema mecánico para la generación de corriente"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿A qué tensión suelen trabajar los autómatas?",
+        "opts": [
+            "Entre 12-48 Vdc (lo más habitual 24 Vdc)",
+            "A 220 Vac",
+            "A 400 Vac",
+            "Entre 5-12 Vdc"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿A través de qué cable se conectan los autómatas Omron?",
+        "opts": [
+            "Cable USB",
+            "Cable RJ-45",
+            "Cable RS-232",
+            "Cable especial Omron"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cómo se denomina el sistema en el que cada dígito se representa con hasta diez símbolos diferentes?",
+        "opts": [
+            "Sistema decimal",
+            "Sistema octal",
+            "Sistema hexadecimal",
+            "Sistema décimo"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cómo se denominan los temporizadores usados para retardar la puesta a cero de una salida durante un tiempo cuando se desactiva la señal de habilitación?",
+        "opts": [
+            "Temporizador de retardo a la conexión (TON)",
+            "Temporizador de retardo a la conexión memorizado (TONR)",
+            "Temporizador casuístico de desconexión (TOFL)",
+            "Temporizador de retardo a la desconexión (TOF)"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cómo se llama el sistema automático donde existe una retroalimentación entre el proceso y el equipo de control?",
+        "opts": [
+            "Bucle cerrado",
+            "Bucle abierto",
+            "Lógica cableada",
+            "Lógica programada"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cómo se pasa de un número decimal a binario?",
+        "opts": [
+            "Mediante software especializado para ello",
+            "Mediante unas tablas de conversión",
+            "Dividiendo de manera sucesiva el número entre 2 y cogiendo el cociente",
+            "Dividiendo de manera sucesiva el número entre 2 y cogiendo el resto"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Con que aparato medimos la presión de una instalación hidráulica?:",
+        "opts": [
+            "Higrómetro.",
+            "Manómetro.",
+            "Balanza.",
+            "Termómetro."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cuál de los siguientes atributos no son propios del cilindro representado en esta imagen?\n\nDiagrama\n\nDescripción generada automáticamente con confianza media",
+        "opts": [
+            "Simple efecto",
+            "Vástago antigiro",
+            "Retorno por muelle",
+            "Carrera por muelle"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cuál es el formato más extendido e interesante para pasar un esquema clásico al programa del autómata?",
+        "opts": [
+            "FUP",
+            "KOP",
+            "AWL",
+            "GNL"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cuál es el instrumento que unifica las funciones del voltímetro, amperímetro y óhmetro?",
+        "opts": [
+            "Osciloscopio",
+            "Polímetro",
+            "Todómetro",
+            "Supermetro"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cuál es la serie más pequeña de autómatas Omron?",
+        "opts": [
+            "ZEN",
+            "CxxH",
+            "CPM2A",
+            "CQM1"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Cuántas entradas tiene un circuito combinacional codificador?:",
+        "opts": [
+            "2 elevado al número de salidas.",
+            "2 veces el número de salidas",
+            "El número de salidas más 2.",
+            "Siempre 4."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿En qué circuito combinacional hacemos la suma binaria de los dos dígitos de entrada?",
+        "opts": [
+            "Circuito operacional.",
+            "Circuito semisumador.",
+            "Circuito matemático.",
+            "Circuito sumatorio."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Para qué utilizamos las válvulas 5/2 principalmente?",
+        "opts": [
+            "Para gobernar cilindros de doble efecto",
+            "Para gobernar cilindros de simple efecto",
+            "Para abrir y cerrar una válvula neumática de paso",
+            "Para aplicaciones de vacío, permitiendo el paso del aire al eyector"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Por qué se utilizan más los cilindros de doble efecto que los de simple efecto?",
+        "opts": [
+            "Porque son más económicos",
+            "Porque pueden trabajar a mayores velocidades",
+            "Porque permiten un posicionamiento con precisión",
+            "Porque en los de simple efecto, el muelle sufre desgaste y fatiga con el tiempo"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Qué cortes protegen la instalación eléctrica en las dos partes de las que consta un interruptor automático magnetotérmico?",
+        "opts": [
+            "Corte magnético y corte diferencial",
+            "Corte eléctrico y corte térmico",
+            "Corte magnético y corte térmico",
+            "Corte eléctrico y corte diferencial"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "¿Qué es un decodificador?",
+        "opts": [
+            "Un circuito integrado por el que, al introducir un número, se activa solo una de sus salidas",
+            "Un circuito integrado por el que, al introducir un número, se activan una o varias de sus salidas",
+            "Un aparato que permite decodificar una señal informática encriptada",
+            "Un circuito combinacional que nos proporciona una salida codificada en binario, siendo las entradas al circuito no codificadas"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Con que medida calcularemos la presión en el S.I:",
+        "opts": [
+            "Pascales.",
+            "Bar.",
+            "Atmosferas.",
+            "Voltios."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "El arranque mediante resistencias estatóricas se usa en:",
+        "opts": [
+            "Máquinas de gran inercia.",
+            "Máquinas trifásicas",
+            "Máquinas de gran potencia.",
+            "Máquinas de par elevado."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "El autómata más utilizado de Siemens es:",
+        "opts": [
+            "El S7",
+            "El AutoSiem",
+            "El CPM2A",
+            "El CQM1"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "El sistema de arranque más económico es:",
+        "opts": [
+            "El arranque directo",
+            "Arranque por resistencias estatóricas.",
+            "Arranque mediante resistencias rotóricas.",
+            "Arranque seco."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "En el arranque estrella-triángulo, el arranque se realiza en estrella, de manera que la tensión que llega en cada fase es:",
+        "opts": [
+            "Nula",
+            "Inferior",
+            "Superior",
+            "Igual"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "En el código BCD (Binary-Coded Decimal) cada cifra está compuesta por:",
+        "opts": [
+            "4 bits binarios.",
+            "10 bits binarios.",
+            "8 bits binarios.",
+            "2 bits binarios."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "En que lenguaje de programación el programa se crea a partir del esquema que resulta al realizar la tabla de Karnaugh y sus correspondientes puertas lógicas.",
+        "opts": [
+            "FUP.",
+            "KOP.",
+            "AWL.",
+            "Todas son correctas"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "En qué tipo de Contador podemos sumar y restar un evento:",
+        "opts": [
+            "Contador CTU",
+            "Contador CTUD",
+            "Ambos contadores",
+            "Ninguno."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "En un autómata programable, ¿cuál es la parte que coordina las funciones del aparato?",
+        "opts": [
+            "Cerebro",
+            "Fuente de alimentación",
+            "Memoria",
+            "Microprocesador"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Indica a qué elemento corresponde la siguiente imagen\n\nIcono\n\nDescripción generada automáticamente con confianza baja",
+        "opts": [
+            "Filtro-regulador",
+            "Compresor y depósito",
+            "Compresor y secador",
+            "Electroválvula y actuador"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Indica a que elemento pertenece la siguiente imagen:\nDiagrama\n\nDescripción generada automáticamente",
+        "opts": [
+            "Válvula 2/2 pilotada por presión.",
+            "Válvula 3/2 pilotada por presión",
+            "Válvula 4/2 pilotada por presión.",
+            "Válvula 5/2 pilotada por presión."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Indica cuál de los siguientes no es un dispositivo de un sistema eléctrico:",
+        "opts": [
+            "Relé.",
+            "Contactor.",
+            "Válvula.",
+            "Transductor."
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "La programación por contactos en Omron se denomina...",
+        "opts": [
+            "Brackets",
+            "Segment",
+            "Secuencial",
+            "Ninguna de las anteriores es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Los racores son:",
+        "opts": [
+            "Elementos de protección.",
+            "Elementos neumáticos o hidráulicos de unión.",
+            "Elementos eléctricos de unión.",
+            "Elementos de cableado."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "No es un dispositivo de protección:",
+        "opts": [
+            "Interruptor de control de corriente.",
+            "Interruptor diferencial.",
+            "Interruptor magnetotérmico.",
+            "Interruptor de control de potencia."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "S.I son las siglas de:",
+        "opts": [
+            "Sistema Interno.",
+            "Sistema Internacional.",
+            "Sustancia Intrusa.",
+            "Soporte Inclinado."
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Tipo de energía que tiene un fluido:",
+        "opts": [
+            "Energía hidrostática.",
+            "Energía hidráulica.",
+            "Energía hidrodinámica.",
+            "Todas las respuestas son correctas."
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Un aspecto a tener en cuenta en neumática es la calidad del aire ya que",
+        "opts": [
+            "Una mala calidad produce condensados en las líneas provocando oxidación.",
+            "Si el aire está limpio y seco producirá condensados en las líneas.",
+            "Esta afirmación es errónea, dependerá de la calidad del aceite.",
+            "Se debe analizar el certificado de calidad del aire que utilizamos para asegurar que es el correcto."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Un final de carrera es un sensor de:",
+        "opts": [
+            "Contacto.",
+            "Luz.",
+            "Temperatura.",
+            "Humedad."
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Una instrucción en STEP 7 cuenta con una parte que marca la función a realizar llamada...",
+        "opts": [
+            "receptor",
+            "salida",
+            "operacional",
+            "contactor"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "14. Examen Oficial",
+        "q": "Una válvula 4/2:",
+        "opts": [
+            "Tiene 4 posiciones y 2 conexiones o vías.",
+            "Tiene 4 conexiones o vías y 2 posiciones.",
+            "No existe este tipo de válvula.",
+            "Son las más usadas para gobernar cilindros de simple efecto"
+        ],
+        "ans": 1,
+        "exp": ""
+    }
 ];
