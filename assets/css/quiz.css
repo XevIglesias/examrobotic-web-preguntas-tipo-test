@@ -305,3 +305,64 @@ header {
     margin-top: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em;
     opacity: 0.7; pointer-events: none;
 }
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+    --er-bg:      #1e293b;
+    --er-dark:    #e2e8f0;
+    --er-border:  #334155;
+    --accent:     #3b82f6;
+}
+
+[data-theme="dark"] .q-card {
+    background: #0f172a;
+    border-color: #334155;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+[data-theme="dark"] header {
+    background: rgba(30, 41, 59, 0.96);
+}
+
+[data-theme="dark"] .quiz-back-btn {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+[data-theme="dark"] .option {
+    background: #1e293b;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .option:hover {
+    background: #334155;
+}
+
+[data-theme="dark"] .option.selected {
+    background: #1e3a8a;
+    border-color: #3b82f6;
+}
+
+[data-theme="dark"] .dot {
+    background: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .dot.done {
+    background: #334155;
+    border-bottom-color: #3b82f6;
+}
+
+[data-theme="dark"] .dot.empty {
+    background: #0f172a !important;
+    border-color: #1e293b !important;
+    color: #475569 !important;
+}
+
+[data-theme="dark"] .exp-box {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border-left-color: #3b82f6;
+}
