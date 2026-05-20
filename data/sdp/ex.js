@@ -128,7 +128,7 @@ const EXAM_DATA = [
             "90°",
             "Ninguna de las anteriores es correcta."
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {
@@ -152,7 +152,7 @@ const EXAM_DATA = [
             "Excitación en ramales",
             "Excitación en paralelo."
         ],
-        "ans": 0,
+        "ans": 3,
         "exp": ""
     },
     {
@@ -164,7 +164,7 @@ const EXAM_DATA = [
             "El estator",
             "El devanado secundario"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {
@@ -176,7 +176,7 @@ const EXAM_DATA = [
             "La ley de Lenz.",
             "La teoría eléctrica de Rudolph"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {
@@ -200,7 +200,7 @@ const EXAM_DATA = [
             "De anillos rozantes",
             "Secuencial"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {
@@ -212,7 +212,7 @@ const EXAM_DATA = [
             "Si en un transformador se quiere reducir la tensión a la mitad se deberá utilizar el doble de espiras en el bobinado primario respecto al secundario",
             "Los transformadores son máquinas síncronas estáticas"
         ],
-        "ans": 0,
+        "ans": 3,
         "exp": ""
     },
     {
@@ -224,7 +224,7 @@ const EXAM_DATA = [
             "Igual",
             "No puede mantener las mismas características con un mayor número de polos"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {

@@ -2,7 +2,7 @@
 const EXAM_DATA = [
     // --- PREGUNTAS DE LA PLATAFORMA (MOODLE) ---
     { u: "INGLÉS PROF. T1", q: "Choose the correct sentence in the Present Simple.", opts: ["She go always to the gym.", "She goes always to the gym.", "She always goes to the gym.", "She always go to the gym."], ans: 2, exp: "El adverbio de frecuencia 'always' se coloca antes del verbo principal (goes)." },
-    { u: "INGLÉS PROF. T1", q: "Choose the right answer.", opts: ["She be a doctor.", "She is a doctor.", "She are a doctor.", "She am a doctor."], ans: 1, exp: "La tercera persona del singular del verbo 'to be' en presente es 'is'." },
+    { u: "INGLÉS PROF. T1", q: "Choose the right answer.", opts: ["She be a doctor.", "All the above are correct.", "She are a doctor.", "She am a doctor."], ans: 1, exp: "La tercera persona del singular del verbo 'to be' en presente es 'is'." },
     { u: "INGLÉS PROF. T1", q: "Choose the right answer.", opts: ["I have not got a pet.", "I haven't got a pet", "I don't have a pet.", "All the above are correct."], ans: 3, exp: "Todas las formas son correctas para expresar posesión en negativo en presente." },
     { u: "INGLÉS PROF. T1", q: "In which of the following sentences is the adverb of frequency correctly placed?", opts: ["They never are late for work.", "They are late never for work.", "They are never late for work.", "They are late for work never."], ans: 2, exp: "Con el verbo 'to be', el adverbio de frecuencia se coloca siempre después del verbo." },
     { u: "INGLÉS PROF. T1", q: "Which gerund form is correct?", opts: ["Crying", "Runing", "Makeing", "Swiming"], ans: 0, exp: "'Crying' es correcto. Run y Swim doblan consonante (running, swimming) y Make pierde la 'e' (making)." },

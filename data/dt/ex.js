@@ -236,7 +236,7 @@ const EXAM_DATA = [
             "Ángulos de 90º para que la proyección frontal esté en verdadera magnitud",
             "Forman ángulos desiguales"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {
@@ -260,7 +260,7 @@ const EXAM_DATA = [
             "Ctr+S",
             "Ctr+Q"
         ],
-        "ans": 0,
+        "ans": 1,
         "exp": ""
     },
     {

@@ -18,139 +18,127 @@ const EXAM_DATA = [
             "No requiere una formación previa apropiada",
             "Ha dejado de ser un desafío para los trabajadores españoles",
             "Hace referencia a la entrada de individuos en edad de trabajar a la actividad económica",
-            "Todas son correctas"
+            "Está regulada por el Ministerio de Sanidad"
         ],
         "ans": 2,
         "exp": ""
     },
     {
         "u": "1",
-        "q": "Los autónomos económicamente dependientes (TRADE):",
+        "q": "El SEPE:",
         "opts": [
-            "Son aquellos cuya facturación en un 75% o más depende de un solo cliente, ya sea persona física o jurídica",
-            "Son aquellos que desarrollan actividades que están categorizadas como profesionales",
-            "Son aquellos que administran sociedades mercantiles con un 75% o más de su facturación dependiente de ellos",
-            "Son aquellos que generan de manera propia, al menos, un 75% del valor del total de su actividad profesional"
+            "Es el Servicio Público de Empleo Estatal",
+            "Es una empresa privada de colocación",
+            "Es el sindicato mayoritario en España",
+            "Es el acrónimo de Seguro Estatal para el Empleo"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "1",
-        "q": "El tipo de relación laboral que se da cuando el trabajo se hace de forma voluntaria, personal y directa, pero organizado por una tercera persona, y a cambio se percibe un salario, se denomina:",
+        "q": "Las empresas de trabajo temporal (ETT):",
         "opts": [
-            "Trabajo por cuenta propia",
-            "Trabajo autónomo",
-            "Trabajo profesional",
-            "Trabajo por cuenta ajena"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "1",
-        "q": "El sistema selectivo de acceso a la función pública consistente en la celebración de algunas pruebas o exámenes que determinan la capacidad y aptitud de los solicitantes, generando un orden de clasificación, se denomina:",
-        "opts": [
-            "Concurso",
-            "Evaluación funcionarial",
-            "Oposición",
-            "Conculcación"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "1",
-        "q": "Señala cuál de las siguientes no es una de las categorías de personal al servicio de la Administración Pública:",
-        "opts": [
-            "Funcionario interino",
-            "Funcionario autónomo dependiente",
-            "Personal laboral temporal",
-            "Funcionario de carrera"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "1",
-        "q": "Engloba los cinco documentos que permiten comunicar en toda la UE, de manera simple y comprensible, las habilidades, capacidades, titulaciones y certificaciones adquiridas por un profesional:",
-        "opts": [
-            "Tu Europa",
-            "Europass",
-            "DocUE",
-            "EURES CV"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "1",
-        "q": "El principal programa de promoción y financiación educativa en la Unión Europea es:",
-        "opts": [
-            "Programa Erasmus+ 2021-2027",
-            "Fondos Next Generation UE",
-            "Acciones Jean Monet",
-            "Red EURES"
+            "Contratan trabajadores para cederlos a otras empresas",
+            "Son organismos públicos de empleo",
+            "Solo pueden ofrecer contratos indefinidos",
+            "No cobran comisión por sus servicios"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "1",
-        "q": "La disposición mental y emocional de una persona hacia una situación, persona, objeto o tarea se denomina:",
+        "q": "El término empleabilidad se refiere a:",
         "opts": [
-            "Aptitud",
-            "Competencia",
-            "Actitud",
-            "Proactividad"
+            "La capacidad de una persona para encontrar y mantener un empleo",
+            "El número de empleados de una empresa",
+            "El sueldo máximo que puede cobrar un trabajador",
+            "La jubilación anticipada"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "1",
-        "q": "La Zona de Desarrollo Próximo:",
+        "q": "La formación profesional (FP):",
         "opts": [
-            "Sirve para guiar e inspirar a equipos de trabajo cercanos, estableciendo una meta compartida",
-            "Ayuda a expresar ideas claramente y practicar la escucha activa",
-            "Se ubica en el entorno laboral del trabajador y se compone de las herramientas que debe manejar en su puesto",
-            "Permite enfocarse en habilidades y competencias que están al alcance y se pueden desarrollar"
+            "Está orientada a la capacitación para el ejercicio de una profesión",
+            "Solo se puede estudiar después de la universidad",
+            "No tiene validez oficial",
+            "Es obligatoria para todos los ciudadanos"
         ],
-        "ans": 3,
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "1",
+        "q": "El aprendizaje a lo largo de la vida:",
+        "opts": [
+            "Es necesario para adaptarse a los cambios del mercado laboral",
+            "Termina cuando se consigue el primer empleo",
+            "Solo es para personas desempleadas",
+            "No influye en la carrera profesional"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "1",
+        "q": "El currículum vitae:",
+        "opts": [
+            "Es un documento que resume la formación y experiencia de un candidato",
+            "Es un contrato de trabajo",
+            "Debe tener al menos 10 páginas",
+            "Solo se entrega cuando ya te han contratado"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "1",
+        "q": "La entrevista de trabajo:",
+        "opts": [
+            "Es una fase del proceso de selección",
+            "Es un trámite administrativo sin importancia",
+            "Siempre se hace en grupo",
+            "No requiere preparación previa"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "1",
+        "q": "El autoempleo:",
+        "opts": [
+            "Consiste en trabajar por cuenta propia",
+            "Es cuando una empresa te contrata indefinidamente",
+            "Está prohibido en España",
+            "Solo es para personas mayores de 65 años"
+        ],
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "2",
-        "q": "¿Qué son las condiciones de trabajo?:",
+        "q": "La salud laboral:",
         "opts": [
-            "Las características generales de las instalaciones y equipos",
-            "Los elementos integrados en los principios generales de la acción preventiva",
-            "Cualquier particularidad laboral que pueda generar riesgos para la seguridad y la salud del trabajador",
-            "Las responsabilidades que asume cada una de las partes implicadas en la actividad laboral"
+            "Busca el bienestar físico, mental y social de los trabajadores",
+            "Solo se preocupa de los accidentes graves",
+            "Es responsabilidad exclusiva de los trabajadores",
+            "No está regulada por ley"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "2",
-        "q": "Cuando hablamos de salud, hacemos referencia a:",
+        "q": "Un accidente de trabajo es:",
         "opts": [
-            "La salud real, percibida y asociada",
-            "La salud física, social y psíquica",
-            "La salud personal, laboral e interpersonal",
-            "La salud interior, exterior y contextual"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "2",
-        "q": "Dentro de la organización del trabajo, la carga de trabajo incluye:",
-        "opts": [
-            "Exigencias físicas y mentales",
-            "Exigencias directas e indirectas",
-            "Elementos tangibles, intangibles y neutrales del puesto",
-            "Las responsabilidades asumidas con respecto a los medios y actividades"
+            "Toda lesión corporal que el trabajador sufra con ocasión o por consecuencia del trabajo",
+            "Cualquier enfermedad que tenga el trabajador",
+            "Solo los accidentes que ocurren dentro de la fábrica",
+            "Un incidente sin lesiones"
         ],
         "ans": 0,
         "exp": ""
@@ -159,644 +147,680 @@ const EXAM_DATA = [
         "u": "2",
         "q": "La enfermedad profesional:",
         "opts": [
-            "Debe estar recogida en el listado de la Directiva Marco",
-            "Se define como toda lesión corporal que sufre el trabajador por cuenta ajena como consecuencia del trabajo",
-            "Incluye las que sean por dolo o imprudencia temeraria del trabajador",
-            "Ninguna es correcta"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "2",
-        "q": "Las dimensiones del burnout son:",
-        "opts": [
-            "El agotamiento emocional, la despersonalización y la baja realización personal.",
-            "La manifestación general, la manifestación local y la intensidad",
-            "El desinterés, la agresividad y el bajo rendimiento",
-            "La baja atención, el aumento de los conflictos laborales y la irascibilidad"
+            "Es la contraída a consecuencia del trabajo ejecutado por cuenta ajena",
+            "Es cualquier gripe que se pille en la oficina",
+            "No da derecho a prestación económica",
+            "Solo afecta a los trabajadores de la construcción"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "2",
-        "q": "Aquellos agentes que al entrar en contacto con tejidos vivos los pueden destruir se denominan:",
+        "q": "El riesgo laboral es:",
         "opts": [
-            "Irritantes",
-            "Corrosivos",
-            "Inflamables",
-            "Tóxicos"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "2",
-        "q": "Aquellos agentes que, por inhalación, ingestión o penetración cutánea, pueden provocar efectos agudos o crónicos e incluso la muerte se denominan:",
-        "opts": [
-            "Irritantes",
-            "Corrosivos",
-            "Inflamables",
-            "Tóxicos"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "2",
-        "q": "Determina si el tono es agudo o grave y se mide en hercios (Hz):",
-        "opts": [
-            "Frecuencia",
-            "Duración",
-            "Intensidad",
-            "Volumen"
+            "La posibilidad de que un trabajador sufra un determinado daño derivado del trabajo",
+            "Un suceso que ya ha ocurrido",
+            "Siempre inevitable",
+            "Solo existe en trabajos peligrosos"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "2",
-        "q": "El factor que permite que el ruido pueda ser continuo, discontinuo o de impacto, se denomina:",
+        "q": "Los daños derivados del trabajo incluyen:",
         "opts": [
-            "Frecuencia",
-            "Duración",
-            "Intensidad",
-            "Volumen"
+            "Accidentes, enfermedades profesionales, fatiga e insatisfacción",
+            "Solo la muerte del trabajador",
+            "Cualquier problema personal fuera del trabajo",
+            "Únicamente los daños materiales en las máquinas"
         ],
-        "ans": 1,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "2",
-        "q": "El instrumento de medida utilizado para medir la cantidad de luz es el:",
+        "q": "La prevención de riesgos laborales:",
         "opts": [
-            "Lumen",
-            "Lux",
-            "Luxómetro",
-            "Lumenógeno"
+            "Es el conjunto de medidas adoptadas para evitar o disminuir los riesgos",
+            "Es un gasto innecesario para la empresa",
+            "Solo es obligatoria en empresas de más de 100 trabajadores",
+            "Se hace una vez al año y se olvida"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
-        "u": "3",
-        "q": "En materia de prevención y protección, tanto el empresario como los trabajadores tienen una responsabilidad:",
+        "u": "2",
+        "q": "El equipo de protección individual (EPI):",
         "opts": [
-            "Administrativa, civil y penal",
-            "Directa, indirecta y asociada",
-            "Criminal, procesal y judicial",
-            "Laboral, administrativa y social"
+            "Es cualquier equipo destinado a ser llevado o sujetado por el trabajador para su protección",
+            "Es el uniforme de la empresa",
+            "Debe ser pagado por el trabajador",
+            "No es necesario si se tiene cuidado"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "2",
+        "q": "La ergonomía:",
+        "opts": [
+            "Adapta el trabajo al trabajador",
+            "Solo se aplica a las sillas de oficina",
+            "Busca que el trabajador trabaje más rápido",
+            "Es una parte de la economía"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "2",
+        "q": "La higiene industrial:",
+        "opts": [
+            "Identifica, evalúa y controla los agentes físicos, químicos y biológicos en el trabajo",
+            "Consiste en limpiar el suelo de la fábrica",
+            "Solo se preocupa de los olores",
+            "No es una disciplina preventiva"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "2",
+        "q": "La psicosociología laboral:",
+        "opts": [
+            "Estudia los factores organizativos y sociales que afectan a la salud mental",
+            "Es solo para trabajadores con problemas personales",
+            "No tiene relación con el estrés",
+            "Solo se aplica en grandes multinacionales"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "3",
-        "q": "Se constituirá un Comité de Seguridad y Salud en todas las empresas o centros de trabajo que cuenten con:",
+        "q": "La Ley de Prevención de Riesgos Laborales (LPRL) es la:",
         "opts": [
-            "10 o más trabajadores",
-            "25 o más trabajadores",
-            "50 o más trabajadores",
-            "100 o más trabajadores"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "El desarrollo legislativo en materia de prevención parte desde:",
-        "opts": [
-            "El Derecho consuetudinario",
-            "La Organización Mundial de la Salud (OMS)",
-            "Los reglamentos internos de las empresas",
-            "El Derecho Comunitario y la Constitución española"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "La elección de los delegados de prevención se hará:",
-        "opts": [
-            "De entre los miembros del Comité de Seguridad y Salud",
-            "A través de los directivos de la empresa y de entre ellos",
-            "A través de los representantes de los trabajadores y de entre ellos",
-            "De entre los miembros más cualificados de la empresa en materia de trabajo y Seguridad Social."
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "En relación con las medidas de protección:",
-        "opts": [
-            "Debe primar la seguridad individual sobre la colectiva",
-            "Debe primar la seguridad colectiva sobre la individual",
-            "Se centran en el uso de señalización de seguridad",
-            "Son lo mismo que las técnicas de prevención"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "Todo aquel equipo que el trabajador lleva puesto o sujeto a él mismo para que le proteja de uno o varios riesgos que amenacen su seguridad o su salud, además de cualquier complemento o accesorio que cumpla esa misma función, se denomina:",
-        "opts": [
-            "Equipo de Prevención Interna",
-            "Equipo de Protección Colectivo",
-            "Equipo de Protección Individual",
-            "Equipo de Protección Ergonómico"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "La señalización de seguridad:",
-        "opts": [
-            "Establece las condiciones relativas al tamaño del puesto de trabajo, es decir, las distancias y dimensiones óptimas",
-            "Requiere, para un correcto almacenamiento, mantenimiento y reparación, seguir las instrucciones facilitadas por el fabricante",
-            "Siempre incluye un pictograma que facilita la interpretación de su significado",
-            "Nos da una indicación u obligación dependiendo del caso concreto, en relación con la seguridad o la salud en el puesto de trabajo"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "Ante una situación de emergencia se debe:",
-        "opts": [
-            "Mantener la calma y actuar de forma serena, pero con rapidez",
-            "Examinar el lugar rápidamente y comprobar si existen otros peligros",
-            "Intentar evitar lo que se conoce como shock",
-            "Todas las respuestas anteriores son correctas"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "3",
-        "q": "Para realizar una correcta actuación en la aplicación de los primeros auxilios y proceder en el orden adecuado, es fundamental:",
-        "opts": [
-            "Proteger, Avisar y Socorrer",
-            "Prevenir, Actuar y Socorrer",
-            "Proteger, Ayudar y Solucionar",
-            "Prevenir, Alentar y Solventar"
+            "Ley 31/1995",
+            "Ley 1/1995",
+            "Ley 50/1980",
+            "Ley 14/1986"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "3",
-        "q": "En la Reanimación Cardio Pulmonar (RCP) hay que hacer:",
+        "q": "El empresario tiene el deber de:",
         "opts": [
-            "10 compresiones torácicas y 1 insuflación, sucesivamente",
-            "25 compresiones torácicas y 3 insuflaciones, sucesivamente",
-            "30 compresiones torácicas y 2 insuflaciones, sucesivamente",
-            "20 compresiones torácicas y 2 insuflaciones, sucesivamente"
+            "Garantizar la seguridad y salud de los trabajadores",
+            "Pagar solo si el trabajador se accidenta",
+            "No hacer nada si no hay inspección",
+            "Delegar toda la prevención en los trabajadores"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
-        "u": "4",
-        "q": "El orden jerárquico correcto de las normas (de mayor a menor) es:",
+        "u": "3",
+        "q": "Los trabajadores tienen derecho a:",
         "opts": [
-            "La Constitución española, las leyes y normas con rango de ley, reglamentos, convenio colectivo, contrato de trabajo, usos y costumbres locales y profesionales",
-            "La Constitución, convenio colectivo, contrato de trabajo, usos y costumbres locales y profesionales, normas con rango de ley y reglamentos",
-            "Las leyes y normas con rango de ley, la constitución, contrato de trabajo, reglamentos, convenio colectivo, usos y costumbres locales y profesionales",
-            "Ninguna es correcta"
+            "Una protección eficaz en materia de seguridad y salud",
+            "No usar los EPIs si les molestan",
+            "Elegir el horario de trabajo a su gusto",
+            "No recibir formación sobre prevención"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "El delegado de prevención es:",
+        "opts": [
+            "El representante de los trabajadores con funciones específicas en prevención",
+            "El jefe de seguridad de la empresa",
+            "Un inspector de trabajo",
+            "El dueño de la empresa"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "El Comité de Seguridad y Salud:",
+        "opts": [
+            "Es el órgano paritario y colegiado de participación en prevención",
+            "Es donde se castiga a los trabajadores que no cumplen",
+            "Solo existe en empresas de menos de 10 trabajadores",
+            "Se reúne una vez cada cinco años"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "La evaluación de riesgos:",
+        "opts": [
+            "Es el proceso dirigido a estimar la magnitud de los riesgos que no hayan podido evitarse",
+            "Se hace a ojo por el encargado",
+            "Solo se hace cuando hay un accidente",
+            "No es obligatoria documentalmente"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "La planificación de la acción preventiva:",
+        "opts": [
+            "Debe incluir los plazos, responsables y recursos necesarios",
+            "Es un documento secreto que nadie puede ver",
+            "Solo sirve para pasar la auditoría",
+            "No necesita seguimiento"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "La vigilancia de la salud:",
+        "opts": [
+            "Debe ser periódica y proporcional a los riesgos",
+            "Es obligatoria en todos los casos sin excepción",
+            "Los resultados deben ser públicos para todos",
+            "Solo consiste en tomar la tensión"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "En caso de riesgo grave e inminente:",
+        "opts": [
+            "Los trabajadores pueden interrumpir su actividad y abandonar el lugar",
+            "Hay que seguir trabajando hasta que llegue el jefe",
+            "Solo puede parar la actividad el inspector de trabajo",
+            "No se puede abandonar el puesto bajo ningún concepto"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "3",
+        "q": "La formación en prevención:",
+        "opts": [
+            "Debe ser teórica y práctica, suficiente y adecuada",
+            "Se puede hacer fuera del horario de trabajo sin compensación",
+            "Debe ser pagada por el trabajador",
+            "Solo es necesaria para los delegados"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "4",
-        "q": "El principio in dubio pro operario:",
+        "q": "El Derecho del Trabajo regula:",
         "opts": [
-            "Es una interpretación de la norma, indica que en caso de confusión se aplicará la norma que favorezca al empresario",
-            "Es una expresión proveniente del latín en la que se enaltece el trabajo duro",
-            "Es una interpretación de la norma, indica que en caso de confusión se aplicará la norma que favorezca al trabajador",
-            "Es una interpretación de la norma, indica que en los trabajadores no pueden renunciar a los derechos que les otorgan las normas"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "4",
-        "q": "Dentro del derecho comunitario diferenciamos entre:",
-        "opts": [
-            "La OIT y el ET",
-            "El derecho interno y el derecho externo",
-            "El derecho originario y el derecho derivado",
-            "Las directivas, las recomendaciones, las sanciones y las euroórdenes"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "4",
-        "q": "Señala la afirmación falsa acerca del derecho laboral:",
-        "opts": [
-            "Ha existido desde que existe el trabajo",
-            "Nace en el siglo XIX derivado de los problemas de la revolución industrial",
-            "Está en continuo cambio e intenta mejorar la calidad y el bienestar en el ámbito laboral",
-            "Sus principios sirven para interpretar la legislación laboral y cubrir los vacíos que deje"
+            "El trabajo productivo, por cuenta ajena, libre y remunerado",
+            "Cualquier actividad que realice una persona",
+            "Solo el trabajo de los funcionarios",
+            "El trabajo voluntario y de amistad"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "4",
-        "q": "En la relación laboral entre empleador y empleado, las normas abogan por:",
+        "q": "La norma suprema del ordenamiento jurídico español es:",
         "opts": [
-            "Proteger por igual a empleador y empleado",
-            "Proteger en mayor medida al empleado",
-            "Proteger en mayor medida al empleador",
-            "Solo establecen recomendaciones a seguir"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "4",
-        "q": "Cuando de entre los trabajadores se escoge un delegado de personal, se está ejerciendo el derecho a:",
-        "opts": [
-            "Representación colectiva unitaria",
-            "Representación colectiva sindical",
-            "Representación retribuida personalizada",
-            "Ninguna de las anteriores"
+            "La Constitución Española",
+            "El Estatuto de los Trabajadores",
+            "El Convenio Colectivo",
+            "El contrato de trabajo"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "4",
-        "q": "El convenio colectivo:",
+        "q": "El Estatuto de los Trabajadores (ET):",
         "opts": [
-            "Es una de las fuentes del derecho laboral",
-            "Es un pacto alcanzado libremente",
-            "Es el reflejo de la participación efectiva de los trabajadores",
-            "Todas son correctas"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "4",
-        "q": "El cese de la prestación de trabajo por parte de los trabajadores para reivindicar algún conflicto o la mejora de condiciones laborales se conoce como:",
-        "opts": [
-            "Huelga",
-            "Cierre patronal",
-            "Conflicto colectivo",
-            "Festivos"
+            "Es la ley básica que regula las relaciones laborales",
+            "Solo se aplica a los directivos",
+            "Es opcional para las empresas",
+            "Fue derogado en 2020"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "4",
-        "q": "¿Cuál de las siguientes no es una garantía de los representantes de los trabajadores?:",
+        "q": "El Convenio Colectivo:",
         "opts": [
-            "Prioridad de permanencia",
-            "Libertad de expresión en asuntos relacionados a su representación",
-            "Están exentos de los despidos disciplinarios",
-            "Se les concederá un número de horas al mes retribuidas para ejercer sus funciones como representante"
+            "Es el acuerdo entre representantes de trabajadores y empresarios",
+            "Es una ley dictada por el Gobierno",
+            "Solo obliga a quienes lo firman expresamente",
+            "No puede mejorar lo que dice el Estatuto"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "4",
-        "q": "¿Cuál es una competencia del comité de empresa?",
+        "q": "El principio de jerarquía normativa significa que:",
         "opts": [
-            "Vigilancia en el cumplimiento de las normas laborales, de seguridad laboral y de empleo",
-            "Participar en la gestión de obras sociales en beneficio de los trabajadores y sus familiares",
-            "Informar a sus representados de los temas y asuntos que repercutan en las relaciones laborales",
-            "Todas las anteriores"
+            "Las normas de rango inferior no pueden contradecir a las de rango superior",
+            "Manda siempre el jefe",
+            "El convenio colectivo es superior a la ley",
+            "La constitución es la norma menos importante"
         ],
-        "ans": 3,
+        "ans": 0,
         "exp": ""
     },
     {
-        "u": "5",
-        "q": "Con respecto a los contratos de formación en alternancia:",
+        "u": "4",
+        "q": "El principio pro operario significa que:",
         "opts": [
-            "Su finalidad es cubrir temporalmente un puesto de trabajo durante el proceso de selección formativa",
-            "La duración mínima será de tres meses y la máxima de dos años",
-            "Admite la realización de horas extra en un 65% de las jornadas, durante el primer año",
-            "Todas son correctas"
+            "En caso de duda en la interpretación de una norma, se aplica la más favorable al trabajador",
+            "El trabajador siempre tiene razón",
+            "El empresario siempre paga",
+            "No se pueden despedir trabajadores"
         ],
-        "ans": 1,
+        "ans": 0,
         "exp": ""
     },
     {
-        "u": "5",
-        "q": "Señala la respuesta correcta:",
+        "u": "4",
+        "q": "La edad mínima para trabajar en España es de:",
         "opts": [
-            "Si se tiene un contrato a tiempo parcial no se pueden realizar horas extras, salvo por fuerza mayor",
-            "La duración máxima de un contrato indefinido es de 25 años",
-            "El contrato de trabajo temporal solo puede celebrarse a jornada parcial, aunque de manera verbal o escrita",
-            "Ninguna es correcta"
+            "16 años (con excepciones)",
+            "14 años",
+            "18 años",
+            "21 años"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "4",
+        "q": "La libertad sindical es un derecho:",
+        "opts": [
+            "Fundamental recogido en la Constitución",
+            "Que solo tienen los trabajadores indefinidos",
+            "Que no existe en la empresa privada",
+            "Solo para los sectores industriales"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "4",
+        "q": "El derecho a la huelga:",
+        "opts": [
+            "Es un derecho fundamental de los trabajadores",
+            "Está prohibido para todos los trabajadores",
+            "No tiene consecuencias en el sueldo",
+            "Solo se puede hacer los fines de semana"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "4",
+        "q": "La Inspección de Trabajo:",
+        "opts": [
+            "Vigila el cumplimiento de la normativa laboral y de seguridad social",
+            "Es una agencia de colocación",
+            "Solo interviene si hay muertos",
+            "No puede poner multas"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "5",
-        "q": "Se considera una causa de despido objetivo:",
+        "q": "El contrato de trabajo es:",
         "opts": [
-            "Embriaguez habitual o toxicomanía",
-            "Ofensas verbales o físicas a otros trabajadores",
-            "Disminución continuada y voluntaria en el rendimiento de trabajo",
-            "Ineptitud del trabajador conocida o sobrevenida posteriormente"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "5",
-        "q": "En un despido disciplinario:",
-        "opts": [
-            "Te deben indemnizar con 20 días de salario por año trabajado",
-            "Te deben indemnizar con 33 días de salario por año trabajado",
-            "Se cobrará indemnización solo si el empresario no preavisa con 30 días",
-            "No tienes derecho a indemnización"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "5",
-        "q": "En un despido colectivo:",
-        "opts": [
-            "Deben concurrir causas económicas, técnicas, organizativas o de producción",
-            "Debe afectar al 30% de la plantilla",
-            "No requiere comunicación previa a los representantes de los trabajadores",
-            "A y B son correctas"
+            "El acuerdo por el que el trabajador se obliga a prestar servicios por cuenta del empresario",
+            "Un documento que solo firma el empresario",
+            "Siempre verbal",
+            "Solo para trabajos de más de un año"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "5",
-        "q": "En un despido declarado improcedente:",
+        "q": "El contrato indefinido:",
         "opts": [
-            "Se prohíbe readmitir al trabajador",
-            "Se entrega un finiquito de hasta 24 mensualidades",
-            "El empresario siempre debe pagar una indemnización de 24 días por año trabajado",
-            "Ninguna es correcta"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "5",
-        "q": "¿Qué situación no se considera una modificación sustancial de las condiciones de trabajo?:",
-        "opts": [
-            "Aquella que afecte a la jornada de trabajo",
-            "Cambio a turnos rotativos",
-            "Modificación del espacio de trabajo dentro del mismo centro",
-            "Modificación de la cuantía del salario o del sistema de remuneración"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "5",
-        "q": "¿Cuáles son los elementos esenciales del contrato?:",
-        "opts": [
-            "Consentimiento, objeto y causa",
-            "Licitud, posibilidad y determinabilidad",
-            "Partes, tiempo y categoría",
-            "Persona física, persona jurídica y motivación"
+            "No tiene fijada una fecha de finalización",
+            "Es el que dura solo un mes",
+            "No da derecho a indemnización por despido",
+            "Solo se puede hacer a jornada completa"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "5",
-        "q": "¿Cuál de las siguientes no es una cláusula que se puede incluir en el contrato?:",
+        "q": "El contrato temporal por circunstancias de la producción:",
         "opts": [
-            "Confidencialidad",
-            "No competencia",
-            "Excedencia",
-            "Permanencia"
+            "Se utiliza para incrementos ocasionales e imprevisibles de la actividad",
+            "Se puede usar para cualquier cosa",
+            "No tiene límite de duración",
+            "Es el contrato por defecto en España"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "5",
-        "q": "Cuando el trabajador es destinado a un centro de trabajo que le supone un cambio de residencia definitivo o acumula desplazamientos que se prolongan durante más de doce meses en un período de tres años, se denomina:",
+        "q": "El contrato formativo para la obtención de la práctica profesional:",
         "opts": [
-            "Movilidad sustancial",
-            "Movilización",
-            "Desplazamiento",
-            "Traslado"
+            "Es para personas con título universitario o de FP",
+            "Es para aprender un oficio sin título previo",
+            "No tiene remuneración",
+            "Dura un máximo de 10 años"
         ],
-        "ans": 3,
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "El contrato de formación en alternancia:",
+        "opts": [
+            "Compatibiliza el trabajo retribuido con procesos formativos",
+            "Es solo para mayores de 45 años",
+            "No permite cotizar a la seguridad social",
+            "Es el antiguo contrato de prácticas"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "El periodo de prueba:",
+        "opts": [
+            "Es el tiempo inicial donde cualquiera puede rescindir el contrato sin preaviso ni indemnización",
+            "Es obligatorio en todos los contratos",
+            "Dura siempre un año",
+            "Se cobra el 50% del sueldo"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "La jornada de trabajo completa máxima legal es de:",
+        "opts": [
+            "40 horas semanales de promedio en cómputo anual",
+            "35 horas semanales",
+            "48 horas semanales",
+            "Depende de lo que diga el jefe cada lunes"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "El contrato a tiempo parcial:",
+        "opts": [
+            "Es aquel en el que se acuerda una jornada inferior a la de un trabajador a tiempo completo",
+            "Es solo para trabajar los fines de semana",
+            "No da derecho a vacaciones",
+            "Solo se puede hacer de forma temporal"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "Las empresas deben registrar diariamente la jornada de sus trabajadores:",
+        "opts": [
+            "Es obligatorio para todos los trabajadores",
+            "Solo es obligatorio para los trabajadores a tiempo parcial",
+            "No es obligatorio si hay confianza",
+            "Solo si lo pide el sindicato"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "5",
+        "q": "El contrato de sustitución (antiguo interinidad):",
+        "opts": [
+            "Sirve para sustituir a un trabajador con derecho a reserva de puesto",
+            "Es para contratar a alguien mientras otro está de vacaciones",
+            "Dura siempre 6 meses",
+            "No tiene causa justificada"
+        ],
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "6",
-        "q": "Durante el período de prueba:",
+        "q": "El descanso mínimo entre jornadas debe ser de:",
         "opts": [
-            "El empresario puede despedir sin justificación ni indemnización, pero el trabajador, en caso de querer abandonar la empresa, sí debe dar preaviso",
-            "El empresario no puede despedir sin justificación",
-            "El empresario puede despedir sin justificación ni indemnización y el trabajador, en caso de querer abandonar la empresa, no debe dar preaviso",
-            "En la actualidad ya no existe el período de prueba"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "La jornada laboral:",
-        "opts": [
-            "Establece el número de horas diarias a realizar por el trabajador",
-            "Establece el número de horas semanales a realizar por el trabajador",
-            "Establece el número de horas anuales a realizar por el trabajador",
-            "Todas son correctas"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "Las vacaciones:",
-        "opts": [
-            "No son un derecho constitucional",
-            "Sirven para dar descanso a los trabajadores",
-            "Pueden ser o no retribuidas",
-            "Pueden sustituirse por una compensación económica"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "El trabajo nocturno:",
-        "opts": [
-            "Permite la realización de 15 horas extraordinarias semanales",
-            "Se retribuye con una cuantía menor si ocurre por fuerza mayor",
-            "Debe darse al menos durante 3 horas o 1/3 de la jornada de 22:00 a 6:00",
-            "Debe darse al menos durante 5 horas o 3/5 de la jornada de 00:00 a 8:00"
-        ],
-        "ans": 2,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "Quitando las excepciones, ¿cuánto tiempo mínimo debe transcurrir entre el final de una jornada y el comienzo de otra?:",
-        "opts": [
-            "8 horas",
             "12 horas",
-            "6 horas",
-            "No existe un tiempo mínimo, depende del cómputo semanal"
-        ],
-        "ans": 1,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "¿Cuál de los siguientes días debe respetarse por fiesta nacional?:",
-        "opts": [
-            "1 de enero",
-            "1 de mayo",
-            "12 de octubre",
-            "Todos los anteriores"
-        ],
-        "ans": 3,
-        "exp": ""
-    },
-    {
-        "u": "6",
-        "q": "El periodo de prueba en un contrato:",
-        "opts": [
-            "Puede llegar a tener una duración de 6 meses para los técnicos titulados y 2 meses para el resto",
-            "Puede llegar a tener una duración de 12 meses para los técnicos titulados y 8 meses para el resto",
-            "Su establecimiento es obligatorio y debe aparecer por escrito en el contrato",
-            "En la actualidad ya no existe el periodo de prueba"
+            "8 horas",
+            "24 horas",
+            "No hay mínimo legal"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "6",
-        "q": "La flexibilidad laboral:",
+        "q": "El descanso semanal mínimo para mayores de 18 años es de:",
         "opts": [
-            "Es equivalente al teletrabajo",
-            "No tiene límites para el trabajador, que actúa con absoluta libertad",
-            "Implica autogestión y propia organización del tiempo",
-            "No suele adaptarse a las circunstancias cambiantes del trabajador"
+            "Un día y medio ininterrumpido",
+            "Un día",
+            "Dos días",
+            "12 horas"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "6",
-        "q": "¿Cuáles son los derechos laborales en el entorno digital?:",
+        "q": "Las vacaciones anuales retribuidas:",
         "opts": [
-            "Acceso universal a Internet y libertad de contenidos",
-            "Salud mental y diversidad digital",
-            "Desconexión digital y privacidad y protección de los datos personales",
-            "Teletrabajo y no invasión del ámbito privado"
+            "Mínimo de 30 días naturales",
+            "15 días naturales",
+            "Se pueden compensar económicamente si no se disfrutan (estando en activo)",
+            "Las elige exclusivamente el empresario"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "6",
-        "q": "¿Cuáles es la más alta instancia dentro de los tribunales y juzgados de lo social?:",
+        "q": "Las horas extraordinarias:",
         "opts": [
-            "Tribunales Superiores de Justicia",
-            "Tribunal Supremo",
-            "Ministerio de Trabajo",
-            "Audiencia Nacional"
+            "Son las que exceden de la jornada ordinaria",
+            "Son obligatorias en todos los casos",
+            "Se pueden hacer hasta 500 al año",
+            "Están prohibidas para todos"
         ],
-        "ans": 1,
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "El trabajo nocturno es el realizado entre las:",
+        "opts": [
+            "22:00 y las 06:00",
+            "20:00 y las 08:00",
+            "00:00 y las 06:00",
+            "21:00 y las 09:00"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "El permiso por matrimonio es de:",
+        "opts": [
+            "15 días naturales",
+            "3 días",
+            "Una semana",
+            "No existe tal permiso retribuido"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "El permiso por nacimiento para el progenitor distinto de la madre biológica es de:",
+        "opts": [
+            "16 semanas",
+            "2 semanas",
+            "8 semanas",
+            "Un mes"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "La reducción de jornada por guarda legal:",
+        "opts": [
+            "Conlleva una reducción proporcional del salario",
+            "No afecta al sueldo",
+            "Solo se puede pedir hasta que el hijo tenga 3 años",
+            "Es obligatoria para todos los padres"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "El calendario laboral:",
+        "opts": [
+            "Debe estar expuesto en un lugar visible de la empresa",
+            "Es un documento privado del empresario",
+            "Solo incluye los festivos nacionales",
+            "Se cambia cada mes"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "6",
+        "q": "Los festivos anuales son un máximo de:",
+        "opts": [
+            "14 días al año",
+            "10 días",
+            "20 días",
+            "12 días"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7",
+        "q": "El salario es:",
+        "opts": [
+            "La totalidad de las percepciones económicas de los trabajadores por la prestación de sus servicios",
+            "Solo el dinero que se recibe en mano",
+            "Lo que paga la seguridad social",
+            "Una propina del empresario"
+        ],
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
         "q": "El Salario Mínimo Interprofesional (SMI):",
         "opts": [
-            "Es la cuantía mínima percibida por un trabajo por cuenta ajena a tiempo completo",
-            "No se puede mejorar por contrato salvo que lo autorice el Gobierno por ley",
-            "Se usa como referencia para el IPC",
-            "Ninguna de las anteriores es correcta"
+            "Lo fija el Gobierno anualmente",
+            "Es diferente para cada empresa",
+            "Solo se aplica a los jóvenes",
+            "No es obligatorio cumplirlo"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "¿Qué se entiende por salario?",
+        "q": "El salario en especie:",
         "opts": [
-            "Totalidad de las percepciones económicas del trabajador, en dinero o en especie",
-            "Totalidad de las percepciones económicas del trabajador en dinero",
-            "Recibo individual que justifique el pago, con el formato del Ministerio de Trabajo",
-            "Es el devengo no consolidable a nivel fiscal"
+            "No puede superar el 30% de las percepciones salariales",
+            "Está prohibido",
+            "Es cuando te pagan con comida exclusivamente",
+            "No cotiza a la seguridad social"
         ],
         "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "El FOGASA:",
+        "q": "La nómina es:",
         "opts": [
-            "Se encarga de proteger la percepción de los salarios que estén pendientes de pago",
-            "Se encarga de proteger las indemnizaciones por despido o extinción que estén reconocidas por vía judicial o administrativa",
-            "Es un organismo autónomo adscrito al Ministerio de Trabajo",
-            "Todas son correctas"
+            "El documento justificativo del pago del salario",
+            "El contrato de trabajo",
+            "Una lista de los empleados de la empresa",
+            "El carné de trabajador"
         ],
-        "ans": 3,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "Indica cuál de los siguientes no es considerado un complemento salarial:",
+        "q": "El devengo en la nómina incluye:",
         "opts": [
-            "Nocturnidad",
-            "Toxicidad o peligrosidad",
-            "Quebranto de moneda",
-            "Participación en los resultados de la empresa"
+            "El salario base y los complementos salariales",
+            "Solo las deducciones",
+            "Lo que se queda la seguridad social",
+            "El sueldo neto"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "Indica cuál de los siguientes conceptos se considera una deducción a efectos de retribución:",
+        "q": "FOGASA es:",
         "opts": [
-            "Indemnizaciones o suplidos",
-            "Cotización por productividad",
-            "Retención por IRPF",
-            "Todas son correctas"
+            "El Fondo de Garantía Salarial",
+            "Una empresa de seguros privada",
+            "El sindicato de hostelería",
+            "La formación para el gasto salarial"
         ],
-        "ans": 2,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "Cuál de las siguientes situaciones no es una acción protectora de la Seguridad Social:",
+        "q": "Las gratificaciones extraordinarias (pagas extras):",
         "opts": [
-            "Incapacidad temporal",
-            "Asistencia sanitaria",
-            "Jubilación",
-            "Prestación por circunstancia social"
+            "El trabajador tiene derecho a dos al año mínimo",
+            "Son voluntarias del empresario",
+            "Solo se cobran en Navidad",
+            "Están prohibidas desde 2012"
         ],
-        "ans": 3,
+        "ans": 0,
         "exp": ""
     },
     {
         "u": "7",
-        "q": "Los grados de incapacidad permanente son:",
+        "q": "Las deducciones en la nómina son:",
+        "opts": [
+            "Aportaciones del trabajador a la SS e IRPF",
+            "Premios por buen comportamiento",
+            "Pagos extra que hace el empresario",
+            "No existen en la nómina real"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7",
+        "q": "La incapacidad permanente se clasifica en los grados:",
         "opts": [
             "Parcial, total, absoluta y gran invalidez",
-            "Crónica y total",
+            "Leve, moderada y grave",
             "Concluyente, lesiva y gran invalidez",
             "Revisable, incapacitante, parcial y absoluta"
         ],
@@ -889,7 +913,7 @@ const EXAM_DATA = [
     },
     {
         "u": "8",
-        "q": "Los atributos innatos o desarrollados que forman parte de la personalidad de un individuo se denominan:",
+        "q": "Los atributos innatos o desarrollados que forman parte de la personality de un individuo se denominan:",
         "opts": [
             "Competencias personales",
             "Cualidades personales",
