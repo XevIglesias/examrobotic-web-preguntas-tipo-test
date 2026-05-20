@@ -6,147 +6,304 @@
     <title>Test Libre · ExamRobotic</title>
     <meta name="description" content="Test libre multi-asignatura. Elige cuántas preguntas quieres y de qué asignaturas.">
     <link rel="icon" href="assets/img/images/logo/logorobot.svg" type="image/svg+xml">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="assets/js/theme.js"></script>
-    <link rel="stylesheet" href="assets/css/quiz.css">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; }
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/quiz.css">
+
+    <style>
         /* ── SETUP SCREEN ── */
         #free-setup {
-            position: fixed; inset: 0; background: rgba(15,23,42,0.92);
-            backdrop-filter: blur(12px); z-index: 9999;
-            display: flex; align-items: center; justify-content: center; padding: 1rem;
+            position: fixed; inset: 0; z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px;
+            background: color-mix(in oklch, var(--bg) 80%, transparent);
+            backdrop-filter: blur(14px);
+            overflow-y: auto;
         }
+        [data-theme="night"] #free-setup,
+        [data-theme="dark"] #free-setup { background: rgba(7,9,26,0.85); }
         .fs-modal {
-            background: var(--er-bg, #fff); width: 100%; max-width: 640px;
-            border-radius: 2rem; padding: 2.5rem;
-            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.6);
-            animation: modalIn 0.4s cubic-bezier(0.16,1,0.3,1);
-            max-height: 90vh; overflow-y: auto;
+            background: var(--surface);
+            width: 100%; max-width: 720px;
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-3);
+            animation: liftIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+            position: relative;
+            max-height: 92vh;
+            overflow-y: auto;
         }
+        [data-theme="night"] .fs-modal,
         [data-theme="dark"] .fs-modal {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            box-shadow: 0 0 0 1px #334155, 0 30px 60px -12px rgba(0,0,0,0.8);
+            background: linear-gradient(160deg, rgba(22,32,70,0.85), rgba(10,14,32,0.92));
+            backdrop-filter: blur(30px);
+            border-color: rgba(120,145,220,0.2);
         }
-        @keyframes modalIn { from { opacity:0; transform:scale(0.9) translateY(20px); } }
-        .fs-back {
-            position: absolute; top: 1.25rem; right: 1.25rem;
-            width: 2.2rem; height: 2.2rem; border-radius: 50%;
-            background: #f1f5f9; border: none; color: #64748b;
-            cursor: pointer; font-size: 1rem; display: flex;
-            align-items: center; justify-content: center; transition: all 0.2s; z-index: 5;
-        }
-        [data-theme="dark"] .fs-back { background: #334155; color: #e2e8f0; }
-        .fs-back:hover { transform: rotate(90deg); }
-        .fs-modal { position: relative; }
-        .fs-heading { font-size: 1.75rem; font-weight: 900; margin-bottom: 0.4rem; }
-        [data-theme="dark"] .fs-heading { color: #e2e8f0; }
-        .fs-sub { color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; }
-        [data-theme="dark"] .fs-sub { color: #94a3b8; }
-        .fs-section-label {
-            font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 0.06em; color: #3b82f6; margin-bottom: 1rem;
-            display: flex; align-items: center; gap: 0.75rem;
-        }
-        [data-theme="dark"] .fs-section-label { color: #60a5fa; }
-        .fs-section { margin-bottom: 2rem; }
+        @keyframes liftIn { from { opacity: 0; transform: translateY(20px) scale(0.97); } }
 
-        /* Subject Chips */
-        .subj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .fs-back {
+            position: absolute; top: 18px; right: 18px;
+            width: 32px; height: 32px;
+            border-radius: 999px;
+            background: var(--surface-2); border: 1px solid var(--line);
+            color: var(--ink-soft);
+            display: grid; place-items: center;
+            cursor: pointer; transition: transform 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .fs-back:hover { transform: rotate(90deg); color: var(--ink); }
+        [data-theme="night"] .fs-back,
+        [data-theme="dark"] .fs-back { background: rgba(20,28,60,0.65); border-color: rgba(120,145,220,0.2); }
+
+        .fs-heading {
+            font-size: clamp(28px, 3.5vw, 38px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            color: var(--ink);
+            text-wrap: balance;
+        }
+        .fs-heading .em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .fs-eyebrow { margin-bottom: 14px; }
+        .fs-sub { color: var(--muted); font-size: 14px; line-height: 1.5; margin-bottom: 28px; }
+        [data-theme="night"] .fs-heading .em,
+        [data-theme="dark"] .fs-heading .em {
+            background: linear-gradient(120deg, #b9c5ee, #5e80d8 60%, #97aef0);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .section-label {
+            display: flex; align-items: center; gap: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px; letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .step-num {
+            display: inline-grid; place-items: center;
+            width: 22px; height: 22px;
+            border-radius: 6px;
+            background: var(--ink); color: var(--surface);
+            font-size: 11px; font-weight: 600;
+        }
+        [data-theme="night"] .step-num,
+        [data-theme="dark"] .step-num { background: oklch(0.7 0.16 245); color: #07091a; }
+        .step-title { color: var(--ink); font-weight: 600; letter-spacing: 0.05em; }
+        .step-meta { color: var(--muted); text-transform: none; letter-spacing: 0; font-family: 'Inter', sans-serif; font-size: 12px; }
+        .section-toolbar { margin-left: auto; display: flex; gap: 6px; }
+        .mini-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px; letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 6px;
+            background: var(--surface-2); border: 1px solid var(--line);
+            color: var(--ink-soft);
+            cursor: pointer; font-weight: 600;
+            font-family: inherit;
+        }
+        .mini-btn:hover { border-color: var(--ink-soft); color: var(--ink); }
+        [data-theme="night"] .mini-btn,
+        [data-theme="dark"] .mini-btn { background: rgba(20,28,60,0.6); border-color: rgba(120,145,220,0.2); color: var(--ink); }
+
+        .subj-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+            margin-bottom: 28px;
+        }
+        @media (max-width: 600px) { .subj-grid { grid-template-columns: 1fr; } }
+
         .subj-chip-check { display: none; }
         .subj-chip-label {
-            display: flex; align-items: center; gap: 0.6rem; padding: 0.75rem 1rem;
-            background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 0.875rem;
-            cursor: pointer; font-size: 0.83rem; font-weight: 600; color: #334155;
-            transition: all 0.2s; user-select: none;
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: var(--surface-2);
+            border: 1.5px solid var(--line-soft);
+            cursor: pointer;
+            font-size: 13px; font-weight: 500;
+            color: var(--ink);
+            user-select: none;
+            transition: all 0.18s ease;
         }
-        [data-theme="dark"] .subj-chip-label { background: #1e293b; border-color: #334155; color: #e2e8f0; }
-        .subj-chip-check:checked + .subj-chip-label {
-            background: #eff6ff; border-color: #3b82f6; color: #1d4ed8;
-        }
-        [data-theme="dark"] .subj-chip-check:checked + .subj-chip-label {
-            background: #1e3a8a; border-color: #3b82f6; color: #93c5fd;
-        }
+        .subj-chip-label:hover { border-color: var(--ink-soft); }
+        [data-theme="night"] .subj-chip-label,
+        [data-theme="dark"] .subj-chip-label { background: rgba(20,28,60,0.4); border-color: rgba(120,145,220,0.14); color: var(--ink); }
+
         .subj-chip-dot {
-            width: 1.25rem; height: 1.25rem; border-radius: 50%;
-            border: 2px solid #cbd5e1; background: white; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; font-size: 0.6rem;
-            transition: all 0.2s;
+            width: 18px; height: 18px;
+            border-radius: 5px;
+            border: 1.5px solid var(--line);
+            background: var(--surface);
+            display: grid; place-items: center;
+            flex-shrink: 0;
+            transition: all 0.18s ease;
+            color: white;
         }
-        [data-theme="dark"] .subj-chip-dot { background: #0f172a; border-color: #475569; }
+        [data-theme="night"] .subj-chip-dot,
+        [data-theme="dark"] .subj-chip-dot { background: rgba(15,22,50,0.7); border-color: rgba(120,145,220,0.2); }
+
+        .subj-chip-check:checked + .subj-chip-label {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+        }
+        [data-theme="night"] .subj-chip-check:checked + .subj-chip-label,
+        [data-theme="dark"] .subj-chip-check:checked + .subj-chip-label {
+            border-color: oklch(0.75 0.16 245);
+            background: oklch(0.32 0.15 250 / 0.4);
+        }
         .subj-chip-check:checked + .subj-chip-label .subj-chip-dot {
-            background: #3b82f6; border-color: #3b82f6; color: white;
+            background: var(--accent); border-color: var(--accent);
         }
-        .subj-chip-check:checked + .subj-chip-label .subj-chip-dot::after { content: "✓"; }
+        [data-theme="night"] .subj-chip-check:checked + .subj-chip-label .subj-chip-dot,
+        [data-theme="dark"] .subj-chip-check:checked + .subj-chip-label .subj-chip-dot {
+            background: oklch(0.7 0.16 245); border-color: oklch(0.7 0.16 245); color: #07091a;
+        }
+        .subj-chip-check:checked + .subj-chip-label .subj-chip-dot::after {
+            content: "✓"; font-size: 11px; font-weight: 700; line-height: 1;
+        }
 
-        /* Quantity Buttons */
-        .qty-row { display: flex; gap: 0.75rem; }
+        .chip-name { flex: 1; text-align: left; }
+        .chip-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px; color: var(--muted);
+            letter-spacing: 0.06em; text-transform: uppercase;
+        }
+
+        /* Quantity */
+        .qty-row { display: flex; gap: 10px; margin-bottom: 28px; }
         .qty-btn {
-            flex: 1; padding: 1.1rem; border-radius: 1rem; border: 1.5px solid #e2e8f0;
-            background: #f8fafc; font-weight: 800; font-size: 1rem; color: #64748b;
-            cursor: pointer; transition: all 0.2s; font-family: inherit;
+            flex: 1;
+            padding: 18px;
+            border-radius: 14px;
+            border: 1.5px solid var(--line-soft);
+            background: var(--surface-2);
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            color: var(--ink);
+            transition: all 0.18s ease;
         }
-        [data-theme="dark"] .qty-btn { background: #1e293b; border-color: #334155; color: #94a3b8; }
-        .qty-btn.active { background: #3b82f6; border-color: #3b82f6; color: white; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(59,130,246,0.35); }
-        .qty-btn .qty-sub { font-size: 0.68rem; font-weight: 600; opacity: 0.75; display: block; margin-top: 0.2rem; }
+        .qty-btn:hover { border-color: var(--ink-soft); }
+        [data-theme="night"] .qty-btn,
+        [data-theme="dark"] .qty-btn { background: rgba(20,28,60,0.4); border-color: rgba(120,145,220,0.14); color: var(--ink); }
+        .qty-btn.active { border-color: var(--accent); background: var(--accent-bg); }
+        [data-theme="night"] .qty-btn.active,
+        [data-theme="dark"] .qty-btn.active { border-color: oklch(0.75 0.16 245); background: oklch(0.32 0.15 250 / 0.4); }
+        .qty-num { font-size: 32px; font-weight: 600; letter-spacing: -0.025em; line-height: 1; }
+        .qty-num .unit { font-size: 13px; color: var(--muted); font-weight: 400; margin-left: 4px; }
+        .qty-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
-        /* Correction toggle */
+        /* Toggle */
         .correction-row {
-            display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem;
-            background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 1rem;
-            cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1.5px solid var(--line-soft);
+            background: var(--surface-2);
+            cursor: pointer;
+            color: var(--ink);
+            transition: all 0.18s ease;
+            margin-bottom: 28px;
         }
-        [data-theme="dark"] .correction-row { background: #1e293b; border-color: #334155; }
-        .correction-row.on { background: #eff6ff; border-color: #3b82f6; }
-        [data-theme="dark"] .correction-row.on { background: #1e3a8a; border-color: #3b82f6; }
+        [data-theme="night"] .correction-row,
+        [data-theme="dark"] .correction-row { background: rgba(20,28,60,0.4); border-color: rgba(120,145,220,0.14); color: var(--ink); }
+        .correction-row.on { border-color: var(--accent); background: var(--accent-bg); }
+        [data-theme="night"] .correction-row.on,
+        [data-theme="dark"] .correction-row.on { border-color: oklch(0.75 0.16 245); background: oklch(0.32 0.15 250 / 0.4); }
         #corr-check { display: none; }
         .corr-circle {
-            width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 2px solid #cbd5e1;
-            background: white; display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; color: transparent; transition: all 0.2s; flex-shrink: 0;
+            width: 40px; height: 22px;
+            border-radius: 999px;
+            background: var(--line);
+            position: relative;
+            flex-shrink: 0;
+            transition: background 0.2s;
         }
-        [data-theme="dark"] .corr-circle { background: #0f172a; border-color: #475569; }
-        .correction-row.on .corr-circle { background: #3b82f6; border-color: #3b82f6; color: white; }
-        .corr-text-main { font-weight: 800; font-size: 0.9rem; }
-        [data-theme="dark"] .corr-text-main { color: #e2e8f0; }
-        .corr-text-sub { font-size: 0.75rem; color: #64748b; }
-        [data-theme="dark"] .corr-text-sub { color: #94a3b8; }
+        .corr-circle::after {
+            content: ""; position: absolute; top: 2px; left: 2px;
+            width: 18px; height: 18px; border-radius: 50%;
+            background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .correction-row.on .corr-circle { background: var(--accent); }
+        .correction-row.on .corr-circle::after { transform: translateX(18px); }
+        [data-theme="night"] .correction-row.on .corr-circle,
+        [data-theme="dark"] .correction-row.on .corr-circle { background: oklch(0.7 0.16 245); }
+        .corr-text-main { font-weight: 600; font-size: 14.5px; }
+        .corr-text-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
+        /* Start button */
         .fs-start-btn {
-            width: 100%; padding: 1.25rem; border-radius: 1.25rem; border: none;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white;
-            font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(59,130,246,0.4); margin-top: 0.5rem; font-family: inherit;
+            width: 100%;
+            padding: 18px;
+            border-radius: 14px;
+            border: none;
+            background: var(--ink); color: var(--surface);
+            font-family: inherit;
+            font-size: 14px; font-weight: 600;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            transition: all 0.2s ease;
         }
-        .fs-start-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(59,130,246,0.5); }
-        .fs-start-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        .fs-toggle-row { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
-        .fs-toggle-btn {
-            flex: 1; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;
-            background: #f8fafc; font-size: 0.75rem; font-weight: 700; color: #64748b;
-            cursor: pointer; font-family: inherit; transition: all 0.2s;
+        .fs-start-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-2); }
+        .fs-start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        [data-theme="night"] .fs-start-btn,
+        [data-theme="dark"] .fs-start-btn {
+            background: linear-gradient(135deg, oklch(0.55 0.20 252), oklch(0.40 0.18 240));
+            color: white;
+            box-shadow: 0 16px 40px -10px oklch(0.45 0.20 250 / 0.6);
         }
-        [data-theme="dark"] .fs-toggle-btn { background: #1e293b; border-color: #334155; color: #94a3b8; }
-        .fs-toggle-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+        .fs-summary {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            opacity: 0.75;
+            letter-spacing: 0.06em;
+            margin-left: auto;
+        }
 
+        /* Loading overlay */
         #loading-overlay {
-            position: fixed; inset: 0; background: var(--er-bg, #fff);
-            display: none; align-items: center; justify-content: center;
-            flex-direction: column; gap: 1rem; z-index: 9998; font-family: 'Inter', sans-serif;
+            position: fixed; inset: 0;
+            background: var(--bg);
+            display: none;
+            align-items: center; justify-content: center;
+            flex-direction: column; gap: 16px;
+            z-index: 9998;
         }
-        [data-theme="dark"] #loading-overlay { background: #0f172a; }
         .spinner {
-            width: 3rem; height: 3rem; border: 4px solid #e2e8f0;
-            border-top-color: #3b82f6; border-radius: 50%; animation: spin 0.8s linear infinite;
+            width: 40px; height: 40px;
+            border: 3px solid var(--line);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
         }
-        [data-theme="dark"] .spinner { border-color: #334155; border-top-color: #3b82f6; }
+        [data-theme="night"] .spinner,
+        [data-theme="dark"] .spinner { border-color: rgba(120,145,220,0.18); border-top-color: oklch(0.7 0.16 245); }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text { font-weight: 700; color: #64748b; font-size: 0.9rem; }
-        [data-theme="dark"] .loading-text { color: #94a3b8; }
+        .loading-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* Quiz header for the running test (same theme) */
+        #quiz-header { padding: 14px 5%; }
     </style>
 </head>
 <body>
@@ -160,52 +317,72 @@
 <!-- SETUP SCREEN -->
 <div id="free-setup">
     <div class="fs-modal">
-        <a href="index.html" class="fs-back" title="Volver">✕</a>
-        <div class="fs-heading">🎯 Test Libre</div>
-        <p class="fs-sub">Mezcla preguntas de todas las asignaturas que quieras en un solo examen.</p>
+        <a href="index.html" class="fs-back" title="Volver" aria-label="Volver">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+        </a>
 
-        <div class="fs-section">
-            <div class="fs-section-label">
-                <span>1. Asignaturas</span>
-                <button class="fs-toggle-btn" onclick="toggleAll(true)">Todas</button>
-                <button class="fs-toggle-btn" onclick="toggleAll(false)">Ninguna</button>
-            </div>
-            <div class="subj-grid" id="subj-grid">
-                <!-- Injected -->
-            </div>
-        </div>
+        <div class="eyebrow fs-eyebrow">Test libre · Multi-asignatura</div>
+        <div class="fs-heading">Mezcla, baraja y <span class="em">prueba</span>.</div>
+        <p class="fs-sub">Combina preguntas de las asignaturas que quieras en un único examen. Ideal para simular un examen global o repasar a última hora.</p>
 
-        <div class="fs-section">
-            <div class="fs-section-label">2. Número de Preguntas</div>
-            <div class="qty-row">
-                <button class="qty-btn" id="qty-10" onclick="setQty(10)">10<span class="qty-sub">Repaso rápido</span></button>
-                <button class="qty-btn active" id="qty-40" onclick="setQty(40)">40<span class="qty-sub">Examen oficial</span></button>
+        <div class="section-label">
+            <span class="step-num">1</span>
+            <span class="step-title">Asignaturas</span>
+            <span class="step-meta" id="subj-summary">— seleccionadas</span>
+            <div class="section-toolbar">
+                <button class="mini-btn" type="button" onclick="toggleAll(true)">Todas</button>
+                <button class="mini-btn" type="button" onclick="toggleAll(false)">Ninguna</button>
             </div>
         </div>
+        <div class="subj-grid" id="subj-grid"><!-- inyectadas --></div>
 
-        <div class="fs-section">
-            <div class="fs-section-label">3. Modo Corrección</div>
-            <label class="correction-row" id="corr-row" onclick="toggleCorr()">
-                <div class="corr-circle" id="corr-circle">✓</div>
-                <div>
-                    <div class="corr-text-main">⚡ Corrección Instantánea</div>
-                    <div class="corr-text-sub">Comprueba cada respuesta antes de continuar</div>
-                </div>
-            </label>
+        <div class="section-label">
+            <span class="step-num">2</span>
+            <span class="step-title">Número de preguntas</span>
+        </div>
+        <div class="qty-row">
+            <button class="qty-btn" type="button" id="qty-10" onclick="setQty(10)">
+                <div class="qty-num">10<span class="unit">preg.</span></div>
+                <span class="qty-sub">Repaso rápido</span>
+            </button>
+            <button class="qty-btn active" type="button" id="qty-40" onclick="setQty(40)">
+                <div class="qty-num">40<span class="unit">preg.</span></div>
+                <span class="qty-sub">Examen oficial</span>
+            </button>
+            <button class="qty-btn" type="button" id="qty-60" onclick="setQty(60)">
+                <div class="qty-num">60<span class="unit">preg.</span></div>
+                <span class="qty-sub">Maratón</span>
+            </button>
         </div>
 
-        <button class="fs-start-btn" id="fs-start-btn" onclick="launchTest()">EMPEZAR TEST</button>
+        <div class="section-label">
+            <span class="step-num">3</span>
+            <span class="step-title">Modo corrección</span>
+        </div>
+        <label class="correction-row" id="corr-row" onclick="toggleCorr()">
+            <div class="corr-circle"></div>
+            <div style="flex:1;">
+                <div class="corr-text-main">⚡ Corrección instantánea</div>
+                <div class="corr-text-sub">Comprueba cada respuesta antes de continuar</div>
+            </div>
+        </label>
+
+        <button class="fs-start-btn" id="fs-start-btn" type="button" onclick="launchTest()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+            <span>Empezar test</span>
+            <span class="fs-summary" id="fs-summary">40 · 9 asig.</span>
+        </button>
     </div>
 </div>
 
-<!-- QUIZ AREA (same structure as simulacro) -->
+<!-- ── QUIZ (misma estructura que la engine espera) ── -->
 <header style="display:none" id="quiz-header">
     <div>
-        <h2 id="exam-title" style="font-size: 1.2rem;">Test Libre</h2>
-        <p id="q-progress" style="font-size: 0.8rem; color: #64748b;">Preparando...</p>
+        <h2 id="exam-title">Test Libre</h2>
+        <p id="q-progress">Preparando...</p>
     </div>
     <div class="timer-box" id="timer">
-        <span>⏳</span> <span id="time-val">00:00</span>
+        <span></span><span id="time-val">00:00</span>
     </div>
 </header>
 
@@ -220,27 +397,27 @@
         <button class="btn" style="background:#e2e8f0; color:#333;" onclick="move(-1)">Anterior</button>
         <button class="btn btn-next" id="btn-next" onclick="move(1)">Siguiente</button>
         <button class="btn btn-finish" id="btn-finish" style="display:none" onclick="finish()">Finalizar</button>
-        <button class="btn" id="btn-menu-review" style="display:none; background:var(--primary);color:white;" onclick="location.reload()">Nuevo Test</button>
+        <button class="btn" id="btn-menu-review" style="display:none; background:var(--accent);color:white;" onclick="location.reload()">Nuevo Test</button>
     </div>
     <div class="dot-grid" id="dot-grid"></div>
 </div>
 
 <div id="results" style="display:none;">
-    <p style="font-weight:800;color:var(--accent);letter-spacing:2px;">NOTA FINAL</p>
+    <p>Nota final</p>
     <div class="score-badge" id="res-score">0.0</div>
     <div class="score-sub" id="res-msg">Resultado</div>
-    <div style="display:flex;gap:15px;justify-content:center;margin-top:40px;flex-wrap:wrap;">
-        <button class="btn btn-next" style="max-width:220px;background:var(--accent);" onclick="showReview()">Revisar Errores</button>
-        <button class="btn" style="max-width:220px;background:#e2e8f0;color:#333;" onclick="location.reload()">Nuevo Test</button>
-        <button class="btn" style="max-width:220px;background:var(--primary);color:white;" onclick="window.location.href='index.html'">Inicio</button>
+    <div style="display:flex; gap:10px; justify-content:center; margin-top:36px; flex-wrap:wrap;">
+        <button class="btn btn-next" style="max-width:220px;" onclick="showReview()">Revisar fallos</button>
+        <button class="btn" style="max-width:220px; background:var(--accent); color:white;" onclick="location.reload()">Nuevo test</button>
+        <button class="btn" style="max-width:220px; background:#e2e8f0; color:#333;" onclick="window.location.href='index.html'">Inicio</button>
     </div>
 </div>
 
 <script src="assets/js/user-stats.js"></script>
 <script src="assets/js/api.js" defer></script>
+
 <script>
-// ── FULL FILE MANIFEST ─────────────────────────────────────────────────────
-// Every JS data file that exists per subject slug
+// ── FULL FILE MANIFEST ── (idéntico al original)
 const SUBJECT_FILES = {
     ip:    ['t1','t2','t3','t4','t5','t6','vo','ex','simulacro'],
     sdmyr: ['t1','t2','t3','t4','t5','t6','t7','t8','ex','simulacro'],
@@ -253,22 +430,21 @@ const SUBJECT_FILES = {
     adiple:['t1','t2','t3','t4','t5','t6','ex','simulacro'],
 };
 
-// ── CONFIG ──
 const SUBJECTS = [
-    { slug:'ip',    name:'Inglés Profesional',        emoji:'🇬🇧' },
-    { slug:'sdmyr', name:'Sistemas de Medida',         emoji:'📏' },
-    { slug:'dt',    name:'Documentación Técnica',      emoji:'📄' },
-    { slug:'ii',    name:'Informática Industrial',     emoji:'💻' },
-    { slug:'seneh', name:'Sist. Eléctricos, N. e H.', emoji:'⚡' },
-    { slug:'iplei', name:'Itinerario Personal',        emoji:'🎯' },
-    { slug:'ssp',   name:'Sist. Sec. Programables',   emoji:'🤖' },
-    { slug:'sdp',   name:'Sistemas de Potencia',      emoji:'⚙️' },
-    { slug:'adiple',name:'Ampliación Itinerario',     emoji:'📚' },
+    { slug:'ip',    name:'Inglés Profesional',         code:'IP'     },
+    { slug:'sdmyr', name:'Sistemas de medida',         code:'SDMyR'  },
+    { slug:'dt',    name:'Documentación técnica',      code:'DT'     },
+    { slug:'ii',    name:'Informática industrial',     code:'II'     },
+    { slug:'seneh', name:'Sist. eléctricos, neum. e hidr.', code:'SENEH' },
+    { slug:'iplei', name:'Itinerario personal',        code:'IPLEI'  },
+    { slug:'ssp',   name:'Sist. sec. programables',    code:'SSP'    },
+    { slug:'sdp',   name:'Sistemas de potencia',       code:'SDP'    },
+    { slug:'adiple',name:'Ampliación itinerario',      code:'ADIPLE' },
 ];
 
 let selectedQty = 40;
 let corrInstant = false;
-let loadedData = {};   // slug -> array of questions
+let loadedData = {};
 let allPool = [];
 
 // ── BUILD SUBJECT GRID ──
@@ -277,25 +453,30 @@ document.getElementById('subj-grid').innerHTML = SUBJECTS.map(s => `
         <input type="checkbox" class="subj-chip-check" id="cb-${s.slug}" value="${s.slug}" checked onchange="updateAllCount()">
         <label for="cb-${s.slug}" class="subj-chip-label">
             <div class="subj-chip-dot"></div>
-            <span>${s.emoji} ${s.name}</span>
+            <span class="chip-name">${s.name}</span>
+            <span class="chip-code">${s.code}</span>
         </label>
     </div>`).join('');
 
-updateAllCount();
+function updateSummary() {
+    const checked = document.querySelectorAll('.subj-chip-check:checked').length;
+    document.getElementById('subj-summary').textContent = `· ${checked} de ${SUBJECTS.length} seleccionadas`;
+    document.getElementById('fs-summary').textContent = `${selectedQty} · ${checked} asig.`;
+    document.getElementById('fs-start-btn').disabled = checked === 0;
+}
+updateSummary();
 
 function toggleAll(val) {
     document.querySelectorAll('.subj-chip-check').forEach(cb => cb.checked = val);
-    updateAllCount();
+    updateSummary();
 }
-
-function updateAllCount() {
-}
+function updateAllCount() { updateSummary(); }
 
 function setQty(n) {
     selectedQty = n;
     document.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
-    if (n === 10) document.getElementById('qty-10').classList.add('active');
-    else          document.getElementById('qty-40').classList.add('active');
+    document.getElementById('qty-' + n)?.classList.add('active');
+    updateSummary();
 }
 
 function toggleCorr() {
@@ -303,20 +484,13 @@ function toggleCorr() {
     document.getElementById('corr-row').classList.toggle('on', corrInstant);
 }
 
-// ── LOAD A SINGLE JS DATA FILE ──
-// Uses fetch + new Function so each file's `const EXAM_DATA` is scoped
-// inside the function body — no global pollution, no re-declaration SyntaxErrors.
+// ── LOAD A SINGLE JS DATA FILE ── (idéntico al original)
 function loadOneFile(src) {
     return fetch(src + '?_=' + Date.now())
-        .then(r => {
-            if (!r.ok) return [];
-            return r.text();
-        })
+        .then(r => r.ok ? r.text() : '')
         .then(code => {
-            if (!code || typeof code !== 'string') return [];
+            if (!code) return [];
             try {
-                // Wrap in function: const/var declarations stay local.
-                // The function returns whichever array variable the file defined.
                 const fn = new Function(`
                     ${code}
                     if (typeof SIMULACRO_PDF_DATA !== 'undefined' && Array.isArray(SIMULACRO_PDF_DATA)) return SIMULACRO_PDF_DATA;
@@ -333,7 +507,6 @@ function loadOneFile(src) {
         .catch(() => []);
 }
 
-// ── LOAD ALL FILES FOR A SUBJECT (sequentially to avoid collisions) ──
 async function loadSubjectData(slug) {
     if (loadedData[slug]) return loadedData[slug];
     const files = SUBJECT_FILES[slug] || ['simulacro'];
@@ -342,7 +515,6 @@ async function loadSubjectData(slug) {
         const qs = await loadOneFile(`data/${slug}/${file}.js`);
         combined = combined.concat(qs.map(q => ({ ...q, _subj: slug })));
     }
-    // Deduplicate within subject
     const seen = new Set();
     const unique = combined.filter(q => {
         const key = (q.q + (q.opts||[]).join('')).trim().toLowerCase();
@@ -353,16 +525,14 @@ async function loadSubjectData(slug) {
     return unique;
 }
 
-// ── LOAD + LAUNCH ──
 async function launchTest() {
-    const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c=>c.value);
+    const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c => c.value);
     if (checked.length === 0) { alert('Selecciona al menos una asignatura.'); return; }
 
     const loadingEl = document.getElementById('loading-overlay');
     const loadingText = loadingEl.querySelector('.loading-text');
     loadingEl.style.display = 'flex';
 
-    // Load subjects sequentially (safer than parallel with sequential internal files)
     allPool = [];
     for (const slug of checked) {
         loadingText.textContent = `Cargando ${slug.toUpperCase()}...`;
@@ -370,7 +540,6 @@ async function launchTest() {
         allPool = allPool.concat(qs);
     }
 
-    // Global deduplication across subjects
     loadingText.textContent = 'Mezclando preguntas...';
     const seen = new Set();
     allPool = allPool.filter(q => {
@@ -385,42 +554,22 @@ async function launchTest() {
         return;
     }
 
-    // Shuffle
     allPool.sort(() => Math.random() - 0.5);
-
     const count = selectedQty === 'all' ? allPool.length : Math.min(selectedQty, allPool.length);
 
-    // Pass data and flags to engine
     window.SIMULACRO_PDF_DATA = allPool;
     window.EXAM_DATA = undefined;
     window._freeTestInstantCorr = corrInstant;
     window._freeTestCount = count;
     window._skipSetup = true;
 
-    // Hide setup, show quiz
     document.getElementById('free-setup').style.display = 'none';
     loadingEl.style.display = 'none';
-    document.getElementById('quiz-header').style.display = '';
+    document.getElementById('quiz-header').style.display = 'flex';
 }
 </script>
 
-<script>
-// ── SIMULACRO ENGINE PATCH ──
-// We patch initSimulacro to read our flag
-window.addEventListener('load', () => {
-    if (!window._freeTestReady) return;
-    // Handled by the engine below
-});
-</script>
-
 <script src="assets/js/simulacro-engine.js" defer></script>
-<script>
-// Patch instantCorrection after engine loads
-document.addEventListener('DOMContentLoaded', () => {
-    // Listen for when quiz starts
-    const origStart = window.startFromSetup;
-});
-</script>
 <script src="assets/js/analytics.js"></script>
 </body>
 </html>

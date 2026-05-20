@@ -16,280 +16,366 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/images/logo/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="ExamRobotic">
-    <title>ExamRobotic - Simulacros Grado Superior Robótica y Automatización Industrial</title>
+    <title>ExamRobotic — Simulacros Grado Superior Robótica y Automatización</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/menu.css">
     <script src="assets/js/tailwind-config.js"></script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ffffff, #f0f9ff) fixed !important;
-        }
-    </style>
-<script src="assets/js/theme.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/menu.css">
 </head>
-<body class="bg-background text-foreground min-h-screen flex flex-col">
+<body>
 
-    <header class="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <img src="assets/img/images/logo/logorobot.svg" alt="ExamRobotic" class="w-10 h-10 shrink-0">
-                <div>
-                    <h1 class="text-sm md:text-lg font-extrabold tracking-tight text-foreground leading-tight">Grado Superior de Robótica y<br class="md:hidden"> Automatización Industrial</h1>
-                    <p class="text-xs font-semibold text-primary uppercase tracking-wider mt-0.5">Tests de Práctica</p>
-                </div>
+<header class="app-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <div class="brand-mark">
+                <img src="assets/img/images/logo/logorobot.svg" alt="ExamRobotic">
             </div>
-            <div class="flex items-center gap-2">
-                <a href="test-libre.html" class="w-10 h-10 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-lg hover:bg-slate-200 transition-colors dark:bg-slate-800 dark:border-slate-600 dark:hover:bg-slate-700" title="Test Libre Multi-Asignatura">
-                    🎯
-                </a>
-                <button id="theme-toggle-btn" onclick="toggleTheme()" class="w-10 h-10 rounded-full bg-slate-100 border border-slate-300 flex items-center justify-center text-lg hover:bg-slate-200 transition-colors dark:bg-slate-800 dark:border-slate-600 dark:hover:bg-slate-700" title="Modo Noche">
-                    <script>document.write(document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙');</script>
-                </button>
-                <a href="estadisticas.html" class="w-10 h-10 rounded-full bg-blue-100 border-2 border-primary flex items-center justify-center text-primary font-bold text-sm hover:bg-blue-200 transition-colors dark:bg-slate-800 dark:text-blue-300 dark:border-slate-600 dark:hover:bg-slate-700" title="Mi Progreso">
-                    📊
-                </a>
+            <div>
+                <div class="brand-title">Exam<span class="dot">·</span>robotic</div>
+                <div class="brand-sub">GS · Robótica y Automatización</div>
             </div>
+        </a>
+
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link is-active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                Asignaturas
+            </a>
+            <a href="test-libre.html" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+                Test libre
+            </a>
+            <a href="estadisticas.html" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>
+                Mi progreso
+            </a>
+        </nav>
+
+        <div style="display:flex; align-items:center; gap:8px;">
+            <button class="icon-btn" data-theme-toggle onclick="toggleTheme()" title="Cambiar tema (T)" aria-label="Cambiar tema"></button>
+            <a href="estadisticas.html" class="icon-btn" title="Mi progreso" aria-label="Mi progreso">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>
+            </a>
         </div>
-    </header>
+    </div>
+</header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
-        
-        <div class="mb-10">
-            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground mb-3">Mis Asignaturas</h2>
-            <p class="text-muted text-base md:text-lg max-w-2xl">Selecciona un módulo para acceder a sus simulacros y test de autoevaluación. Supera todas las pruebas para completar tu preparación.</p>
+<main class="page">
+
+    <div class="page-head">
+        <div class="eyebrow page-eyebrow">Grado Superior · Robótica y Automatización Industrial</div>
+        <h1 class="page-title">Tu cuaderno <span class="serif-emph">vivo</span> de simulacros</h1>
+        <p class="page-lede">Practica con tests adaptativos, repasa los PDFs y revisa el contenido de cada asignatura. Todo en un solo lugar, sincronizado con tu progreso.</p>
+    </div>
+
+    <div class="summary-strip" id="summary-strip">
+        <div class="summary-cell">
+            <span class="summary-label">Nota media</span>
+            <div class="summary-value" id="kpi-avg">—</div>
+            <span class="summary-trend" id="kpi-avg-trend" style="color:var(--muted)">Aún sin datos</span>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/ip/testIP.D.01.html', 'assets/pdfs/ip.pdf', 'Inglés Profesional', 'ip')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/ip.jpg" loading="lazy" alt="Inglés profesional" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Inglés profesional</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Terminología técnica, manuales, catálogos y comunicación en el entorno industrial internacional.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/sdmyr/testSDMYR.D.01.html', 'assets/pdfs/sdmyr.pdf', 'Sistemas de Medida y Regulación', 'sdmyr')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/sdmyr.jpg" loading="lazy" alt="Sistemas de medida y regulación" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Sistemas de medida y regulación</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Sensores, actuadores, lazos de control PID y calibración de instrumentación industrial.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-           <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/dt/testDT.D.01.html', 'assets/pdfs/dt.pdf', 'Documentación Técnica', 'dt')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/dt.jpg" loading="lazy" alt="Documentación técnica" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Documentación técnica</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Elaboración de planos, esquemas, presupuestos, manuales y uso de CAD.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/ii/testII.D.01.html', 'assets/pdfs/ii.pdf', 'Informática Industrial', 'ii')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/ii.jpg" loading="lazy" alt="Informática industrial" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Informática industrial</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Redes de comunicación, protocolos industriales, bases de datos y control de procesos (SCADA).</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/seneh/testSENEH.D.01.html', 'assets/pdfs/seneh.pdf', 'Sist. Eléctricos, Neumáticos e Hidráulicos', 'seneh')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/seneh.jpg" loading="lazy" alt="Sistemas eléctricos, neumáticos e hidráulicos" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Sistemas eléctricos, neumáticos e hidráulicos</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Automatismos cableados, fluidos a presión, electroválvulas y conexionado de potencia.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/iplei/testIPLEI.D.01.html', 'assets/pdfs/iplei.pdf', 'Itinerario Personal', 'iplei')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/iplei.jpg" loading="lazy" alt="Itinerario personal para la empleabilidad I" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Itinerario personal para la empleabilidad I</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Orientación laboral, derechos del trabajador, prevención de riesgos y búsqueda de empleo.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/ssp/testISSP.D.01.html', 'assets/pdfs/ssp.pdf', 'Sistemas Secuenciales Programables', 'ssp')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/ssp.jpg" loading="lazy" alt="Sistemas secuenciales programables" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Sistemas secuenciales programables</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Programación de autómatas (PLCs), lenguajes de contactos, GRAFCET y control secuencial.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/sdp/testSDP.D.01.html', 'assets/pdfs/sdp.pdf', 'Sistemas de Potencia', 'sdp')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/sdp.jpg" loading="lazy" alt="Sistemas de potencia" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Sistemas de potencia</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Motores eléctricos, variadores de frecuencia, servomotores y electrónica de potencia aplicada.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="module-card bg-card border border-border rounded-2xl overflow-hidden shadow-card cursor-pointer flex flex-col" onclick="openSubjectOptions('asignaturas/adiple/testADIPLE.D.01.html', 'assets/pdfs/adiple.pdf', 'Ampliación Itinerario', 'adiple')">
-                <div class="h-48 overflow-hidden relative bg-gray-100">
-                    <img src="assets/img/images/asignaturass/adiple.jpg" loading="lazy" alt="Ampliación de itinerario personal" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity">
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 leading-tight">Ampliación de itinerario personal para la empleabilidad</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow line-clamp-2">Desarrollo avanzado de habilidades blandas, emprendimiento y gestión de carrera profesional.</p>
-                    <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                        <span class="text-xs font-semibold text-muted bg-gray-100 px-2 py-1 rounded-md">Simulacros</span>
-                        <span class="text-sm font-bold text-primary flex items-center gap-1">Acceder <span class="arrow-icon">→</span></span>
-                    </div>
-                </div>
-            </article>
-
+        <div class="summary-cell">
+            <span class="summary-label">Sesiones</span>
+            <div class="summary-value" id="kpi-sess">0</div>
+            <span class="summary-trend" style="color:var(--muted)">Empieza tu primer test</span>
         </div>
-    </main>
-
-    <footer class="border-t border-border py-8 text-center text-xs text-muted">
-        <p class="font-semibold mb-2">&copy; 2026 Grado Superior de Robótica y Automatización Industrial</p>
-        <div class="flex justify-center gap-5 flex-wrap">
-            <a href="faq.html" class="hover:text-primary transition-colors">Preguntas frecuentes</a>
-            <a href="mailto:testautomatizacionhelp@gmail.com" class="hover:text-primary transition-colors">Contacto</a>
+        <div class="summary-cell">
+            <span class="summary-label">Racha</span>
+            <div class="summary-value" id="kpi-streak">0<span class="unit">días</span></div>
+            <span class="summary-trend" id="kpi-streak-trend" style="color:var(--muted)">—</span>
         </div>
-    </footer>
-
-    <script src="assets/js/analytics.js"></script>
-
-    <!-- Subject Action Modal -->
-    <div id="subject-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 opacity-0 transition-opacity duration-300">
-        <div class="bg-card dark:bg-slate-800 border border-border dark:border-slate-700 rounded-3xl shadow-2xl w-full max-w-md p-6 sm:p-8 transform scale-95 transition-transform duration-300" id="subject-modal-content">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 id="modal-subject-name" class="text-xl sm:text-2xl font-extrabold text-foreground dark:text-slate-100">Asignatura</h3>
-                    <p class="text-muted dark:text-slate-400 text-sm mt-1">¿Qué deseas hacer?</p>
-                </div>
-                <button onclick="closeSubjectModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-500 dark:text-slate-300 transition-colors">
-                    ✕
-                </button>
-            </div>
-            
-            <div class="flex flex-col gap-4">
-                <button id="btn-go-test" class="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-primary bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/40 transition-colors text-left group">
-                    <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        📝
-                    </div>
-                    <div>
-                        <div class="font-bold text-primary dark:text-blue-400 text-lg">Hacer Tests</div>
-                        <div class="text-xs text-slate-500 dark:text-slate-400">Practicar simulacros y preguntas</div>
-                    </div>
-                </button>
-                
-                <button id="btn-go-pdf" class="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors text-left group">
-                    <div class="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        📚
-                    </div>
-                    <div>
-                        <div class="font-bold text-foreground dark:text-slate-200 text-lg">Repasar PDF</div>
-                        <div class="text-xs text-slate-500 dark:text-slate-400">Ver resumen teórico</div>
-                    </div>
-                </button>
-
-                <button id="btn-go-content" class="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-colors text-left group">
-                    <div class="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                        📖
-                    </div>
-                    <div>
-                        <div class="font-bold text-foreground dark:text-slate-200 text-lg">Contenido</div>
-                        <div class="text-xs text-slate-500 dark:text-slate-400">Temas, resúmenes, infografías y más</div>
-                    </div>
-                </button>
-            </div>
+        <div class="summary-cell">
+            <span class="summary-label">Asignaturas</span>
+            <div class="summary-value">9<span class="unit">módulos</span></div>
+            <span class="summary-trend" style="color:var(--muted)">Curso 2025–26</span>
         </div>
     </div>
 
-    <script>
-        const subjectModal = document.getElementById('subject-modal');
-        const modalContent = document.getElementById('subject-modal-content');
-        const btnGoTest = document.getElementById('btn-go-test');
-        const btnGoPdf = document.getElementById('btn-go-pdf');
-        const btnGoContent = document.getElementById('btn-go-content');
-        const modalTitle = document.getElementById('modal-subject-name');
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:18px;">
+        <h2 style="font-size:20px; font-weight:600; letter-spacing:-0.015em; margin:0;">Asignaturas</h2>
+        <div class="eyebrow">9 módulos · Curso 2025–26</div>
+    </div>
 
-        function openSubjectOptions(testUrl, pdfUrl, name, subjectCode) {
-            modalTitle.textContent = name;
-            btnGoTest.onclick = () => window.location.href = testUrl;
-            btnGoPdf.onclick = () => window.open(pdfUrl, '_blank');
-            btnGoContent.onclick = () => window.location.href = 'contenido.html?subject=' + subjectCode;
-            
-            subjectModal.classList.remove('hidden');
-            subjectModal.classList.add('flex');
-            // Trigger reflow
-            void subjectModal.offsetWidth;
-            subjectModal.classList.remove('opacity-0');
-            modalContent.classList.remove('scale-95');
-        }
+    <div class="grid-subjects">
 
-        function closeSubjectModal() {
-            subjectModal.classList.add('opacity-0');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                subjectModal.classList.add('hidden');
-                subjectModal.classList.remove('flex');
-            }, 300);
-        }
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/ip/testIP.D.01.html', 'assets/pdfs/ip.pdf', 'Inglés Profesional', 'ip')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/ip.jpg" loading="lazy" alt="Inglés profesional">
+                <span class="subject-code-pill">IP</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Inglés profesional</h3>
+                <p class="subject-desc">Terminología técnica, manuales, catálogos y comunicación en el entorno industrial internacional.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">6 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
 
-        // Close when clicking outside
-        subjectModal.addEventListener('click', (e) => {
-            if (e.target === subjectModal) {
-                closeSubjectModal();
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/sdmyr/testSDMYR.D.01.html', 'assets/pdfs/sdmyr.pdf', 'Sistemas de Medida y Regulación', 'sdmyr')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/sdmyr.jpg" loading="lazy" alt="Sistemas de medida y regulación">
+                <span class="subject-code-pill">SDMyR</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Sistemas de medida y regulación</h3>
+                <p class="subject-desc">Sensores, actuadores, lazos de control PID y calibración de instrumentación industrial.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">8 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/dt/testDT.D.01.html', 'assets/pdfs/dt.pdf', 'Documentación Técnica', 'dt')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/dt.jpg" loading="lazy" alt="Documentación técnica">
+                <span class="subject-code-pill">DT</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Documentación técnica</h3>
+                <p class="subject-desc">Elaboración de planos, esquemas, presupuestos, manuales y uso de CAD.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">6 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/ii/testII.D.01.html', 'assets/pdfs/ii.pdf', 'Informática Industrial', 'ii')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/ii.jpg" loading="lazy" alt="Informática industrial">
+                <span class="subject-code-pill">II</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Informática industrial</h3>
+                <p class="subject-desc">Redes de comunicación, protocolos industriales, bases de datos y control de procesos (SCADA).</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">7 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/seneh/testSENEH.D.01.html', 'assets/pdfs/seneh.pdf', 'Sist. Eléctricos, Neumáticos e Hidráulicos', 'seneh')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/seneh.jpg" loading="lazy" alt="Sistemas eléctricos, neumáticos e hidráulicos">
+                <span class="subject-code-pill">SENEH</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Sistemas eléctricos, neumáticos e hidráulicos</h3>
+                <p class="subject-desc">Automatismos cableados, fluidos a presión, electroválvulas y conexionado de potencia.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">13 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/iplei/testIPLEI.D.01.html', 'assets/pdfs/iplei.pdf', 'Itinerario Personal', 'iplei')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/iplei.jpg" loading="lazy" alt="Itinerario personal para la empleabilidad I">
+                <span class="subject-code-pill">IPLEI</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Itinerario personal para la empleabilidad I</h3>
+                <p class="subject-desc">Orientación laboral, derechos del trabajador, prevención de riesgos y búsqueda de empleo.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">9 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/ssp/testISSP.D.01.html', 'assets/pdfs/ssp.pdf', 'Sistemas Secuenciales Programables', 'ssp')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/ssp.jpg" loading="lazy" alt="Sistemas secuenciales programables">
+                <span class="subject-code-pill">SSP</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Sistemas secuenciales programables</h3>
+                <p class="subject-desc">Programación de autómatas (PLCs), lenguajes de contactos, GRAFCET y control secuencial.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">9 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/sdp/testSDP.D.01.html', 'assets/pdfs/sdp.pdf', 'Sistemas de Potencia', 'sdp')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/sdp.jpg" loading="lazy" alt="Sistemas de potencia">
+                <span class="subject-code-pill">SDP</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Sistemas de potencia</h3>
+                <p class="subject-desc">Motores eléctricos, variadores de frecuencia, servomotores y electrónica de potencia aplicada.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">7 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+        <article class="subject-card" onclick="openSubjectOptions('asignaturas/adiple/testADIPLE.D.01.html', 'assets/pdfs/adiple.pdf', 'Ampliación Itinerario', 'adiple')">
+            <div class="subject-thumb">
+                <img src="assets/img/images/asignaturass/adiple.jpg" loading="lazy" alt="Ampliación de itinerario personal">
+                <span class="subject-code-pill">ADIPLE</span>
+            </div>
+            <div>
+                <h3 class="subject-name">Ampliación de itinerario personal para la empleabilidad</h3>
+                <p class="subject-desc">Desarrollo avanzado de habilidades blandas, emprendimiento y gestión de carrera profesional.</p>
+            </div>
+            <div class="subject-meta">
+                <span class="meta-pill">6 UD</span>
+                <span class="meta-pill">· Simulacros</span>
+                <span class="subject-cta">Acceder <span class="arrow-icon">→</span></span>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<footer class="app-footer">
+    <p>&copy; 2026 Grado Superior de Robótica y Automatización Industrial</p>
+    <div style="margin-top:8px;">
+        <a href="faq.html">Preguntas frecuentes</a>
+        <a href="mailto:testautomatizacionhelp@gmail.com">Contacto</a>
+    </div>
+</footer>
+
+<!-- Subject Modal -->
+<div id="subject-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-subject-name">
+    <div class="modal-card">
+        <div class="modal-head">
+            <div>
+                <div class="eyebrow" id="modal-subject-code" style="margin-bottom:6px;">Asignatura</div>
+                <h3 id="modal-subject-name" class="modal-title">Asignatura</h3>
+                <p class="modal-sub">¿Qué quieres hacer hoy?</p>
+            </div>
+            <button class="close-x" onclick="closeSubjectModal()" aria-label="Cerrar">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg>
+            </button>
+        </div>
+
+        <button id="btn-go-test" class="option-row is-primary">
+            <span class="option-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+            </span>
+            <span>
+                <div class="option-text-main">Hacer un test</div>
+                <div class="option-text-sub">Simulacros, exámenes oficiales y práctica por unidad</div>
+            </span>
+            <span class="option-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+        </button>
+
+        <button id="btn-go-pdf" class="option-row">
+            <span class="option-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+            </span>
+            <span>
+                <div class="option-text-main">Repasar PDF</div>
+                <div class="option-text-sub">Resumen teórico de la asignatura</div>
+            </span>
+            <span class="option-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+        </button>
+
+        <button id="btn-go-content" class="option-row">
+            <span class="option-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2zm0 0a2 2 0 0 1 2-2h12"/></svg>
+            </span>
+            <span>
+                <div class="option-text-main">Contenido</div>
+                <div class="option-text-sub">Temas, infografías y mapas mentales</div>
+            </span>
+            <span class="option-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+        </button>
+    </div>
+</div>
+
+<script src="assets/js/analytics.js"></script>
+<script>
+    const subjectModal = document.getElementById('subject-modal');
+    const modalTitle  = document.getElementById('modal-subject-name');
+    const modalCode   = document.getElementById('modal-subject-code');
+    const btnTest     = document.getElementById('btn-go-test');
+    const btnPdf      = document.getElementById('btn-go-pdf');
+    const btnContent  = document.getElementById('btn-go-content');
+
+    function openSubjectOptions(testUrl, pdfUrl, name, subjectCode) {
+        modalTitle.textContent = name;
+        modalCode.textContent = subjectCode.toUpperCase();
+        btnTest.onclick    = () => window.location.href = testUrl;
+        btnPdf.onclick     = () => window.open(pdfUrl, '_blank');
+        btnContent.onclick = () => window.location.href = 'contenido.html?subject=' + subjectCode;
+        subjectModal.classList.add('is-open');
+    }
+    function closeSubjectModal() {
+        subjectModal.classList.remove('is-open');
+    }
+    subjectModal.addEventListener('click', (e) => {
+        if (e.target === subjectModal) closeSubjectModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeSubjectModal();
+    });
+
+    // ─── KPI strip: lee localStorage 'examrobotic_stats' si existe (opcional) ──
+    (function refreshKpis() {
+        try {
+            const raw = localStorage.getItem('examrobotic_stats');
+            if (!raw) return;
+            const data = JSON.parse(raw);
+            const subjects = data.subjects || {};
+            const history  = data.history  || [];
+            const scores = Object.values(subjects).flatMap(s => s.scores || []);
+            const avg = scores.length ? (scores.reduce((a,b)=>a+b,0)/scores.length) : null;
+            if (avg != null) {
+                document.getElementById('kpi-avg').innerHTML = avg.toFixed(1).replace('.', ',') + '<span class="unit">/10</span>';
+                document.getElementById('kpi-avg-trend').textContent = scores.length + ' notas';
+                document.getElementById('kpi-avg-trend').style.color = avg >= 5 ? 'var(--success)' : 'var(--danger)';
             }
-        });
-    </script>
+            document.getElementById('kpi-sess').textContent = history.length;
+            // Racha: días consecutivos con actividad
+            if (history.length) {
+                const days = [...new Set(history.map(h => new Date(h.date).toLocaleDateString('en-CA')))].sort().reverse();
+                const today = new Date().toLocaleDateString('en-CA');
+                const yest  = new Date(Date.now()-86400000).toLocaleDateString('en-CA');
+                let streak = 0;
+                if (days[0] === today || days[0] === yest) {
+                    streak = 1;
+                    for (let i = 1; i < days.length; i++) {
+                        if ((new Date(days[i-1]) - new Date(days[i])) / 86400000 === 1) streak++;
+                        else break;
+                    }
+                }
+                document.getElementById('kpi-streak').innerHTML = streak + '<span class="unit">días</span>';
+                document.getElementById('kpi-streak-trend').textContent = streak > 0 ? '🔥 Sigue así' : '—';
+                if (streak > 0) document.getElementById('kpi-streak-trend').style.color = 'var(--success)';
+            }
+        } catch (e) { /* ignore */ }
+    })();
+</script>
 
 </body>
 </html>
