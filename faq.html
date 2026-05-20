@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Preguntas frecuentes sobre ExamRobotic — tests y simulacros para el Grado Superior de Robótica y Automatización Industrial.">
+    <link rel="icon" href="assets/img/images/logo/logorobot.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/images/logo/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ExamRobotic">
+    <title>Preguntas frecuentes · ExamRobotic</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/menu.css">
+
+    <style>
+        .faq-wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+        .faq-item {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            background: var(--surface);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .faq-item:hover { border-color: var(--accent); }
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink);
+            gap: 16px;
+            user-select: none;
+        }
+        .faq-chevron {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            color: var(--muted);
+            transition: transform 0.25s;
+        }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-a {
+            display: none;
+            padding: 0 24px 20px;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            border-top: 1px solid var(--line-soft);
+            padding-top: 16px;
+        }
+        .faq-item.open .faq-a { display: block; }
+        .faq-a a { color: var(--accent); text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header class="app-header">
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <div class="brand-mark">
+                <img src="assets/img/images/logo/logorobot.svg" alt="ExamRobotic">
+            </div>
+            <div>
+                <div class="brand-title">Exam<span class="dot">·</span>robotic</div>
+                <div class="brand-sub">GS · Robótica y Automatización</div>
+            </div>
+        </a>
+
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+                Asignaturas
+            </a>
+            <a href="test-libre.html" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+                Test libre
+            </a>
+            <a href="estadisticas.html" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>
+                Mi progreso
+            </a>
+        </nav>
+
+        <div style="display:flex; align-items:center; gap:8px;">
+            <button class="icon-btn" data-theme-toggle onclick="toggleTheme()" title="Cambiar tema" aria-label="Cambiar tema"></button>
+            <a href="index.html" class="icon-btn" title="Inicio" aria-label="Inicio">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    <div class="page-head">
+        <div class="eyebrow page-eyebrow">Ayuda</div>
+        <h1 class="page-title">Preguntas <span class="serif-emph">frecuentes</span></h1>
+        <p class="page-lede">Todo lo que necesitas saber sobre ExamRobotic.</p>
+    </div>
+
+    <div class="faq-wrap">
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Qué es ExamRobotic?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                ExamRobotic es una plataforma de tests y simulacros de examen para el Grado Superior de Robótica y Automatización Industrial. Incluye preguntas de todas las asignaturas, simulacros cronometrados y seguimiento del progreso personal.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Se guardan mis resultados?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                Sí. Cada vez que terminas un test, los resultados se guardan automáticamente en la nube (Firebase) asociados a tu cuenta. Esto significa que tu progreso se mantiene aunque cambies de dispositivo, limpies la caché o reinstales la app.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Funciona en la tablet sin conexión?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                Los tests y simulacros funcionan sin conexión una vez que la página se ha cargado. Los resultados se sincronizarán con la nube la próxima vez que tengas conexión a internet.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Cómo añado la app a la pantalla de inicio del iPad?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                En Safari, pulsa el botón de compartir (el cuadrado con una flecha hacia arriba) y selecciona «Añadir a pantalla de inicio». Así tendrás acceso directo con el icono de ExamRobotic y la app se abrirá en pantalla completa.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Por qué veo el progreso a cero al abrir desde el icono de la pantalla de inicio?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                La app instalada en la pantalla de inicio tiene su propio almacenamiento separado del navegador Safari. Por eso, la primera vez que la abres aparece vacía. Inicia sesión con tu cuenta y los datos se recuperarán automáticamente de la nube.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Qué es el modo día / noche?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                El botón de tema (en la cabecera) alterna entre el modo día (fondo beige claro) y el modo noche (fondo oscuro con efecto aurora). Tu preferencia se guarda automáticamente en el dispositivo.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggle(this)">
+                ¿Cómo contacto si encuentro un error?
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="faq-a">
+                Escríbenos a <a href="mailto:testautomatizacionhelp@gmail.com">testautomatizacionhelp@gmail.com</a> y te respondemos lo antes posible.
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="app-footer">
+    <p>&copy; 2026 Grado Superior de Robótica y Automatización Industrial</p>
+    <div style="margin-top:8px;">
+        <a href="faq.html">Preguntas frecuentes</a>
+        <a href="mailto:testautomatizacionhelp@gmail.com">Contacto</a>
+    </div>
+</footer>
+
+<script>
+function toggle(btn) {
+    btn.closest('.faq-item').classList.toggle('open');
+}
+</script>
+<script src="assets/js/analytics.js"></script>
+</body>
+</html>
