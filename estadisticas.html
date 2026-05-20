@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Estadísticas · ExamRobotic</title>
-    <meta name="description" content="Panel de estadísticas de tu rendimiento en ExamRobotic. Analiza tus fallos, tus puntos fuertes y tu progreso por asignatura.">
+    <title>Mi Progreso · ExamRobotic</title>
+    <meta name="description" content="Panel de estadísticas y progreso personal en ExamRobotic.">
     <link rel="icon" href="assets/img/images/logo/logorobot.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,215 +14,318 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0;
-            --text: #0f172a; --muted: #64748b; --primary: #3b82f6;
-            --primary-dark: #1d4ed8; --success: #10b981; --danger: #ef4444;
-            --warning: #f59e0b; --radius: 1.25rem;
+            --bg:      #f1f5f9;
+            --surface: #ffffff;
+            --surface2: #f8fafc;
+            --border:  #e2e8f0;
+            --text:    #0f172a;
+            --muted:   #64748b;
+            --primary: #3b82f6;
+            --success: #10b981;
+            --danger:  #ef4444;
+            --warning: #f59e0b;
+            --radius:  1.25rem;
         }
         [data-theme="dark"] {
-            --bg: #0f172a; --surface: #1e293b; --border: #334155;
-            --text: #e2e8f0; --muted: #94a3b8;
+            --bg:      #0f172a;
+            --surface: #1e293b;
+            --surface2: #162032;
+            --border:  #334155;
+            --text:    #e2e8f0;
+            --muted:   #94a3b8;
         }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
 
         /* ── HEADER ── */
         header {
-            background: var(--surface); border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
             position: sticky; top: 0; z-index: 50;
+            transition: background 0.3s, border-color 0.3s;
         }
         .header-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
             height: 4.5rem; display: flex; align-items: center; justify-content: space-between;
         }
-        .header-left { display: flex; align-items: center; gap: 0.75rem; }
-        .back-btn {
-            width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border);
-            background: var(--bg); color: var(--text); cursor: pointer; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-            text-decoration: none;
+        .header-left  { display: flex; align-items: center; gap: 0.75rem; }
+        .header-logo  { width: 2.5rem; height: 2.5rem; }
+        .header-title { font-size: 1rem; font-weight: 800; }
+        .header-sub   { font-size: 0.68rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+        .header-actions { display: flex; align-items: center; gap: 0.5rem; }
+        .icon-btn {
+            width: 2.5rem; height: 2.5rem; border-radius: 50%;
+            border: 1px solid var(--border); background: var(--bg);
+            color: var(--text); cursor: pointer; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; text-decoration: none;
         }
-        .back-btn:hover { background: var(--border); }
-        .header-title { font-size: 1.1rem; font-weight: 800; }
-        .header-sub { font-size: 0.7rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-        .theme-btn {
-            width: 2.5rem; height: 2.5rem; border-radius: 50%; border: 1px solid var(--border);
-            background: var(--bg); color: var(--text); cursor: pointer; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-        }
-        .theme-btn:hover { background: var(--border); }
+        .icon-btn:hover { background: var(--border); transform: scale(1.05); }
 
-        /* ── LAYOUT ── */
-        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-        .page-title { font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; }
-        .page-sub { color: var(--muted); margin-bottom: 2.5rem; }
-
-        /* ── KPI GRID ── */
-        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
-        .kpi-card {
-            background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-            padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            padding: 2.5rem 1.5rem 3.5rem;
         }
-        .kpi-icon { font-size: 2rem; }
-        .kpi-value { font-size: 2.25rem; font-weight: 900; line-height: 1; }
-        .kpi-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-        .kpi-card.primary { background: linear-gradient(135deg, #3b82f6, #1d4ed8); border-color: transparent; color: white; }
-        .kpi-card.primary .kpi-label { color: rgba(255,255,255,0.7); }
-        .kpi-card.success { background: linear-gradient(135deg, #10b981, #059669); border-color: transparent; color: white; }
-        .kpi-card.success .kpi-label { color: rgba(255,255,255,0.7); }
-        .kpi-card.warning { background: linear-gradient(135deg, #f59e0b, #d97706); border-color: transparent; color: white; }
-        .kpi-card.warning .kpi-label { color: rgba(255,255,255,0.7); }
-
-        /* ── SECTIONS ── */
-        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
-        @media (max-width: 768px) { .section-grid { grid-template-columns: 1fr; } }
-        .card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 1.75rem;
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
         }
-        .card-title {
-            font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 0.06em; color: var(--primary); margin-bottom: 1.5rem;
-        }
-
-        /* ── BAR CHART ── */
-        .bar-item { margin-bottom: 1.25rem; }
-        .bar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
-        .bar-label { font-size: 0.85rem; font-weight: 600; }
-        .bar-score { font-size: 0.85rem; font-weight: 800; }
-        .bar-track { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; }
-        .bar-fill { height: 100%; border-radius: 999px; transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
-
-        /* ── FAILURES TABLE ── */
-        .failure-item {
-            display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .failure-item:last-child { border-bottom: none; }
-        .failure-count {
-            min-width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
-            background: #fef2f2; color: #ef4444; font-weight: 900;
-            display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+        .hero-inner { max-width: 1200px; margin: 0 auto; }
+        .hero-top { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2rem; }
+        .hero-avatar {
+            width: 4rem; height: 4rem; border-radius: 50%;
+            background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; font-weight: 900; color: white; letter-spacing: -1px;
             flex-shrink: 0;
         }
-        [data-theme="dark"] .failure-count { background: #450a0a; color: #fca5a5; }
-        .failure-text { font-size: 0.85rem; font-weight: 600; line-height: 1.4; }
-        .failure-unit { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+        .hero-name { font-size: 1.6rem; font-weight: 900; color: white; }
+        .hero-sub  { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+        /* KPI CARDS */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+        .kpi {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 1rem; padding: 1.25rem 1rem;
+            text-align: center; transition: transform 0.2s;
+        }
+        .kpi:hover { transform: translateY(-2px); }
+        .kpi-val  { font-size: 2rem; font-weight: 900; color: white; line-height: 1; }
+        .kpi-lbl  { font-size: 0.68rem; color: rgba(255,255,255,0.7); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.4rem; }
+        .kpi-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+
+        /* ── MAIN CONTENT ── */
+        main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        /* ── GRID SECTIONS ── */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+        @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+        .col-span-2 { grid-column: span 2; }
+        @media (max-width: 900px) { .col-span-2 { grid-column: span 1; } }
+
+        /* ── CARD ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            transition: background 0.3s, border-color 0.3s;
+            animation: fadeUp 0.4s ease both;
+        }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card-title {
+            font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 0.07em; color: var(--primary); margin-bottom: 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+
+        /* ── BARS ── */
+        .bar-item { margin-bottom: 1.25rem; }
+        .bar-item:last-child { margin-bottom: 0; }
+        .bar-hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+        .bar-lbl { font-size: 0.85rem; font-weight: 600; }
+        .bar-val { font-size: 0.85rem; font-weight: 800; }
+        .bar-track { height: 10px; background: var(--bg); border-radius: 999px; overflow: hidden; }
+        .bar-fill  { height: 100%; border-radius: 999px; transition: width 1s cubic-bezier(0.16,1,0.3,1); }
+        .bar-sub   { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+
+        /* ── ACTIVITY GRID ── */
+        .act-grid { display: flex; flex-wrap: wrap; gap: 3px; }
+        .act-cell {
+            width: 13px; height: 13px; border-radius: 3px;
+            background: var(--bg); transition: background 0.3s;
+        }
+        .act-cell.active { background: #22c55e; }
+        [data-theme="dark"] .act-cell { background: #1e293b; }
+
+        /* ── FAILURES ── */
+        .fail-item {
+            display: flex; align-items: flex-start; gap: 0.9rem;
+            padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+        }
+        .fail-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .fail-count {
+            min-width: 2.25rem; height: 2.25rem; border-radius: 0.6rem;
+            background: #fef2f2; color: var(--danger); font-weight: 900;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; flex-shrink: 0;
+        }
+        [data-theme="dark"] .fail-count { background: #450a0a; color: #fca5a5; }
+        .fail-text { font-size: 0.82rem; font-weight: 600; line-height: 1.4; }
+        .fail-meta { font-size: 0.72rem; color: var(--muted); margin-top: 0.15rem; }
 
         /* ── HISTORY ── */
-        .history-item {
-            display: flex; align-items: center; gap: 1rem; padding: 0.85rem 0;
-            border-bottom: 1px solid var(--border);
+        .hist-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 0.85rem 0; border-bottom: 1px solid var(--border);
         }
-        .history-item:last-child { border-bottom: none; }
-        .history-dot {
+        .hist-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .hist-dot {
             width: 2.5rem; height: 2.5rem; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 900; font-size: 0.85rem; flex-shrink: 0;
+            font-size: 0.82rem; font-weight: 900; flex-shrink: 0;
         }
-        .history-dot.pass { background: #d1fae5; color: #059669; }
-        .history-dot.fail { background: #fee2e2; color: #dc2626; }
-        [data-theme="dark"] .history-dot.pass { background: #064e3b; color: #6ee7b7; }
-        [data-theme="dark"] .history-dot.fail { background: #450a0a; color: #fca5a5; }
-        .history-info { flex: 1; }
-        .history-subject { font-size: 0.85rem; font-weight: 700; }
-        .history-date { font-size: 0.75rem; color: var(--muted); }
-        .history-score { font-size: 1.1rem; font-weight: 900; }
+        .hist-dot.pass { background: #d1fae5; color: #059669; }
+        .hist-dot.fail { background: #fee2e2; color: #dc2626; }
+        [data-theme="dark"] .hist-dot.pass { background: #064e3b; color: #6ee7b7; }
+        [data-theme="dark"] .hist-dot.fail { background: #450a0a; color: #fca5a5; }
+        .hist-info { flex: 1; min-width: 0; }
+        .hist-subj { font-size: 0.85rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .hist-date { font-size: 0.72rem; color: var(--muted); }
+        .hist-score { font-size: 1.1rem; font-weight: 900; }
+        .badge {
+            font-size: 0.65rem; font-weight: 800; padding: 2px 7px;
+            border-radius: 999px; white-space: nowrap;
+        }
+        .badge-pass { background: #d1fae5; color: #059669; }
+        .badge-fail { background: #fee2e2; color: #dc2626; }
+        .badge-type { background: #eff6ff; color: #3b82f6; }
+        [data-theme="dark"] .badge-pass { background: #064e3b; color: #6ee7b7; }
+        [data-theme="dark"] .badge-fail { background: #450a0a; color: #fca5a5; }
+        [data-theme="dark"] .badge-type { background: #1e3a8a; color: #93c5fd; }
 
-        /* ── TOPIC HEAT MAP ── */
-        .topic-bar { margin-bottom: 1rem; }
-        .topic-header { display: flex; justify-content: space-between; margin-bottom: 0.3rem; font-size: 0.82rem; font-weight: 600; }
+        /* ── TOPIC HEATMAP ── */
+        .topic-item { margin-bottom: 0.9rem; }
+        .topic-item:last-child { margin-bottom: 0; }
+        .topic-hdr { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .topic-count { color: var(--danger); font-weight: 800; }
         .topic-track { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; }
-        .topic-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #ef4444, #f97316); }
+        .topic-fill  { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #ef4444, #f97316); }
+
+        /* ── SUBJECT FILTER ── */
+        .filter-select {
+            border: 1px solid var(--border); background: var(--bg); color: var(--text);
+            border-radius: 0.5rem; padding: 0.25rem 0.5rem; font-size: 0.78rem;
+            font-family: inherit; cursor: pointer; font-weight: 600;
+        }
 
         /* ── EMPTY STATE ── */
-        .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-        .empty-state-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-        .empty-state-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+        .empty { text-align: center; padding: 2.5rem 1rem; color: var(--muted); }
+        .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .empty-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+        .empty-sub { font-size: 0.82rem; }
 
         /* ── CLEAR BTN ── */
-        .btn-clear {
+        .btn-ghost {
             background: none; border: 1px solid var(--border); color: var(--muted);
-            padding: 0.5rem 1rem; border-radius: 0.75rem; cursor: pointer; font-size: 0.8rem;
-            font-weight: 700; transition: all 0.2s; font-family: inherit;
+            padding: 0.35rem 0.85rem; border-radius: 0.625rem; cursor: pointer;
+            font-size: 0.75rem; font-weight: 700; transition: all 0.2s; font-family: inherit;
         }
-        .btn-clear:hover { border-color: #ef4444; color: #ef4444; background: #fef2f2; }
+        .btn-ghost:hover { border-color: var(--danger); color: var(--danger); background: #fef2f2; }
+        [data-theme="dark"] .btn-ghost:hover { background: #450a0a; }
 
-        /* ── SUBJECT SELECTOR ── */
-        .subject-selector {
-            display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+        /* ── SECTION HEADER ── */
+        .section-hdr {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 1.5rem;
         }
-        .subj-chip {
-            padding: 0.35rem 0.85rem; border-radius: 999px; border: 1.5px solid var(--border);
-            background: var(--bg); color: var(--muted); font-size: 0.78rem; font-weight: 700;
-            cursor: pointer; transition: all 0.2s; font-family: inherit;
-        }
-        .subj-chip.active { background: var(--primary); border-color: var(--primary); color: white; }
 
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-        .card { animation: fadeUp 0.4s ease both; }
+        /* ── STREAK MINI ── */
+        .streak-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+        .streak-pip { width: 8px; height: 20px; border-radius: 3px; flex-shrink: 0; }
     </style>
 </head>
 <body>
+
 <header>
     <div class="header-inner">
         <div class="header-left">
-            <a href="index.html" class="back-btn" title="Volver al inicio">←</a>
+            <a href="index.html">
+                <img src="assets/img/images/logo/logorobot.svg" class="header-logo" alt="ExamRobotic">
+            </a>
             <div>
-                <div class="header-title">Estadísticas</div>
-                <div class="header-sub">Motor de Análisis Personal</div>
+                <div class="header-title">Mi Progreso</div>
+                <div class="header-sub">Panel de Estadísticas</div>
             </div>
         </div>
-        <button class="theme-btn" onclick="toggleTheme()" title="Cambiar tema">
-            <script>document.write(document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙');</script>
-        </button>
+        <div class="header-actions">
+            <button class="icon-btn" onclick="toggleTheme()" title="Cambiar tema" id="theme-btn">
+                <script>document.write(document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙');</script>
+            </button>
+            <a href="index.html" class="icon-btn" title="Inicio">🏠</a>
+        </div>
     </div>
 </header>
 
-<main>
-    <div>
-        <h1 class="page-title">📊 Mi Rendimiento</h1>
-        <p class="page-sub">Análisis automático de tus sesiones de estudio. Cuanto más practiques, más preciso será.</p>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-inner">
+        <div class="hero-top">
+            <div class="hero-avatar">ER</div>
+            <div>
+                <div class="hero-name">Mi Progreso</div>
+                <div class="hero-sub">Grado Superior · Robótica y Automatización Industrial</div>
+            </div>
+        </div>
+        <div class="kpi-row" id="kpi-row">
+            <!-- injected -->
+        </div>
     </div>
+</div>
 
-    <!-- KPIs -->
-    <div class="kpi-grid" id="kpi-grid"></div>
+<main>
 
-    <!-- Subject Performance -->
-    <div class="section-grid">
-        <div class="card" style="animation-delay:0.05s">
+    <!-- ROW 1: subject bars + activity -->
+    <div class="grid-2">
+        <div class="card">
             <div class="card-title">📈 Nota Media por Asignatura</div>
             <div id="subject-bars"></div>
         </div>
-        <div class="card" style="animation-delay:0.1s">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <div class="card-title" style="margin-bottom:0">🔴 Preguntas Más Falladas</div>
-                <select id="subj-filter" onchange="renderFailures()" style="border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:0.5rem; padding:0.3rem 0.5rem; font-size:0.8rem; font-family:inherit; cursor:pointer;">
-                    <option value="all">Todas</option>
+        <div class="card">
+            <div class="card-title">📅 Actividad (últimas 10 semanas)</div>
+            <div class="act-grid" id="act-grid"></div>
+            <p style="font-size:0.72rem;color:var(--muted);margin-top:0.75rem;">🟩 = día con actividad</p>
+        </div>
+    </div>
+
+    <!-- ROW 2: failures + topic heatmap -->
+    <div class="grid-2">
+        <div class="card">
+            <div class="section-hdr">
+                <div class="card-title" style="margin-bottom:0">❌ Preguntas Más Falladas</div>
+                <select class="filter-select" id="subj-filter" onchange="renderFailures()">
+                    <option value="all">Todas las asignaturas</option>
                 </select>
             </div>
             <div id="failures-list"></div>
         </div>
-    </div>
-
-    <div class="section-grid">
-        <div class="card" style="animation-delay:0.15s">
-            <div class="card-title">🔥 Temas con Más Fallos</div>
+        <div class="card">
+            <div class="card-title">🔥 Temas con Más Errores</div>
             <div id="topic-heatmap"></div>
         </div>
-        <div class="card" style="animation-delay:0.2s">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <div class="card-title" style="margin-bottom:0">🕐 Historial de Sesiones</div>
-                <button class="btn-clear" onclick="confirmClear()">Borrar Todo</button>
-            </div>
-            <div id="history-list"></div>
-        </div>
     </div>
+
+    <!-- ROW 3: history full width -->
+    <div class="card" style="animation-delay:0.2s">
+        <div class="section-hdr">
+            <div class="card-title" style="margin-bottom:0">🕐 Historial de Sesiones</div>
+            <button class="btn-ghost" onclick="confirmClear()">Borrar Todo</button>
+        </div>
+        <div id="history-list"></div>
+    </div>
+
 </main>
 
 <script>
 const SUBJECT_NAMES = {
     ip:    'Inglés Profesional',
-    sdmyr: 'Sistemas de Medida',
+    sdmyr: 'Sist. de Medida y Regulación',
     dt:    'Documentación Técnica',
     ii:    'Informática Industrial',
     seneh: 'Sist. Eléctricos, N. e H.',
@@ -231,14 +334,9 @@ const SUBJECT_NAMES = {
     sdp:   'Sistemas de Potencia',
     adiple:'Ampliación Itinerario',
     ipe:   'Itinerario Personal Emp.',
+    libre: 'Test Libre',
     unknown:'Sin clasificar'
 };
-
-function fmtDate(ts) {
-    const d = new Date(ts);
-    return d.toLocaleDateString('es-ES', { day:'2-digit', month:'short', year:'numeric' })
-        + ' ' + d.toLocaleTimeString('es-ES', { hour:'2-digit', minute:'2-digit' });
-}
 
 function scoreColor(s) {
     if (s >= 7) return '#10b981';
@@ -246,129 +344,172 @@ function scoreColor(s) {
     return '#ef4444';
 }
 
+function fmtTime(sec) {
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    if (h > 0) return h + 'h ' + (m > 0 ? m + 'm' : '');
+    if (m > 0) return m + 'm';
+    return sec + 's';
+}
+
+function fmtDate(ts) {
+    const diff = Math.floor((Date.now() - ts) / 86400000);
+    if (diff === 0) return 'Hoy';
+    if (diff === 1) return 'Ayer';
+    if (diff < 7)  return 'Hace ' + diff + ' días';
+    return new Date(ts).toLocaleDateString('es-ES', { day:'numeric', month:'short' });
+}
+
+function calcStreak(history) {
+    if (!history.length) return 0;
+    const days = [...new Set(history.map(h => new Date(h.date).toLocaleDateString('en-CA')))].sort().reverse();
+    const today = new Date().toLocaleDateString('en-CA');
+    const yesterday = new Date(Date.now() - 86400000).toLocaleDateString('en-CA');
+    if (days[0] !== today && days[0] !== yesterday) return 0;
+    let streak = 1;
+    for (let i = 1; i < days.length; i++) {
+        if ((new Date(days[i-1]) - new Date(days[i])) / 86400000 === 1) streak++;
+        else break;
+    }
+    return streak;
+}
+
+function empty(title, sub) {
+    return `<div class="empty"><div class="empty-icon">📭</div><div class="empty-title">${title}</div><div class="empty-sub">${sub}</div></div>`;
+}
+
 function render() {
-    const stats = UserStats.data;
+    const stats    = UserStats.data;
     const subjects = stats.subjects || {};
     const failures = stats.failures || {};
-    const history  = [...(stats.history || [])].reverse();
+    const history  = [...(stats.history || [])];
 
     /* ── KPIs ── */
     const totalSessions = history.length;
     const allScores = Object.values(subjects).flatMap(s => s.scores || []);
-    const globalAvg = allScores.length ? (allScores.reduce((a,b)=>a+b,0)/allScores.length).toFixed(2) : '—';
+    const globalAvg = allScores.length ? (allScores.reduce((a,b)=>a+b,0)/allScores.length) : null;
+    const totalTime = history.reduce((s,h) => s+(h.timeSpentSec||0), 0);
+    const streak    = calcStreak(history);
     const totalFailed = Object.values(failures).reduce((a,s) => a + Object.values(s).filter(q=>q.count>0).length, 0);
-    const bestSubj = Object.entries(subjects).sort((a,b)=>(b[1].avgScore||0)-(a[1].avgScore||0))[0];
-    const worstSubj = Object.entries(subjects).sort((a,b)=>(a[1].avgScore||0)-(b[1].avgScore||0))[0];
+    const subjEntries = Object.entries(subjects).filter(([,s])=>s.avgScore!=null);
+    const bestSlug  = subjEntries.sort((a,b)=>b[1].avgScore-a[1].avgScore)[0];
+    const worstSlug = subjEntries.sort((a,b)=>a[1].avgScore-b[1].avgScore)[0];
 
-    document.getElementById('kpi-grid').innerHTML = `
-        <div class="kpi-card primary"><div class="kpi-icon">📚</div><div class="kpi-value">${totalSessions}</div><div class="kpi-label">Sesiones totales</div></div>
-        <div class="kpi-card success"><div class="kpi-icon">⭐</div><div class="kpi-value">${globalAvg}</div><div class="kpi-label">Nota media global</div></div>
-        <div class="kpi-card warning"><div class="kpi-icon">❌</div><div class="kpi-value">${totalFailed}</div><div class="kpi-label">Preguntas falladas</div></div>
-        <div class="kpi-card"><div class="kpi-icon">🏆</div><div class="kpi-value" style="font-size:1rem;margin-top:0.25rem">${bestSubj ? SUBJECT_NAMES[bestSubj[0]]||bestSubj[0] : '—'}</div><div class="kpi-label">Mejor asignatura</div></div>
-        <div class="kpi-card"><div class="kpi-icon">⚠️</div><div class="kpi-value" style="font-size:1rem;margin-top:0.25rem">${worstSubj ? SUBJECT_NAMES[worstSubj[0]]||worstSubj[0] : '—'}</div><div class="kpi-label">Asignatura a reforzar</div></div>
+    document.getElementById('kpi-row').innerHTML = `
+        <div class="kpi"><div class="kpi-icon">📚</div><div class="kpi-val">${totalSessions}</div><div class="kpi-lbl">Sesiones</div></div>
+        <div class="kpi"><div class="kpi-icon">⭐</div><div class="kpi-val">${globalAvg!=null?globalAvg.toFixed(1):'—'}</div><div class="kpi-lbl">Nota media</div></div>
+        <div class="kpi"><div class="kpi-icon">⏱️</div><div class="kpi-val">${totalTime>0?fmtTime(totalTime):'0m'}</div><div class="kpi-lbl">Tiempo</div></div>
+        <div class="kpi"><div class="kpi-icon">🔥</div><div class="kpi-val">${streak}</div><div class="kpi-lbl">Racha días</div></div>
+        <div class="kpi"><div class="kpi-icon">❌</div><div class="kpi-val">${totalFailed}</div><div class="kpi-lbl">Falladas</div></div>
+        <div class="kpi"><div class="kpi-icon">🏆</div><div class="kpi-val" style="font-size:0.9rem;padding-top:0.2rem">${bestSlug?SUBJECT_NAMES[bestSlug[0]]||bestSlug[0]:'—'}</div><div class="kpi-lbl">Mejor asig.</div></div>
+        <div class="kpi"><div class="kpi-icon">⚠️</div><div class="kpi-val" style="font-size:0.9rem;padding-top:0.2rem">${worstSlug?SUBJECT_NAMES[worstSlug[0]]||worstSlug[0]:'—'}</div><div class="kpi-lbl">A reforzar</div></div>
     `;
 
     /* ── SUBJECT BARS ── */
-    const subjEntries = Object.entries(subjects).sort((a,b)=>(b[1].avgScore||0)-(a[1].avgScore||0));
-    if (subjEntries.length === 0) {
-        document.getElementById('subject-bars').innerHTML = emptyState('Aún no hay datos', 'Completa algunos tests para ver tu rendimiento por asignatura.');
-    } else {
-        document.getElementById('subject-bars').innerHTML = subjEntries.map(([slug, s]) => {
-            const avg = (s.avgScore||0).toFixed(2);
-            const pct = Math.min(100, (s.avgScore||0) * 10);
-            const color = scoreColor(s.avgScore||0);
+    const sorted = Object.entries(subjects).sort((a,b)=>(b[1].avgScore||0)-(a[1].avgScore||0));
+    document.getElementById('subject-bars').innerHTML = sorted.length === 0
+        ? empty('Sin datos todavía', 'Completa algunos tests para ver tu rendimiento.')
+        : sorted.map(([slug, s]) => {
+            const avg  = s.avgScore || 0;
+            const best = s.scores?.length ? Math.max(...s.scores) : avg;
+            const pct  = Math.min(100, avg * 10);
+            const color = scoreColor(avg);
             return `<div class="bar-item">
-                <div class="bar-header">
-                    <span class="bar-label">${SUBJECT_NAMES[slug]||slug}</span>
-                    <span class="bar-score" style="color:${color}">${avg} / 10</span>
+                <div class="bar-hdr">
+                    <span class="bar-lbl">${SUBJECT_NAMES[slug]||slug}</span>
+                    <span class="bar-val" style="color:${color}">${avg.toFixed(1)}</span>
                 </div>
-                <div class="bar-track">
-                    <div class="bar-fill" style="width:${pct}%;background:${color}"></div>
-                </div>
-                <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem">${s.totalAttempts||0} sesión(es)</div>
+                <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${color}"></div></div>
+                <div class="bar-sub">${s.totalAttempts||0} sesión(es) · mejor: ${best.toFixed(1)}</div>
             </div>`;
         }).join('');
+
+    /* ── ACTIVITY GRID ── */
+    const actGrid  = document.getElementById('act-grid');
+    const activeDays = new Set(history.map(h => new Date(h.date).toLocaleDateString('en-CA')));
+    const today = new Date(); today.setHours(0,0,0,0);
+    actGrid.innerHTML = '';
+    for (let i = 69; i >= 0; i--) {
+        const d = new Date(today); d.setDate(today.getDate() - i);
+        const key = d.toLocaleDateString('en-CA');
+        const cell = document.createElement('div');
+        cell.className = 'act-cell' + (activeDays.has(key) ? ' active' : '');
+        cell.title = key;
+        actGrid.appendChild(cell);
     }
 
-    /* ── SUBJECT FILTER ── */
+    /* ── FILTER ── */
     const sel = document.getElementById('subj-filter');
     const existingSlugs = Object.keys(failures).filter(s => Object.values(failures[s]).some(q=>q.count>0));
-    sel.innerHTML = '<option value="all">Todas</option>' + existingSlugs.map(s => `<option value="${s}">${SUBJECT_NAMES[s]||s}</option>`).join('');
+    sel.innerHTML = '<option value="all">Todas las asignaturas</option>' +
+        existingSlugs.map(s => `<option value="${s}">${SUBJECT_NAMES[s]||s}</option>`).join('');
     renderFailures();
 
     /* ── TOPIC HEATMAP ── */
     const topicMap = {};
-    Object.entries(failures).forEach(([slug, qs]) => {
+    Object.values(failures).forEach(qs => {
         Object.values(qs).forEach(f => {
-            if (f.count > 0) topicMap[f.unit] = (topicMap[f.unit]||0) + f.count;
+            if (f.count > 0 && f.unit) topicMap[f.unit] = (topicMap[f.unit]||0) + f.count;
         });
     });
     const topicEntries = Object.entries(topicMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
-    const maxCount = topicEntries[0]?.[1] || 1;
-    if (topicEntries.length === 0) {
-        document.getElementById('topic-heatmap').innerHTML = emptyState('Sin datos', '¡Bien hecho! No hay temas con errores acumulados.');
-    } else {
-        document.getElementById('topic-heatmap').innerHTML = topicEntries.map(([unit, cnt]) => `
-            <div class="topic-bar">
-                <div class="topic-header"><span>${unit}</span><span style="color:#ef4444;font-weight:800">${cnt} fallo${cnt!==1?'s':''}</span></div>
-                <div class="topic-track"><div class="topic-fill" style="width:${(cnt/maxCount*100).toFixed(0)}%"></div></div>
+    const maxT = topicEntries[0]?.[1] || 1;
+    document.getElementById('topic-heatmap').innerHTML = topicEntries.length === 0
+        ? empty('¡Sin errores acumulados!', 'Sigue practicando para ver qué temas necesitas reforzar.')
+        : topicEntries.map(([unit, cnt]) => `
+            <div class="topic-item">
+                <div class="topic-hdr"><span>${unit}</span><span class="topic-count">${cnt} fallo${cnt!==1?'s':''}</span></div>
+                <div class="topic-track"><div class="topic-fill" style="width:${(cnt/maxT*100).toFixed(0)}%"></div></div>
             </div>`).join('');
-    }
 
     /* ── HISTORY ── */
-    if (history.length === 0) {
-        document.getElementById('history-list').innerHTML = emptyState('Sin historial', 'Completa tu primer test para registrar tu progreso.');
-    } else {
-        document.getElementById('history-list').innerHTML = history.slice(0,15).map(h => {
+    const rev = [...history].reverse();
+    document.getElementById('history-list').innerHTML = rev.length === 0
+        ? empty('Sin historial', 'Completa tu primer test para registrar tu progreso aquí.')
+        : rev.slice(0,25).map(h => {
             const pass = h.score >= 5;
-            return `<div class="history-item">
-                <div class="history-dot ${pass?'pass':'fail'}">${h.score?.toFixed(1)||'—'}</div>
-                <div class="history-info">
-                    <div class="history-subject">${SUBJECT_NAMES[h.subject]||h.subject}</div>
-                    <div class="history-date">${fmtDate(h.date)}</div>
+            const name = SUBJECT_NAMES[h.subject] || h.subject || '?';
+            const type = h.type === 'simulacro' ? 'Simulacro' : 'Test';
+            const timeStr = h.timeSpentSec > 0 ? fmtTime(h.timeSpentSec) : '';
+            return `<div class="hist-item">
+                <div class="hist-dot ${pass?'pass':'fail'}">${h.score?.toFixed(1)||'—'}</div>
+                <div class="hist-info">
+                    <div class="hist-subj">${name}</div>
+                    <div class="hist-date">${fmtDate(h.date)}${timeStr?' · '+timeStr:''}</div>
                 </div>
-                <div class="history-score" style="color:${scoreColor(h.score||0)}">${h.score?.toFixed(2)||'—'}</div>
+                <span class="badge badge-type" style="margin-right:0.4rem">${type}</span>
+                <span class="badge ${pass?'badge-pass':'badge-fail'}">${pass?'APTO':'NO APTO'}</span>
+                <div class="hist-score" style="color:${scoreColor(h.score||0)};min-width:3rem;text-align:right">${h.score?.toFixed(2)||'—'}</div>
             </div>`;
         }).join('');
-    }
 }
 
 function renderFailures() {
     const filter = document.getElementById('subj-filter').value;
     const failures = UserStats.data.failures || {};
-    let allFails = [];
+    let all = [];
     Object.entries(failures).forEach(([slug, qs]) => {
         if (filter !== 'all' && slug !== filter) return;
         Object.values(qs).forEach(f => {
-            if (f.count > 0) allFails.push({...f, slug});
+            if (f.count > 0) all.push({...f, slug});
         });
     });
-    allFails.sort((a,b) => b.count - a.count);
-    if (allFails.length === 0) {
-        document.getElementById('failures-list').innerHTML = emptyState('¡Sin fallos!', 'No hay preguntas falladas en esta selección. 🏅');
-    } else {
-        document.getElementById('failures-list').innerHTML = allFails.slice(0,8).map(f => `
-            <div class="failure-item">
-                <div class="failure-count">${f.count}</div>
+    all.sort((a,b) => b.count - a.count);
+    document.getElementById('failures-list').innerHTML = all.length === 0
+        ? empty('¡Sin fallos!', 'No hay preguntas falladas en esta selección. 🏅')
+        : all.slice(0,8).map(f => `
+            <div class="fail-item">
+                <div class="fail-count">${f.count}</div>
                 <div>
-                    <div class="failure-text">${f.text}</div>
-                    <div class="failure-unit">${SUBJECT_NAMES[f.slug]||f.slug} · ${f.unit}</div>
+                    <div class="fail-text">${f.text}</div>
+                    <div class="fail-meta">${SUBJECT_NAMES[f.slug]||f.slug} · ${f.unit}</div>
                 </div>
             </div>`).join('');
-    }
-}
-
-function emptyState(title, sub) {
-    return `<div class="empty-state">
-        <div class="empty-state-icon">📭</div>
-        <div class="empty-state-title">${title}</div>
-        <p style="font-size:0.85rem">${sub}</p>
-    </div>`;
 }
 
 function confirmClear() {
     if (!confirm('¿Borrar todo el historial y estadísticas? Esta acción no se puede deshacer.')) return;
-    UserStats.data = { subjects: {}, failures: {}, history: [] };
+    UserStats.data = { subjects:{}, failures:{}, history:[] };
     UserStats.save();
     render();
 }

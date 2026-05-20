@@ -240,17 +240,31 @@
 <script src="assets/js/user-stats.js"></script>
 <script src="assets/js/api.js" defer></script>
 <script>
+// ── FULL FILE MANIFEST ─────────────────────────────────────────────────────
+// Every JS data file that exists per subject slug
+const SUBJECT_FILES = {
+    ip:    ['t1','t2','t3','t4','t5','t6','vo','ex','simulacro'],
+    sdmyr: ['t1','t2','t3','t4','t5','t6','t7','t8','ex','simulacro'],
+    dt:    ['t1','t2','t3','t4','t5','t6','ex','simulacro'],
+    ii:    ['t1','t2','t3','t4','t5','t6','t7','ex','simulacro'],
+    seneh: ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13','ex','simulacro'],
+    iplei: ['t1','t2','t3','t4','t5','t6','t7','t8','t9','ex','simulacro'],
+    ssp:   ['t1','t2','t3','t4','t5','t6','t7','t8','t9','ex','simulacro'],
+    sdp:   ['t1','t2','t3','t4','t5','t6','t7','ex','simulacro'],
+    adiple:['t1','t2','t3','t4','t5','t6','ex','simulacro'],
+};
+
 // ── CONFIG ──
 const SUBJECTS = [
-    { slug:'ip',    name:'Inglés Profesional',           emoji:'🇬🇧' },
-    { slug:'sdmyr', name:'Sistemas de Medida',            emoji:'📏' },
-    { slug:'dt',    name:'Documentación Técnica',         emoji:'📄' },
-    { slug:'ii',    name:'Informática Industrial',        emoji:'💻' },
-    { slug:'seneh', name:'Sist. Eléctricos, N. e H.',    emoji:'⚡' },
-    { slug:'iplei', name:'Itinerario Personal',           emoji:'🎯' },
-    { slug:'ssp',   name:'Sist. Sec. Programables',      emoji:'🤖' },
-    { slug:'sdp',   name:'Sistemas de Potencia',         emoji:'⚙️' },
-    { slug:'adiple',name:'Ampliación Itinerario',        emoji:'📚' },
+    { slug:'ip',    name:'Inglés Profesional',        emoji:'🇬🇧' },
+    { slug:'sdmyr', name:'Sistemas de Medida',         emoji:'📏' },
+    { slug:'dt',    name:'Documentación Técnica',      emoji:'📄' },
+    { slug:'ii',    name:'Informática Industrial',     emoji:'💻' },
+    { slug:'seneh', name:'Sist. Eléctricos, N. e H.', emoji:'⚡' },
+    { slug:'iplei', name:'Itinerario Personal',        emoji:'🎯' },
+    { slug:'ssp',   name:'Sist. Sec. Programables',   emoji:'🤖' },
+    { slug:'sdp',   name:'Sistemas de Potencia',      emoji:'⚙️' },
+    { slug:'adiple',name:'Ampliación Itinerario',     emoji:'📚' },
 ];
 
 let selectedQty = 40;
@@ -277,16 +291,15 @@ function toggleAll(val) {
 
 function updateAllCount() {
     const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c=>c.value);
-    // We can't know exact count without loading, so show placeholder
     document.getElementById('qty-all-count').textContent = checked.length + ' asig.';
 }
 
 function setQty(n) {
     selectedQty = n;
     document.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('active'));
-    if (n === 10) document.getElementById('qty-10').classList.add('active');
-    else if (n === 40) document.getElementById('qty-40').classList.add('active');
-    else document.getElementById('qty-all').classList.add('active');
+    if (n === 10)   document.getElementById('qty-10').classList.add('active');
+    else if (n===40) document.getElementById('qty-40').classList.add('active');
+    else             document.getElementById('qty-all').classList.add('active');
 }
 
 function toggleCorr() {
@@ -294,41 +307,67 @@ function toggleCorr() {
     document.getElementById('corr-row').classList.toggle('on', corrInstant);
 }
 
-// ── LOAD DATA DYNAMICALLY ──
-async function loadSubjectData(slug) {
-    if (loadedData[slug]) return loadedData[slug];
+// ── LOAD A SINGLE JS DATA FILE ──
+// Returns array of questions captured from globals, then clears globals.
+function loadOneFile(src) {
     return new Promise((resolve) => {
+        // Clear globals before loading
+        window.SIMULACRO_PDF_DATA = undefined;
+        window.EXAM_DATA = undefined;
         const script = document.createElement('script');
-        script.src = `data/${slug}/simulacro.js?_=${Date.now()}`;
+        script.src = src + '?_=' + Date.now();
         script.onload = () => {
-            // After load, EXAM_DATA or SIMULACRO_PDF_DATA is defined globally
-            const data = (typeof SIMULACRO_PDF_DATA !== 'undefined' ? SIMULACRO_PDF_DATA : [])
-                .concat(typeof EXAM_DATA !== 'undefined' ? EXAM_DATA : []);
-            // Tag each question with subject slug
-            const tagged = data.map(q => ({ ...q, _subj: slug }));
-            loadedData[slug] = tagged;
-            // Reset globals for next load
+            const data = []
+                .concat(typeof SIMULACRO_PDF_DATA !== 'undefined' && Array.isArray(SIMULACRO_PDF_DATA) ? SIMULACRO_PDF_DATA : [])
+                .concat(typeof EXAM_DATA          !== 'undefined' && Array.isArray(EXAM_DATA)          ? EXAM_DATA          : []);
             window.SIMULACRO_PDF_DATA = undefined;
             window.EXAM_DATA = undefined;
-            resolve(tagged);
+            resolve(data);
         };
         script.onerror = () => resolve([]);
         document.head.appendChild(script);
     });
 }
 
+// ── LOAD ALL FILES FOR A SUBJECT (sequentially to avoid collisions) ──
+async function loadSubjectData(slug) {
+    if (loadedData[slug]) return loadedData[slug];
+    const files = SUBJECT_FILES[slug] || ['simulacro'];
+    let combined = [];
+    for (const file of files) {
+        const qs = await loadOneFile(`data/${slug}/${file}.js`);
+        combined = combined.concat(qs.map(q => ({ ...q, _subj: slug })));
+    }
+    // Deduplicate within subject
+    const seen = new Set();
+    const unique = combined.filter(q => {
+        const key = (q.q + (q.opts||[]).join('')).trim().toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key); return true;
+    });
+    loadedData[slug] = unique;
+    return unique;
+}
+
+// ── LOAD + LAUNCH ──
 async function launchTest() {
     const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c=>c.value);
     if (checked.length === 0) { alert('Selecciona al menos una asignatura.'); return; }
 
-    document.getElementById('loading-overlay').style.display = 'flex';
+    const loadingEl = document.getElementById('loading-overlay');
+    const loadingText = loadingEl.querySelector('.loading-text');
+    loadingEl.style.display = 'flex';
 
-    // Load all selected subjects
-    const promises = checked.map(slug => loadSubjectData(slug));
-    const results = await Promise.all(promises);
-    allPool = results.flat();
+    // Load subjects sequentially (safer than parallel with sequential internal files)
+    allPool = [];
+    for (const slug of checked) {
+        loadingText.textContent = `Cargando ${slug.toUpperCase()}...`;
+        const qs = await loadSubjectData(slug);
+        allPool = allPool.concat(qs);
+    }
 
-    // Deduplicate
+    // Global deduplication across subjects
+    loadingText.textContent = 'Mezclando preguntas...';
     const seen = new Set();
     allPool = allPool.filter(q => {
         const key = (q.q + (q.opts||[]).join('')).trim().toLowerCase();
@@ -338,28 +377,26 @@ async function launchTest() {
 
     if (allPool.length === 0) {
         alert('No se pudieron cargar preguntas. Inténtalo de nuevo.');
-        document.getElementById('loading-overlay').style.display = 'none';
+        loadingEl.style.display = 'none';
         return;
     }
 
-    // Shuffle pool
+    // Shuffle
     allPool.sort(() => Math.random() - 0.5);
 
     const count = selectedQty === 'all' ? allPool.length : Math.min(selectedQty, allPool.length);
 
-    // Set globals for engine
+    // Pass data and flags to engine
     window.SIMULACRO_PDF_DATA = allPool;
     window.EXAM_DATA = undefined;
     window._freeTestInstantCorr = corrInstant;
     window._freeTestCount = count;
     window._skipSetup = true;
 
-    // Hide setup, show quiz header
+    // Hide setup, show quiz
     document.getElementById('free-setup').style.display = 'none';
-    document.getElementById('loading-overlay').style.display = 'none';
+    loadingEl.style.display = 'none';
     document.getElementById('quiz-header').style.display = '';
-
-    // Trigger engine (it's waiting for data via interval)
 }
 </script>
 
