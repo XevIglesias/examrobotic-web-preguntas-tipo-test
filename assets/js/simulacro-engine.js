@@ -335,6 +335,29 @@ function showSetupScreen() {
             }
             .setup-correction-item.active { border-color: #3b82f6; background: #eff6ff; }
             .setup-correction-item.active .correction-check { background: #3b82f6; border-color: #3b82f6; color: white; }
+            
+            /* Dark Mode Overrides for Setup Modal */
+            [data-theme="dark"] .setup-modal { background: linear-gradient(135deg, #0f172a, #1e293b); box-shadow: 0 0 0 1px #334155, 0 25px 50px -12px rgba(0,0,0,0.8); }
+            [data-theme="dark"] .setup-header h2 { color: #e2e8f0; }
+            [data-theme="dark"] .setup-header p { color: #94a3b8; }
+            [data-theme="dark"] .close-setup { background: #1e293b; color: #e2e8f0; }
+            [data-theme="dark"] .close-setup:hover { background: #334155; color: white; }
+            [data-theme="dark"] .setup-topic-item { background: #1e293b; border-color: transparent; }
+            [data-theme="dark"] .setup-topic-item:hover { background: #334155; border-color: #475569; }
+            [data-theme="dark"] .setup-topic-item span { color: #e2e8f0; }
+            [data-theme="dark"] .setup-qs-btn { background: #1e293b; color: #94a3b8; border-color: #334155; }
+            [data-theme="dark"] .setup-qs-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+            [data-theme="dark"] .setup-correction-item { background: #1e293b; border-color: #334155; }
+            [data-theme="dark"] .setup-correction-item.active { background: #1e3a8a; border-color: #3b82f6; }
+            [data-theme="dark"] .correction-content div[style*="color:#0f172a"] { color: #e2e8f0 !important; }
+            [data-theme="dark"] .correction-content div[style*="color:#64748b"] { color: #94a3b8 !important; }
+            [data-theme="dark"] .official-exam { background: linear-gradient(135deg, #1e293b, #1e3a8a) !important; color: #93c5fd !important; border-color: #3b82f6 !important; }
+            [data-theme="dark"] .official-exam.active { background: linear-gradient(135deg, #3b82f6, #1e40af) !important; color: white !important; }
+            [data-theme="dark"] .setup-qs-row::-webkit-scrollbar-thumb { background: #475569; }
+            [data-theme="dark"] .setup-topics-grid::-webkit-scrollbar-thumb { background: #475569; }
+            [data-theme="dark"] .correction-check { background: #0f172a; border-color: #475569; }
+            [data-theme="dark"] .setup-section-title { color: #60a5fa; }
+            [data-theme="dark"] .text-btn { color: #94a3b8; }
         </style>
     `;
     updateSetupCounts();
