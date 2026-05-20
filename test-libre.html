@@ -308,25 +308,33 @@ function toggleCorr() {
 }
 
 // ── LOAD A SINGLE JS DATA FILE ──
-// Returns array of questions captured from globals, then clears globals.
+// Uses fetch + new Function so each file's `const EXAM_DATA` is scoped
+// inside the function body — no global pollution, no re-declaration SyntaxErrors.
 function loadOneFile(src) {
-    return new Promise((resolve) => {
-        // Clear globals before loading
-        window.SIMULACRO_PDF_DATA = undefined;
-        window.EXAM_DATA = undefined;
-        const script = document.createElement('script');
-        script.src = src + '?_=' + Date.now();
-        script.onload = () => {
-            const data = []
-                .concat(typeof SIMULACRO_PDF_DATA !== 'undefined' && Array.isArray(SIMULACRO_PDF_DATA) ? SIMULACRO_PDF_DATA : [])
-                .concat(typeof EXAM_DATA          !== 'undefined' && Array.isArray(EXAM_DATA)          ? EXAM_DATA          : []);
-            window.SIMULACRO_PDF_DATA = undefined;
-            window.EXAM_DATA = undefined;
-            resolve(data);
-        };
-        script.onerror = () => resolve([]);
-        document.head.appendChild(script);
-    });
+    return fetch(src + '?_=' + Date.now())
+        .then(r => {
+            if (!r.ok) return [];
+            return r.text();
+        })
+        .then(code => {
+            if (!code || typeof code !== 'string') return [];
+            try {
+                // Wrap in function: const/var declarations stay local.
+                // The function returns whichever array variable the file defined.
+                const fn = new Function(`
+                    ${code}
+                    if (typeof SIMULACRO_PDF_DATA !== 'undefined' && Array.isArray(SIMULACRO_PDF_DATA)) return SIMULACRO_PDF_DATA;
+                    if (typeof EXAM_DATA !== 'undefined' && Array.isArray(EXAM_DATA)) return EXAM_DATA;
+                    return [];
+                `);
+                const result = fn();
+                return Array.isArray(result) ? result : [];
+            } catch (e) {
+                console.warn('[loadOneFile] error in', src, e);
+                return [];
+            }
+        })
+        .catch(() => []);
 }
 
 // ── LOAD ALL FILES FOR A SUBJECT (sequentially to avoid collisions) ──

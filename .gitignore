@@ -7,3 +7,5 @@ node_modules/
 *.log
 *.DS_Store
 Thumbs.db
+# PDFs extraidos de Universae.zip (791 MB - demasiado para GitHub)
+assets/pdfs/content/
