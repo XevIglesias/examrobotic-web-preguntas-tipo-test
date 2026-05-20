@@ -170,6 +170,8 @@ header h2 {
   transition: all 0.18s ease;
   font-family: inherit;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .option:hover {
   background: var(--surface);
@@ -447,11 +449,49 @@ header h2 {
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 720px) {
-  #quiz { padding: 12px; }
-  .q-card { padding: 24px 22px; min-height: auto; }
-  .q-text { font-size: 20px; }
-  .option { padding: 14px 16px; }
-  .dot-grid { grid-template-columns: repeat(5, 1fr); }
-  .nav-footer { flex-wrap: wrap; }
-  .nav-footer .btn { flex: 1 1 calc(50% - 5px); font-size: 12.5px; padding: 12px 14px; }
+  /* Quiz container */
+  #quiz { padding: 10px 12px calc(24px + env(safe-area-inset-bottom, 0px)); margin: 12px auto; }
+
+  /* Question card */
+  .q-card { padding: 20px 18px; min-height: auto; }
+  .q-meta { font-size: 10px; }
+  .q-text { font-size: clamp(17px, 4.5vw, 21px); margin-bottom: 20px; }
+
+  /* Options — big touch targets */
+  .option {
+    padding: 15px 14px;
+    font-size: 14px;
+    min-height: 52px;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  /* Dot grid — 5 cols, smaller dots */
+  .dot-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 18px;
+  }
+  .dot { height: 32px; font-size: 10px; border-radius: 7px; }
+
+  /* Explanation box */
+  .exp-box { font-size: 13px; padding: 14px 16px; }
+
+  /* Nav footer — 2 cols always */
+  .nav-footer { flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .nav-footer .btn { flex: 1 1 calc(50% - 4px); font-size: 13px; padding: 14px 12px; min-height: 50px; }
+  .btn { border-radius: 10px; }
+
+  /* Quiz header */
+  header { padding: 10px 14px; gap: 10px; }
+  header h2 { font-size: 13px; }
+  #q-progress { font-size: 10px !important; }
+  .quiz-back-btn { width: 34px; height: 34px; flex-shrink: 0; }
+
+  /* Timer */
+  .timer-box { padding: 7px 11px; font-size: 12px; }
+
+  /* Results */
+  #results { padding: 48px 16px; }
+  .score-badge { font-size: clamp(68px, 20vw, 110px); }
 }
