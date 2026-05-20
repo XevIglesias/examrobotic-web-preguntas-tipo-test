@@ -224,7 +224,14 @@ function startExam(num, topic = 'all', customPool = null) {
     }
 
     totalQs = Math.min(num, filteredData.length);
-    activeQs = filteredData.sort(() => Math.random() - 0.5).slice(0, totalQs);
+    activeQs = filteredData.sort(() => Math.random() - 0.5).slice(0, totalQs).map(q => {
+        let newQ = JSON.parse(JSON.stringify(q));
+        let optsWithIndex = newQ.opts.map((opt, i) => ({ opt, i }));
+        optsWithIndex.sort(() => Math.random() - 0.5);
+        newQ.opts = optsWithIndex.map(x => x.opt);
+        newQ.ans = optsWithIndex.findIndex(x => x.i === newQ.ans);
+        return newQ;
+    });
     
     userAns = new Array(totalQs).fill(null);
     current = 0; 
