@@ -15,6 +15,7 @@
     <script src="assets/js/api.js"></script>
     <script src="assets/js/user-stats.js"></script>
     <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 
     <style>
         /* ── HERO ── */
@@ -567,6 +568,7 @@ function confirmClear() {
 render();
 UserStats.syncFromCloud && UserStats.syncFromCloud().then(loaded => { if (loaded) render(); });
 </script>
+<script src="assets/js/stats-animate.js"></script>
 <script src="assets/js/analytics.js"></script>
 </body>
 </html>

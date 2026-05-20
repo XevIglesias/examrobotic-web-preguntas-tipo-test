@@ -14,6 +14,7 @@
     <script src="assets/js/theme.js"></script>
     <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 
     <style>
         /* ── SETUP SCREEN ── */
@@ -531,6 +532,14 @@ async function launchTest() {
     const checked = Array.from(document.querySelectorAll('.subj-chip-check:checked')).map(c => c.value);
     if (checked.length === 0) { alert('Selecciona al menos una asignatura.'); return; }
 
+    // Animated loading screen
+    if (window.TestLibreLoader) {
+        TestLibreLoader.show({
+            total: selectedQty === 'all' ? '∞' : selectedQty,
+            subjects: checked.length
+        });
+    }
+
     const loadingEl = document.getElementById('loading-overlay');
     const loadingText = loadingEl.querySelector('.loading-text');
     loadingEl.style.display = 'flex';
@@ -551,6 +560,7 @@ async function launchTest() {
     });
 
     if (allPool.length === 0) {
+        if (window.TestLibreLoader) TestLibreLoader.hide();
         alert('No se pudieron cargar preguntas. Inténtalo de nuevo.');
         loadingEl.style.display = 'none';
         return;
@@ -567,10 +577,13 @@ async function launchTest() {
 
     document.getElementById('free-setup').style.display = 'none';
     loadingEl.style.display = 'none';
+    if (window.TestLibreLoader) TestLibreLoader.hide();
     document.getElementById('quiz-header').style.display = 'flex';
 }
 </script>
 
+<script src="assets/js/test-libre-loader.js"></script>
+<script src="assets/js/stats-animate.js"></script>
 <script src="assets/js/simulacro-engine.js" defer></script>
 <script src="assets/js/analytics.js"></script>
 </body>

@@ -1,0 +1,636 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ExamRobotic — Animaciones espectaculares
+   Drop-in: incluir DESPUÉS de menu.css.
+   Acompañar con assets/js/stats-animate.js para count-up + intersection.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Reduced motion safety ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   1 · AURORA HERO — los orbes flotan lentamente
+   ═════════════════════════════════════════════════════════════════ */
+body::before {
+  animation: auroraFloat 28s ease-in-out infinite alternate;
+}
+@keyframes auroraFloat {
+  0%   { background-position: 0% 0%,   100% 0%,   50% 100%; transform: scale(1); }
+  50%  { background-position: 8% -3%,  92% 6%,    48% 96%;  transform: scale(1.04); }
+  100% { background-position: -4% 4%,  103% -2%,  53% 104%; transform: scale(1); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   2 · STATS HERO — entrada cinematográfica
+   ═════════════════════════════════════════════════════════════════ */
+.stats-hero {
+  animation: heroRise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(20px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+/* Aurora interna del hero — orbes que respiran */
+.stats-hero::before {
+  animation: heroAuroraPulse 12s ease-in-out infinite;
+}
+@keyframes heroAuroraPulse {
+  0%, 100% { transform: scale(1)   rotate(0deg); opacity: 0.4; }
+  50%      { transform: scale(1.1) rotate(8deg); opacity: 0.7; }
+}
+
+/* Avatar — anillo respirante */
+.hero-avatar {
+  position: relative;
+  animation: avatarFade 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-avatar::after {
+  content: ""; position: absolute; inset: -6px;
+  border-radius: 18px;
+  border: 1px solid var(--accent);
+  opacity: 0;
+  animation: avatarRing 3.2s ease-in-out 1.2s infinite;
+  pointer-events: none;
+}
+[data-theme="night"] .hero-avatar::after,
+[data-theme="dark"] .hero-avatar::after {
+  border-color: oklch(0.75 0.18 245);
+  box-shadow: 0 0 18px oklch(0.65 0.20 245 / 0.4);
+}
+@keyframes avatarFade {
+  from { opacity: 0; transform: scale(0.7) rotate(-8deg); }
+  to   { opacity: 1; transform: scale(1)   rotate(0); }
+}
+@keyframes avatarRing {
+  0%   { opacity: 0; transform: scale(1); }
+  35%  { opacity: 0.8; }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+
+.hero-name {
+  animation: heroLineIn 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-name .em {
+  display: inline-block;
+  animation: emShine 0.9s 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes heroLineIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes emShine {
+  from { opacity: 0; transform: translateY(6px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);   filter: blur(0); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   3 · KPI CELLS — count-up + stagger entrance + shimmer-on-hover
+   ═════════════════════════════════════════════════════════════════ */
+.kpi-grid { animation: kpiGridIn 0.6s 0.25s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes kpiGridIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.kpi-cell {
+  position: relative;
+  overflow: hidden;
+  animation: kpiCellIn 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+.kpi-cell:nth-child(1) { animation-delay: 0.45s; }
+.kpi-cell:nth-child(2) { animation-delay: 0.55s; }
+.kpi-cell:nth-child(3) { animation-delay: 0.65s; }
+.kpi-cell:nth-child(4) { animation-delay: 0.75s; }
+.kpi-cell:nth-child(5) { animation-delay: 0.85s; }
+.kpi-cell:nth-child(6) { animation-delay: 0.95s; }
+@keyframes kpiCellIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
+}
+
+/* Sheen sweep on hover */
+.kpi-cell::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%);
+  transform: translateX(-110%);
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+[data-theme="night"] .kpi-cell::before,
+[data-theme="dark"] .kpi-cell::before {
+  background: linear-gradient(120deg, transparent 30%, rgba(150,180,255,0.18) 50%, transparent 70%);
+}
+.kpi-cell:hover::before { transform: translateX(110%); }
+
+.kpi-val {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The .kpi-val gets a subtle scale-pop when the JS finishes count-up */
+.kpi-val.is-finished {
+  animation: kpiFinish 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes kpiFinish {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); text-shadow: 0 0 20px var(--accent); }
+  100% { transform: scale(1); text-shadow: none; }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   4 · PANELES — entrada en cascada
+   ═════════════════════════════════════════════════════════════════ */
+.panel { animation: panelIn 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.grid-2 > .panel:nth-child(1) { animation-delay: 0.5s; }
+.grid-2 > .panel:nth-child(2) { animation-delay: 0.6s; }
+main > .panel:last-child { animation-delay: 0.8s; }
+
+/* ═════════════════════════════════════════════════════════════════
+   5 · BARRAS DE ASIGNATURA — fill animado, bouncy, con shimmer
+   ═════════════════════════════════════════════════════════════════ */
+.bar-row {
+  animation: barRowIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+#subject-bars .bar-row:nth-child(1) { animation-delay: 0.7s; }
+#subject-bars .bar-row:nth-child(2) { animation-delay: 0.78s; }
+#subject-bars .bar-row:nth-child(3) { animation-delay: 0.86s; }
+#subject-bars .bar-row:nth-child(4) { animation-delay: 0.94s; }
+#subject-bars .bar-row:nth-child(5) { animation-delay: 1.02s; }
+#subject-bars .bar-row:nth-child(6) { animation-delay: 1.10s; }
+#subject-bars .bar-row:nth-child(7) { animation-delay: 1.18s; }
+#subject-bars .bar-row:nth-child(8) { animation-delay: 1.26s; }
+#subject-bars .bar-row:nth-child(9) { animation-delay: 1.34s; }
+@keyframes barRowIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.bar-row-track { position: relative; overflow: hidden; }
+
+/* Fill grows from 0 with bouncy curve. JS sets --target-width;
+   if absent, the inline width still works as fallback. */
+.bar-row-fill {
+  position: relative;
+  transform-origin: left;
+  /* width is set inline by the page renderer */
+  animation: barFill 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: inherit; /* inherit from .bar-row */
+}
+#subject-bars .bar-row:nth-child(1) .bar-row-fill { animation-delay: 0.85s; }
+#subject-bars .bar-row:nth-child(2) .bar-row-fill { animation-delay: 0.93s; }
+#subject-bars .bar-row:nth-child(3) .bar-row-fill { animation-delay: 1.01s; }
+#subject-bars .bar-row:nth-child(4) .bar-row-fill { animation-delay: 1.09s; }
+#subject-bars .bar-row:nth-child(5) .bar-row-fill { animation-delay: 1.17s; }
+#subject-bars .bar-row:nth-child(6) .bar-row-fill { animation-delay: 1.25s; }
+#subject-bars .bar-row:nth-child(7) .bar-row-fill { animation-delay: 1.33s; }
+#subject-bars .bar-row:nth-child(8) .bar-row-fill { animation-delay: 1.41s; }
+#subject-bars .bar-row:nth-child(9) .bar-row-fill { animation-delay: 1.49s; }
+@keyframes barFill {
+  0%   { transform: scaleX(0); }
+  70%  { transform: scaleX(1.03); }
+  100% { transform: scaleX(1); }
+}
+
+/* Shimmer running inside the filled bar */
+.bar-row-fill::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: barShimmer 2.8s ease-in-out 2s infinite;
+  border-radius: inherit;
+}
+[data-theme="night"] .bar-row-fill::after,
+[data-theme="dark"] .bar-row-fill::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%);
+  mix-blend-mode: overlay;
+}
+@keyframes barShimmer {
+  0%   { transform: translateX(-100%); }
+  60%, 100% { transform: translateX(200%); }
+}
+
+/* Number flash when value lands */
+.bar-row-val { font-variant-numeric: tabular-nums; }
+
+/* ═════════════════════════════════════════════════════════════════
+   6 · ACTIVITY HEATMAP — wave de aparición + ripple en activos
+   ═════════════════════════════════════════════════════════════════ */
+.act-grid { position: relative; }
+
+.act-cell {
+  /* Wave from bottom-right (most recent) to top-left */
+  animation: actCellAppear 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: calc(0.6s + (var(--wave, 0) * 12ms));
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.act-cell:hover { transform: scale(1.3); z-index: 2; }
+@keyframes actCellAppear {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Active days emit a periodic radar ring */
+.act-cell.active {
+  position: relative;
+}
+.act-cell.active::after {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  border: 1.5px solid var(--success);
+  opacity: 0;
+  animation: actRipple 3.2s ease-out infinite;
+  animation-delay: calc(0.6s + (var(--wave, 0) * 12ms) + (var(--ripple-offset, 0) * 220ms));
+  pointer-events: none;
+}
+[data-theme="night"] .act-cell.active::after,
+[data-theme="dark"] .act-cell.active::after {
+  border-color: oklch(0.75 0.18 245);
+}
+@keyframes actRipple {
+  0%   { opacity: 0;   transform: scale(1); }
+  20%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: scale(2.4); }
+}
+
+/* Day-of-today: stronger glow */
+.act-cell.is-today {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 16px var(--accent);
+  animation: actCellAppear 0.6s cubic-bezier(0.16,1,0.3,1) both,
+             todayPulse 2.4s ease-in-out infinite;
+}
+[data-theme="night"] .act-cell.is-today,
+[data-theme="dark"] .act-cell.is-today {
+  box-shadow: 0 0 0 2px oklch(0.75 0.18 245), 0 0 22px oklch(0.65 0.20 245);
+}
+@keyframes todayPulse {
+  0%,100% { filter: brightness(1); }
+  50%     { filter: brightness(1.25); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   7 · TOPIC HEATMAP — bars con shimmer fuego
+   ═════════════════════════════════════════════════════════════════ */
+.topic-item {
+  animation: barRowIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+}
+#topic-heatmap .topic-item:nth-child(1) { animation-delay: 0.75s; }
+#topic-heatmap .topic-item:nth-child(2) { animation-delay: 0.82s; }
+#topic-heatmap .topic-item:nth-child(3) { animation-delay: 0.89s; }
+#topic-heatmap .topic-item:nth-child(4) { animation-delay: 0.96s; }
+#topic-heatmap .topic-item:nth-child(5) { animation-delay: 1.03s; }
+#topic-heatmap .topic-item:nth-child(6) { animation-delay: 1.10s; }
+#topic-heatmap .topic-item:nth-child(7) { animation-delay: 1.17s; }
+#topic-heatmap .topic-item:nth-child(8) { animation-delay: 1.24s; }
+#topic-heatmap .topic-item:nth-child(9) { animation-delay: 1.31s; }
+#topic-heatmap .topic-item:nth-child(10){ animation-delay: 1.38s; }
+
+.topic-track { position: relative; overflow: hidden; }
+.topic-fill {
+  transform-origin: left;
+  animation: barFill 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+  /* fire gradient with subtle flicker */
+}
+#topic-heatmap .topic-item:nth-child(1) .topic-fill { animation-delay: 0.9s; }
+#topic-heatmap .topic-item:nth-child(2) .topic-fill { animation-delay: 0.97s; }
+#topic-heatmap .topic-item:nth-child(3) .topic-fill { animation-delay: 1.04s; }
+#topic-heatmap .topic-item:nth-child(4) .topic-fill { animation-delay: 1.11s; }
+#topic-heatmap .topic-item:nth-child(5) .topic-fill { animation-delay: 1.18s; }
+#topic-heatmap .topic-item:nth-child(6) .topic-fill { animation-delay: 1.25s; }
+#topic-heatmap .topic-item:nth-child(7) .topic-fill { animation-delay: 1.32s; }
+#topic-heatmap .topic-item:nth-child(8) .topic-fill { animation-delay: 1.39s; }
+.topic-fill::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: barShimmer 3.2s ease-in-out 2.2s infinite;
+  border-radius: inherit;
+}
+
+/* Count text flicker */
+.topic-count {
+  font-variant-numeric: tabular-nums;
+}
+.topic-count::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--danger);
+  margin-right: 6px;
+  vertical-align: 1px;
+  animation: dangerBlink 2.2s ease-in-out infinite;
+}
+@keyframes dangerBlink {
+  0%,100% { opacity: 1;   box-shadow: 0 0 0 0 var(--danger); }
+  50%     { opacity: 0.6; box-shadow: 0 0 0 4px transparent; }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   8 · FAIL LIST — slide-in con punch
+   ═════════════════════════════════════════════════════════════════ */
+.fail-item {
+  animation: failSlide 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+#failures-list .fail-item:nth-child(1) { animation-delay: 0.75s; }
+#failures-list .fail-item:nth-child(2) { animation-delay: 0.83s; }
+#failures-list .fail-item:nth-child(3) { animation-delay: 0.91s; }
+#failures-list .fail-item:nth-child(4) { animation-delay: 0.99s; }
+#failures-list .fail-item:nth-child(5) { animation-delay: 1.07s; }
+#failures-list .fail-item:nth-child(6) { animation-delay: 1.15s; }
+#failures-list .fail-item:nth-child(7) { animation-delay: 1.23s; }
+#failures-list .fail-item:nth-child(8) { animation-delay: 1.31s; }
+@keyframes failSlide {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.fail-count {
+  animation: failBadgePunch 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: inherit;
+  position: relative;
+}
+#failures-list .fail-item:nth-child(1) .fail-count { animation-delay: 0.9s; }
+#failures-list .fail-item:nth-child(2) .fail-count { animation-delay: 0.98s; }
+#failures-list .fail-item:nth-child(3) .fail-count { animation-delay: 1.06s; }
+#failures-list .fail-item:nth-child(4) .fail-count { animation-delay: 1.14s; }
+#failures-list .fail-item:nth-child(5) .fail-count { animation-delay: 1.22s; }
+@keyframes failBadgePunch {
+  0%   { transform: scale(0); }
+  60%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   9 · HISTORY ROWS — stagger + hist-dot pop
+   ═════════════════════════════════════════════════════════════════ */
+.hist-item {
+  animation: histIn 0.45s cubic-bezier(0.16,1,0.3,1) both;
+}
+#history-list .hist-item:nth-child(1)  { animation-delay: 0.9s; }
+#history-list .hist-item:nth-child(2)  { animation-delay: 0.96s; }
+#history-list .hist-item:nth-child(3)  { animation-delay: 1.02s; }
+#history-list .hist-item:nth-child(4)  { animation-delay: 1.08s; }
+#history-list .hist-item:nth-child(5)  { animation-delay: 1.14s; }
+#history-list .hist-item:nth-child(6)  { animation-delay: 1.20s; }
+#history-list .hist-item:nth-child(7)  { animation-delay: 1.26s; }
+#history-list .hist-item:nth-child(8)  { animation-delay: 1.32s; }
+#history-list .hist-item:nth-child(9)  { animation-delay: 1.38s; }
+#history-list .hist-item:nth-child(10) { animation-delay: 1.44s; }
+@keyframes histIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hist-dot { animation: histDotPop 0.5s cubic-bezier(0.16,1,0.3,1) both; animation-delay: inherit; }
+#history-list .hist-item:nth-child(1)  .hist-dot { animation-delay: 1.0s;  }
+#history-list .hist-item:nth-child(2)  .hist-dot { animation-delay: 1.06s; }
+#history-list .hist-item:nth-child(3)  .hist-dot { animation-delay: 1.12s; }
+#history-list .hist-item:nth-child(4)  .hist-dot { animation-delay: 1.18s; }
+#history-list .hist-item:nth-child(5)  .hist-dot { animation-delay: 1.24s; }
+@keyframes histDotPop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.18); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   10 · QUIZ DOT GRID — materialización del cuadrado al cargar
+   Aplicado a .dot-grid .dot que ya existe en quiz.css.
+   stats-animate.js asigna --i con un orden random.
+   ═════════════════════════════════════════════════════════════════ */
+
+@keyframes dotMaterialize {
+  0%   { opacity: 0; transform: scale(0.2) rotate(-12deg); filter: blur(4px); }
+  60%  { transform: scale(1.12) rotate(2deg); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.dot-grid .dot {
+  animation: dotMaterialize 0.55s cubic-bezier(0.16,1,0.3,1) both;
+  /* --i lo coloca el JS para orden random; fallback a nth-child stagger */
+  animation-delay: calc(var(--i, 0) * 28ms);
+}
+
+/* Fallback stagger for the first 40 dots without JS */
+.dot-grid .dot:nth-child(1)  { --i: 17; }
+.dot-grid .dot:nth-child(2)  { --i: 3;  }
+.dot-grid .dot:nth-child(3)  { --i: 28; }
+.dot-grid .dot:nth-child(4)  { --i: 11; }
+.dot-grid .dot:nth-child(5)  { --i: 35; }
+.dot-grid .dot:nth-child(6)  { --i: 7;  }
+.dot-grid .dot:nth-child(7)  { --i: 22; }
+.dot-grid .dot:nth-child(8)  { --i: 1;  }
+.dot-grid .dot:nth-child(9)  { --i: 31; }
+.dot-grid .dot:nth-child(10) { --i: 14; }
+.dot-grid .dot:nth-child(11) { --i: 19; }
+.dot-grid .dot:nth-child(12) { --i: 9;  }
+.dot-grid .dot:nth-child(13) { --i: 26; }
+.dot-grid .dot:nth-child(14) { --i: 4;  }
+.dot-grid .dot:nth-child(15) { --i: 37; }
+.dot-grid .dot:nth-child(16) { --i: 12; }
+.dot-grid .dot:nth-child(17) { --i: 24; }
+.dot-grid .dot:nth-child(18) { --i: 33; }
+.dot-grid .dot:nth-child(19) { --i: 2;  }
+.dot-grid .dot:nth-child(20) { --i: 16; }
+.dot-grid .dot:nth-child(21) { --i: 38; }
+.dot-grid .dot:nth-child(22) { --i: 6;  }
+.dot-grid .dot:nth-child(23) { --i: 29; }
+.dot-grid .dot:nth-child(24) { --i: 18; }
+.dot-grid .dot:nth-child(25) { --i: 0;  }
+.dot-grid .dot:nth-child(26) { --i: 21; }
+.dot-grid .dot:nth-child(27) { --i: 39; }
+.dot-grid .dot:nth-child(28) { --i: 8;  }
+.dot-grid .dot:nth-child(29) { --i: 27; }
+.dot-grid .dot:nth-child(30) { --i: 13; }
+.dot-grid .dot:nth-child(31) { --i: 30; }
+.dot-grid .dot:nth-child(32) { --i: 5;  }
+.dot-grid .dot:nth-child(33) { --i: 36; }
+.dot-grid .dot:nth-child(34) { --i: 15; }
+.dot-grid .dot:nth-child(35) { --i: 25; }
+.dot-grid .dot:nth-child(36) { --i: 32; }
+.dot-grid .dot:nth-child(37) { --i: 10; }
+.dot-grid .dot:nth-child(38) { --i: 34; }
+.dot-grid .dot:nth-child(39) { --i: 20; }
+.dot-grid .dot:nth-child(40) { --i: 23; }
+
+/* The current/active dot pulses a glow */
+.dot-grid .dot.active {
+  animation: dotMaterialize 0.55s cubic-bezier(0.16,1,0.3,1) both,
+             dotActivePulse 1.8s ease-in-out infinite;
+}
+@keyframes dotActivePulse {
+  0%, 100% { box-shadow: 0 0 0 0   color-mix(in oklch, var(--ink) 50%, transparent), 0 0 16px transparent; }
+  50%      { box-shadow: 0 0 0 4px color-mix(in oklch, var(--ink) 0%, transparent),  0 0 22px color-mix(in oklch, var(--ink) 30%, transparent); }
+}
+[data-theme="night"] .dot-grid .dot.active,
+[data-theme="dark"] .dot-grid .dot.active {
+  animation: dotMaterialize 0.55s cubic-bezier(0.16,1,0.3,1) both,
+             dotActivePulseNight 1.8s ease-in-out infinite;
+}
+@keyframes dotActivePulseNight {
+  0%, 100% { box-shadow: 0 0 16px oklch(0.65 0.20 245 / 0.4); }
+  50%      { box-shadow: 0 0 28px oklch(0.65 0.20 245 / 0.9), 0 0 0 4px oklch(0.65 0.20 245 / 0.25); }
+}
+
+/* Smooth color transitions when dots change state during quiz */
+.dot-grid .dot {
+  transition:
+    background 0.4s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.4s ease,
+    color 0.3s ease,
+    transform 0.25s cubic-bezier(0.16,1,0.3,1),
+    box-shadow 0.3s ease;
+}
+
+/* Correct/incorrect dot — small celebration / shake */
+.dot-grid .dot.correct-dot:not(.was-correct) {
+  animation: dotCorrectPop 0.55s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes dotCorrectPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.28); box-shadow: 0 0 22px var(--success); }
+  100% { transform: scale(1); }
+}
+.dot-grid .dot.incorrect-dot:not(.was-incorrect) {
+  animation: dotWrongShake 0.45s ease-in-out;
+}
+@keyframes dotWrongShake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-3px); }
+  40%      { transform: translateX(3px); }
+  60%      { transform: translateX(-2px); }
+  80%      { transform: translateX(2px); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   11 · QUESTION CARD — entrada y transición entre preguntas
+   ═════════════════════════════════════════════════════════════════ */
+.q-card {
+  animation: qCardIn 0.7s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.8s; /* después de los dots */
+}
+@keyframes qCardIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
+}
+
+.q-text {
+  animation: qTextReveal 0.6s 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes qTextReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#options-area .option {
+  animation: optIn 0.45s cubic-bezier(0.16,1,0.3,1) both;
+}
+#options-area .option:nth-child(1) { animation-delay: 1.15s; }
+#options-area .option:nth-child(2) { animation-delay: 1.22s; }
+#options-area .option:nth-child(3) { animation-delay: 1.29s; }
+#options-area .option:nth-child(4) { animation-delay: 1.36s; }
+@keyframes optIn {
+  from { opacity: 0; transform: translateY(8px) translateX(-6px); }
+  to   { opacity: 1; transform: translateY(0)   translateX(0); }
+}
+
+/* Option click ripple */
+.option { position: relative; overflow: hidden; }
+.option::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0; border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+.option:active::after {
+  width: 200%; height: 200%; opacity: 0.08;
+  transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0s;
+}
+
+/* Selected option — a thin glowing border that pulses once */
+.option.selected {
+  animation: optSelectPulse 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes optSelectPulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent) 40%, transparent); }
+  60%  { box-shadow: 0 0 0 8px color-mix(in oklch, var(--accent) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* Correct option — green sweep */
+.option.correct {
+  animation: optCorrect 0.7s cubic-bezier(0.16,1,0.3,1);
+  position: relative;
+}
+@keyframes optCorrect {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.02); box-shadow: 0 0 26px var(--success); }
+  100% { transform: scale(1); }
+}
+
+/* Wrong option — shake */
+.option.incorrect {
+  animation: optWrong 0.5s ease-in-out;
+}
+@keyframes optWrong {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   12 · TIMER — pulse en el dot, glow al cambiar a low
+   ═════════════════════════════════════════════════════════════════ */
+.timer-low {
+  animation: timerLowGlow 1.5s ease-in-out infinite alternate !important;
+}
+@keyframes timerLowGlow {
+  from { box-shadow: 0 0 0 0 transparent; }
+  to   { box-shadow: 0 0 0 4px color-mix(in oklch, var(--danger) 30%, transparent); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   13 · RESULTS — score-badge dramatic entrance
+   ═════════════════════════════════════════════════════════════════ */
+#results .score-badge {
+  animation: scoreReveal 1.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+@keyframes scoreReveal {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-8deg); filter: blur(16px); }
+  60%  { transform: scale(1.08) rotate(2deg); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* ═════════════════════════════════════════════════════════════════
+   14 · HOME — module cards stagger
+   ═════════════════════════════════════════════════════════════════ */
+.grid-subjects .subject-card,
+.grid-subjects .module-card {
+  animation: cardIn 0.55s cubic-bezier(0.16,1,0.3,1) both;
+}
+.grid-subjects > *:nth-child(1) { animation-delay: 0.10s; }
+.grid-subjects > *:nth-child(2) { animation-delay: 0.16s; }
+.grid-subjects > *:nth-child(3) { animation-delay: 0.22s; }
+.grid-subjects > *:nth-child(4) { animation-delay: 0.28s; }
+.grid-subjects > *:nth-child(5) { animation-delay: 0.34s; }
+.grid-subjects > *:nth-child(6) { animation-delay: 0.40s; }
+.grid-subjects > *:nth-child(7) { animation-delay: 0.46s; }
+.grid-subjects > *:nth-child(8) { animation-delay: 0.52s; }
+.grid-subjects > *:nth-child(9) { animation-delay: 0.58s; }
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
