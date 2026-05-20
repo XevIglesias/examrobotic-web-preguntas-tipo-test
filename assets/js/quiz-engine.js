@@ -124,7 +124,7 @@ function showNoErrorsModal() {
             .setup-qs-row::-webkit-scrollbar { display: none; }
             .setup-qs-btn {
                 min-width: 3.5rem; height: 3.5rem; border-radius: 1rem;
-                background: white; border: 1px solid #e2e8f0; color: #64748b;
+                background: var(--surface); border: 1px solid var(--line); color: var(--muted);
                 font-weight: 700; cursor: pointer; transition: all 0.2s;
                 flex-shrink: 0; display: flex; align-items: center; justify-content: center;
                 font-size: 1rem;
@@ -135,7 +135,7 @@ function showNoErrorsModal() {
             }
             #no-errors-modal {
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+                background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px);
                 z-index: 99999; display: flex; align-items: center; justify-content: center;
                 padding: 1.5rem;
             }
@@ -179,17 +179,16 @@ function injectSelectorUI() {
             <style>
                 .no-scrollbar::-webkit-scrollbar { height: 4px; }
                 .no-scrollbar::-webkit-scrollbar-track { background: transparent; }
-                .no-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+                .no-scrollbar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
                 .qs-btn { flex-shrink: 0; min-width: 3.5rem; }
-            </style>
                 .qs-btn {
                     padding: 2px 8px; font-size: 11px; font-weight: 800; border-radius: 5px;
-                    color: #64748b; transition: all 0.2s;
+                    color: var(--muted); transition: all 0.2s;
                 }
-                .qs-btn:hover { background: rgba(255,255,255,0.8); color: #3b82f6; }
-                .qs-btn.active { background: white; color: #3b82f6; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-                #topic-select { outline: none; border-color: #e2e8f0; cursor: pointer; }
-                #topic-select:focus { border-color: #3b82f6; }
+                .qs-btn:hover { background: var(--surface); color: var(--accent); }
+                .qs-btn.active { background: var(--surface); color: var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+                #topic-select { outline: none; border-color: var(--line); cursor: pointer; background: var(--surface); color: var(--ink); }
+                #topic-select:focus { border-color: var(--accent); }
             </style>
         `;
         timerArea.appendChild(sel);

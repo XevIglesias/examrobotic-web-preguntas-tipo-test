@@ -146,7 +146,7 @@ function showNoErrorsModal() {
         <style>
             #no-errors-modal {
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+                background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px);
                 z-index: 99999; display: flex; align-items: center; justify-content: center;
                 padding: 1.5rem;
             }
@@ -227,8 +227,8 @@ function showSetupScreen() {
                     <div class="correction-content">
                         <span style="font-size:1.5rem;line-height:1;">⚡</span>
                         <div style="flex:1;">
-                            <div style="font-weight:800;color:#0f172a;font-size:0.95rem;">Corrección Instantánea</div>
-                            <div style="font-size:0.78rem;color:#64748b;margin-top:2px;">Comprueba cada respuesta antes de continuar</div>
+                            <div style="font-weight:800;color:var(--ink);font-size:0.95rem;">Corrección Instantánea</div>
+                            <div style="font-size:0.78rem;color:var(--muted);margin-top:2px;">Comprueba cada respuesta antes de continuar</div>
                         </div>
                         <div class="correction-check">✓</div>
                     </div>
@@ -242,133 +242,106 @@ function showSetupScreen() {
         <style>
             #setup-screen {
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+                background: rgba(0,0,0,0.65); backdrop-filter: blur(10px);
                 z-index: 99999; display: flex; align-items: center; justify-content: center;
                 padding: 1rem;
             }
             .setup-modal {
-                background: white; width: 100%; max-width: 600px; border-radius: 2rem;
-                padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+                background: var(--surface); border: 1px solid var(--line);
+                width: 100%; max-width: 600px; border-radius: 2rem;
+                padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
                 animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                position: relative; /* Fixed anchor for close button */
+                position: relative;
             }
             @keyframes modalIn { from { opacity: 0; transform: scale(0.9) translateY(20px); } }
             .close-setup {
                 position: absolute; top: 1.25rem; right: 1.25rem;
-                background: #f1f5f9; border: none; width: 2.2rem; height: 2.2rem;
-                border-radius: 50%; color: #64748b; font-size: 1rem; cursor: pointer;
+                background: var(--bg); border: 1px solid var(--line); width: 2.2rem; height: 2.2rem;
+                border-radius: 50%; color: var(--muted); font-size: 1rem; cursor: pointer;
                 display: flex; align-items: center; justify-content: center;
                 transition: all 0.2s; z-index: 10;
             }
-            .setup-qs-row { 
-                display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.5rem 0.25rem;
-                scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;
-            }
-            .setup-qs-row::-webkit-scrollbar { height: 6px; }
-            .setup-qs-row::-webkit-scrollbar-track { background: transparent; }
-            .setup-qs-row::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-            .setup-qs-row::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-            .setup-qs-btn {
-                min-width: 3.5rem; height: 3.5rem; border-radius: 1rem;
-                background: white; border: 1px solid #e2e8f0; color: #64748b;
-                font-weight: 700; cursor: pointer; transition: all 0.2s;
-                flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-                font-size: 1rem;
-            }
-            .close-setup:hover { background: #e2e8f0; color: #0f172a; transform: rotate(90deg); }
-            .setup-header h2 { font-size: 1.75rem; color: #0f172a; margin-bottom: 0.5rem; font-weight: 800; }
-            .setup-header p { color: #64748b; font-size: 0.95rem; margin-bottom: 2rem; }
+            .close-setup:hover { background: var(--line); color: var(--ink); transform: rotate(90deg); }
+            .setup-header h2 { font-size: 1.75rem; color: var(--ink); margin-bottom: 0.5rem; font-weight: 800; }
+            .setup-header p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
             .setup-section { margin-bottom: 2rem; }
-            .setup-section-title { 
-                font-size: 0.8rem; font-weight: 800; text-transform: uppercase; 
-                color: #3b82f6; letter-spacing: 0.05em; margin-bottom: 1rem;
+            .setup-section-title {
+                font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+                color: var(--accent); letter-spacing: 0.05em; margin-bottom: 1rem;
                 display: flex; gap: 1rem; align-items: center;
             }
-            .text-btn { background: none; border: none; color: #64748b; font-size: 0.75rem; font-weight: 700; cursor: pointer; text-decoration: underline; }
-            .setup-topics-grid { 
-                display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; 
+            .text-btn { background: none; border: none; color: var(--muted); font-size: 0.75rem; font-weight: 700; cursor: pointer; text-decoration: underline; }
+            .setup-topics-grid {
+                display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
                 max-height: 200px; overflow-y: auto; padding-right: 0.5rem;
-                scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent;
+                scrollbar-width: thin; scrollbar-color: var(--line) transparent;
             }
             .setup-topics-grid::-webkit-scrollbar { width: 6px; }
             .setup-topics-grid::-webkit-scrollbar-track { background: transparent; }
-            .setup-topics-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-            .setup-topics-grid::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+            .setup-topics-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
+            .setup-topics-grid::-webkit-scrollbar-thumb:hover { background: var(--muted); }
             .setup-topic-item {
                 display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem;
-                background: #f8fafc; border-radius: 1rem; cursor: pointer;
-                font-size: 0.85rem; color: #334155; font-weight: 600; border: 1.5px solid transparent;
+                background: var(--bg); border-radius: 1rem; cursor: pointer;
+                font-size: 0.85rem; color: var(--ink); font-weight: 600; border: 1.5px solid transparent;
                 transition: all 0.2s;
             }
-            .setup-topic-item:hover { background: #f1f5f9; border-color: #cbd5e1; }
-            .setup-qs-row { display: flex; gap: 1rem; }
-            .setup-qs-btn {
-                flex: 1; padding: 1rem; border-radius: 1rem; border: 1.5px solid #e2e8f0;
-                background: white; font-weight: 800; color: #64748b; cursor: pointer; transition: all 0.2s;
+            .setup-topic-item:hover { border-color: var(--line); }
+            .setup-qs-row {
+                display: flex; gap: 0.75rem; overflow-x: auto; padding: 0.5rem 0.25rem;
+                scrollbar-width: thin; scrollbar-color: var(--line) transparent;
             }
-            .setup-qs-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; transform: translateY(-2px); }
+            .setup-qs-row::-webkit-scrollbar { height: 6px; }
+            .setup-qs-row::-webkit-scrollbar-track { background: transparent; }
+            .setup-qs-row::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
+            .setup-qs-row::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+            .setup-qs-btn {
+                flex: 1; min-width: 3.5rem; height: 3.5rem; border-radius: 1rem;
+                border: 1.5px solid var(--line); background: var(--bg);
+                font-weight: 800; color: var(--muted); cursor: pointer; transition: all 0.2s;
+                display: flex; align-items: center; justify-content: center; font-size: 1rem;
+                flex-shrink: 0;
+            }
+            .setup-qs-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); transform: translateY(-2px); }
             .official-exam {
-                border: 2px solid #3b82f6 !important;
-                background: linear-gradient(135deg, #ffffff, #eff6ff) !important;
-                color: #1e40af !important;
+                border: 2px solid var(--accent) !important;
+                background: var(--accent-bg, var(--bg)) !important;
+                color: var(--accent) !important;
                 position: relative;
-                box-shadow: 0 4px 12px rgba(59,130,246,0.1);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             }
             .official-exam::after {
                 content: "OFICIAL";
                 position: absolute; top: -1px; right: -1px;
-                background: #3b82f6; color: white; font-size: 0.5rem;
+                background: var(--accent); color: #fff; font-size: 0.5rem;
                 padding: 1px 5px; border-radius: 0 0.8rem 0 0.8rem; font-weight: 900;
             }
             .official-exam.active {
-                background: linear-gradient(135deg, #3b82f6, #1e40af) !important;
-                color: white !important;
+                background: var(--accent) !important;
+                color: #fff !important;
             }
             .start-btn {
                 width: 100%; padding: 1.25rem; border-radius: 1.25rem; border: none;
-                background: linear-gradient(135deg, #3b82f6, #2563eb); color: white;
+                background: var(--accent); color: #fff;
                 font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: all 0.3s;
-                box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+                box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
             }
-            .start-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.5); }
+            .start-btn:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.25); }
             .setup-correction-item {
                 display: flex; align-items: center; padding: 1rem 1.25rem;
-                background: #f8fafc; border-radius: 1rem; cursor: pointer;
-                border: 1.5px solid #e2e8f0; transition: all 0.2s; width: 100%;
+                background: var(--bg); border-radius: 1rem; cursor: pointer;
+                border: 1.5px solid var(--line); transition: all 0.2s; width: 100%;
             }
             .setup-correction-item input[type="checkbox"] { display: none; }
             .correction-content { display: flex; align-items: center; gap: 1rem; flex: 1; }
             .correction-check {
-                width: 24px; height: 24px; border-radius: 50%; border: 2px solid #cbd5e1;
+                width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--line);
                 display: flex; align-items: center; justify-content: center;
-                font-size: 0.7rem; color: transparent; background: white; transition: all 0.2s;
+                font-size: 0.7rem; color: transparent; background: var(--surface); transition: all 0.2s;
                 flex-shrink: 0;
             }
-            .setup-correction-item.active { border-color: #3b82f6; background: #eff6ff; }
-            .setup-correction-item.active .correction-check { background: #3b82f6; border-color: #3b82f6; color: white; }
-            
-            /* Dark Mode Overrides for Setup Modal */
-            [data-theme="dark"] .setup-modal { background: linear-gradient(135deg, #0f172a, #1e293b); box-shadow: 0 0 0 1px #334155, 0 25px 50px -12px rgba(0,0,0,0.8); }
-            [data-theme="dark"] .setup-header h2 { color: #e2e8f0; }
-            [data-theme="dark"] .setup-header p { color: #94a3b8; }
-            [data-theme="dark"] .close-setup { background: #1e293b; color: #e2e8f0; }
-            [data-theme="dark"] .close-setup:hover { background: #334155; color: white; }
-            [data-theme="dark"] .setup-topic-item { background: #1e293b; border-color: transparent; }
-            [data-theme="dark"] .setup-topic-item:hover { background: #334155; border-color: #475569; }
-            [data-theme="dark"] .setup-topic-item span { color: #e2e8f0; }
-            [data-theme="dark"] .setup-qs-btn { background: #1e293b; color: #94a3b8; border-color: #334155; }
-            [data-theme="dark"] .setup-qs-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
-            [data-theme="dark"] .setup-correction-item { background: #1e293b; border-color: #334155; }
-            [data-theme="dark"] .setup-correction-item.active { background: #1e3a8a; border-color: #3b82f6; }
-            [data-theme="dark"] .correction-content div[style*="color:#0f172a"] { color: #e2e8f0 !important; }
-            [data-theme="dark"] .correction-content div[style*="color:#64748b"] { color: #94a3b8 !important; }
-            [data-theme="dark"] .official-exam { background: linear-gradient(135deg, #1e293b, #1e3a8a) !important; color: #93c5fd !important; border-color: #3b82f6 !important; }
-            [data-theme="dark"] .official-exam.active { background: linear-gradient(135deg, #3b82f6, #1e40af) !important; color: white !important; }
-            [data-theme="dark"] .setup-qs-row::-webkit-scrollbar-thumb { background: #475569; }
-            [data-theme="dark"] .setup-topics-grid::-webkit-scrollbar-thumb { background: #475569; }
-            [data-theme="dark"] .correction-check { background: #0f172a; border-color: #475569; }
-            [data-theme="dark"] .setup-section-title { color: #60a5fa; }
-            [data-theme="dark"] .text-btn { color: #94a3b8; }
+            .setup-correction-item.active { border-color: var(--accent); background: var(--accent-bg, var(--bg)); }
+            .setup-correction-item.active .correction-check { background: var(--accent); border-color: var(--accent); color: #fff; }
         </style>
     `;
     updateSetupCounts();
@@ -502,16 +475,12 @@ function updateTimeUI() {
     
     const timerBox = document.getElementById('timer');
     if (timerBox) {
-        timerBox.style.background = '#0f172a';
-        timerBox.style.color = '#fff';
-        timerBox.style.padding = '8px 15px';
-        timerBox.style.borderRadius = '10px';
-        timerBox.style.fontWeight = '800';
-        timerBox.style.fontSize = '1.2rem';
-        timerBox.style.display = 'flex';
-        timerBox.style.alignItems = 'center';
-        timerBox.style.gap = '8px';
-        timerBox.innerHTML = `<span>⏳</span> <span id="time-val">${str}</span>`;
+        // Let quiz.css .timer-box handle appearance; just update the content
+        if (!timerBox.querySelector('#time-val')) {
+            timerBox.innerHTML = `<span>⏱</span><span id="time-val">${str}</span>`;
+        } else {
+            timerBox.querySelector('#time-val').textContent = str;
+        }
     }
 }
 
@@ -542,7 +511,7 @@ function showQ() {
         }
 
         area.innerHTML += `<div class="${cls}" onclick="pick(${i})" role="button" aria-pressed="${userAns[current] === i}" style="display:flex; align-items:center; gap:1rem;">
-            <span class="letter" style="background: #f1f5f9; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; color: #64748b; font-size: 0.8rem;">${String.fromCharCode(65 + i)}</span>
+            <span class="letter" style="background: var(--bg); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; color: var(--muted); font-size: 0.8rem;">${String.fromCharCode(65 + i)}</span>
             <div class="opt-text" style="flex:1;">${escHtml(opt)}</div> ${icon}
         </div>`;
     });
