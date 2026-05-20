@@ -419,19 +419,19 @@
 
 <script>
 // ── FULL FILE MANIFEST ── (idéntico al original)
-// Solo preguntas oficiales del examen real (ex.js + simulacro.js).
-// En algunos módulos ambos ficheros son idénticos; el filtro de dedup
-// de launchTest() elimina automáticamente los duplicados.
+// Solo preguntas del simulacro oficial.
+// simulacro.js = temas + "Examen Oficial" (sección final de 40 Qs).
+// ex.js contiene únicamente los temas sin el examen oficial → se excluye.
 const SUBJECT_FILES = {
-    ip:    ['ex', 'simulacro'],  // 60 + 100 preguntas (distintos)
-    sdmyr: ['ex', 'simulacro'],  // 80 + 80 (idénticos → 80 únicos)
-    dt:    ['ex', 'simulacro'],  // 60 + 60 (idénticos → 60 únicos)
-    ii:    ['ex', 'simulacro'],  // 70 + 70 (idénticos → 70 únicos)
-    seneh: ['ex', 'simulacro'],  // 130 + 170 (distintos)
-    iplei: ['ex', 'simulacro'],  // 50 + 50 (idénticos → 50 únicos)
-    ssp:   ['ex', 'simulacro'],  // 90 + 90 (idénticos → 90 únicos)
-    sdp:   ['ex', 'simulacro'],  // 70 + 70 (idénticos → 70 únicos)
-    adiple:['ex', 'simulacro'],  // 60 + 60 (idénticos → 60 únicos)
+    ip:    ['simulacro'],  // 100 Qs (6 temas + Examen Oficial)
+    sdmyr: ['simulacro'],  // 80 Qs
+    dt:    ['simulacro'],  // 60 Qs
+    ii:    ['simulacro'],  // 70 Qs
+    seneh: ['simulacro'],  // 170 Qs (13 temas + Examen Oficial)
+    iplei: ['simulacro'],  // 50 Qs
+    ssp:   ['simulacro'],  // 90 Qs
+    sdp:   ['simulacro'],  // 70 Qs
+    adiple:['simulacro'],  // 60 Qs
 };
 
 const SUBJECTS = [
