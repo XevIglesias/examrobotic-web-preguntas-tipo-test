@@ -419,18 +419,19 @@
 
 <script>
 // ── FULL FILE MANIFEST ── (idéntico al original)
-// Solo preguntas de los temas — ex.js y simulacro.js son las del
-// examen real simulacro y se excluyen del Test Libre intencionalmente.
+// Solo preguntas oficiales del examen real (ex.js + simulacro.js).
+// En algunos módulos ambos ficheros son idénticos; el filtro de dedup
+// de launchTest() elimina automáticamente los duplicados.
 const SUBJECT_FILES = {
-    ip:    ['t1','t2','t3','t4','t5','t6','vo'],
-    sdmyr: ['t1','t2','t3','t4','t5','t6','t7','t8'],
-    dt:    ['t1','t2','t3','t4','t5','t6'],
-    ii:    ['t1','t2','t3','t4','t5','t6','t7'],
-    seneh: ['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13'],
-    iplei: ['t1','t2','t3','t4','t5','t6','t7','t8','t9'],
-    ssp:   ['t1','t2','t3','t4','t5','t6','t7','t8','t9'],
-    sdp:   ['t1','t2','t3','t4','t5','t6','t7'],
-    adiple:['t1','t2','t3','t4','t5','t6'],
+    ip:    ['ex', 'simulacro'],  // 60 + 100 preguntas (distintos)
+    sdmyr: ['ex', 'simulacro'],  // 80 + 80 (idénticos → 80 únicos)
+    dt:    ['ex', 'simulacro'],  // 60 + 60 (idénticos → 60 únicos)
+    ii:    ['ex', 'simulacro'],  // 70 + 70 (idénticos → 70 únicos)
+    seneh: ['ex', 'simulacro'],  // 130 + 170 (distintos)
+    iplei: ['ex', 'simulacro'],  // 50 + 50 (idénticos → 50 únicos)
+    ssp:   ['ex', 'simulacro'],  // 90 + 90 (idénticos → 90 únicos)
+    sdp:   ['ex', 'simulacro'],  // 70 + 70 (idénticos → 70 únicos)
+    adiple:['ex', 'simulacro'],  // 60 + 60 (idénticos → 60 únicos)
 };
 
 const SUBJECTS = [
