@@ -475,9 +475,11 @@ function updateTimeUI() {
     
     const timerBox = document.getElementById('timer');
     if (timerBox) {
-        // Let quiz.css .timer-box handle appearance; just update the content
-        if (!timerBox.querySelector('#time-val')) {
-            timerBox.innerHTML = `<span>⏱</span><span id="time-val">${str}</span>`;
+        // Primera llamada: limpiar cualquier contenido anterior (emojis, etc.)
+        // y establecer la estructura que espera quiz.css: span vacío (dot) + span tiempo
+        if (!timerBox.dataset.ready) {
+            timerBox.innerHTML = `<span></span><span id="time-val">${str}</span>`;
+            timerBox.dataset.ready = '1';
         } else {
             timerBox.querySelector('#time-val').textContent = str;
         }
