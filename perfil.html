@@ -22,6 +22,19 @@
         .badge-type   { background:#eff6ff; color:#3b82f6; font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:99px; }
         .streak-flame { font-size:2.5rem; line-height:1; }
         @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── DARK MODE ── */
+        [data-theme="dark"] body { background: linear-gradient(135deg, #0f172a, #1e293b) fixed !important; }
+        [data-theme="dark"] .stat-card { background: #1e293b; border-color: #334155; }
+        [data-theme="dark"] .bar-track { background: #0f172a; }
+        [data-theme="dark"] .badge-apto   { background: #064e3b; color: #6ee7b7; }
+        [data-theme="dark"] .badge-noapto { background: #450a0a; color: #fca5a5; }
+        [data-theme="dark"] .badge-type   { background: #1e3a8a; color: #93c5fd; }
+        [data-theme="dark"] .bg-white { background: #1e293b !important; }
+        [data-theme="dark"] .border-border { border-color: #334155 !important; }
+        [data-theme="dark"] .border-gray-100 { border-color: #334155 !important; }
+        [data-theme="dark"] #stat-avg { color: inherit; }
+        [data-theme="dark"] .activity-cell-empty { background: #1e293b !important; }
     </style>
 <script src="assets/js/theme.js"></script>
 </head>
@@ -47,7 +60,7 @@
         <div id="state-content">
 
             <div class="flex items-center gap-4 mb-8">
-                <div class="w-16 h-16 rounded-full bg-blue-100 border-2 border-primary flex items-center justify-center shrink-0" style="font-size:2rem">🤖</div>
+                <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shrink-0" style="font-size:1.3rem;font-weight:900;color:white;letter-spacing:-1px;font-family:'Inter',sans-serif">ER</div>
                 <div>
                     <h1 class="text-2xl font-extrabold">Mi Progreso</h1>
                     <p class="text-muted text-sm font-semibold">Grado Superior · Robótica y Automatización Industrial</p>
@@ -186,7 +199,9 @@
             const key = d.toLocaleDateString('en-CA');
             const el = document.createElement('div');
             el.title = key;
-            el.style.cssText = `width:12px;height:12px;border-radius:3px;background:${activeDays.has(key) ? '#22c55e' : '#f1f5f9'}`;
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            el.className = activeDays.has(key) ? '' : 'activity-cell-empty';
+            el.style.cssText = `width:12px;height:12px;border-radius:3px;background:${activeDays.has(key) ? '#22c55e' : (isDark ? '#1e293b' : '#f1f5f9')}transition:background 0.3s`;
             grid.appendChild(el);
         }
     }
