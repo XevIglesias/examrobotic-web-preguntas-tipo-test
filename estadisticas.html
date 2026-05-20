@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/api.js"></script>
     <script src="assets/js/user-stats.js"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -255,6 +256,11 @@
             </div>
         </div>
         <div class="header-actions">
+            <span id="sync-status" style="font-size:0.7rem;color:var(--muted);transition:color 0.3s"></span>
+            <button class="icon-btn" onclick="exportData()" title="Exportar datos">📤</button>
+            <label class="icon-btn" title="Importar datos" style="cursor:pointer">
+                📥<input type="file" accept=".json" onchange="importData(event)" style="display:none">
+            </label>
             <button class="icon-btn" onclick="toggleTheme()" title="Cambiar tema" id="theme-btn">
                 <script>document.write(document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙');</script>
             </button>
@@ -514,7 +520,67 @@ function confirmClear() {
     render();
 }
 
+function exportData() {
+    const blob = new Blob([JSON.stringify(UserStats.data, null, 2)], { type: 'application/json' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = 'examrobotic-backup-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const imported = JSON.parse(e.target.result);
+            if (!imported.history || !imported.subjects) {
+                alert('Archivo no válido. Asegúrate de que es un backup de ExamRobotic.');
+                return;
+            }
+            if (!confirm('¿Importar los datos? Se combinarán con los actuales.')) return;
+            // Merge histories de-duplicating by date+subject+score
+            const existing = UserStats.data.history || [];
+            const incoming = imported.history || [];
+            const merged = [...existing];
+            incoming.forEach(ih => {
+                const dup = existing.some(eh => eh.date === ih.date && eh.subject === ih.subject && eh.score === ih.score);
+                if (!dup) merged.push(ih);
+            });
+            merged.sort((a, b) => a.date - b.date);
+            // Merge subjects (keep higher scores)
+            const subjects = { ...imported.subjects };
+            Object.entries(UserStats.data.subjects || {}).forEach(([k, v]) => {
+                if (!subjects[k] || (v.scores||[]).length > (subjects[k].scores||[]).length) subjects[k] = v;
+            });
+            // Merge failures (accumulate counts)
+            const failures = JSON.parse(JSON.stringify(imported.failures || {}));
+            Object.entries(UserStats.data.failures || {}).forEach(([subj, qs]) => {
+                if (!failures[subj]) failures[subj] = {};
+                Object.entries(qs).forEach(([qid, f]) => {
+                    if (!failures[subj][qid]) failures[subj][qid] = f;
+                    else failures[subj][qid].count = Math.max(failures[subj][qid].count, f.count);
+                });
+            });
+            UserStats.data = { subjects, failures, history: merged.slice(-100) };
+            UserStats.save();
+            render();
+            alert('✅ Datos importados correctamente.');
+        } catch {
+            alert('Error al leer el archivo. Asegúrate de que es un JSON válido.');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
+
 render();
+
+// Intentar recuperar datos de la nube al cargar (si hay sesión activa)
+UserStats.syncFromCloud().then(loaded => { if (loaded) render(); });
 </script>
 <script src="assets/js/analytics.js"></script>
 </body>

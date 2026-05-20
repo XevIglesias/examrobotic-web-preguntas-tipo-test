@@ -24,6 +24,28 @@ async function saveAttempt(subjectSlug, examType, score, rawScore, timeSpentSec,
   }
 }
 
+async function saveStats(statsData) {
+  if (!apiToken()) return false;
+  try {
+    const r = await fetch(API + '/stats', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiToken() },
+      body: JSON.stringify({ stats: statsData })
+    });
+    return r.ok;
+  } catch { return false; }
+}
+
+async function loadStats() {
+  if (!apiToken()) return null;
+  try {
+    const r = await fetch(API + '/stats', { headers: { 'Authorization': 'Bearer ' + apiToken() } });
+    if (!r.ok) return null;
+    const data = await r.json();
+    return data.stats || null;
+  } catch { return null; }
+}
+
 async function login(email, password) {
   const data = await apiPost('/auth/login', { email, password });
   if (data.token) { localStorage.setItem('token', data.token); localStorage.setItem('user', JSON.stringify(data.user)); }
