@@ -337,15 +337,13 @@
 
 <main class="page">
 
-    <div id="sync-card" style="margin-bottom:20px;"></div>
-
     <div class="stats-hero">
         <div class="stats-hero-inner">
             <div class="hero-top">
-                <div class="hero-avatar">ER</div>
+                <div class="hero-avatar" id="hero-avatar">ER</div>
                 <div>
                     <div class="eyebrow">Mi progreso</div>
-                    <h2 class="hero-name">Vas <span class="em">por buen camino</span></h2>
+                    <h2 class="hero-name" id="hero-name">Vas <span class="em">por buen camino</span></h2>
                 </div>
             </div>
             <div class="kpi-grid" id="kpi-row"><!-- inyectado --></div>
@@ -609,55 +607,27 @@ function confirmClear() {
 render();
 UserStats.syncFromCloud && UserStats.syncFromCloud().then(loaded => { if (loaded) render(); });
 
-// ── Sync card ────────────────────────────────────────────────────
-function renderSyncCard() {
-    const card = document.getElementById('sync-card');
-    if (!card) return;
-    const email = UserStats.getSyncEmail ? UserStats.getSyncEmail() : null;
-    if (email) {
-        card.innerHTML = `<div class="sync-card sync-ok">
-            <span>☁️ Sincronizando con <strong>${email}</strong></span>
-            <button onclick="disconnectSync()" class="sync-btn-sm">Desconectar</button>
-        </div>`;
+// ── Hero dinámico con usuario de Google ─────────────────────────
+function updateHero() {
+    const gUser = window.ErAuth ? ErAuth.getUser() : null;
+    const avatarEl = document.getElementById('hero-avatar');
+    const nameEl   = document.getElementById('hero-name');
+    if (!avatarEl || !nameEl) return;
+    if (gUser) {
+        const first = (gUser.name || '').split(' ')[0] || 'Estudiante';
+        if (gUser.photo) {
+            avatarEl.innerHTML = `<img src="${gUser.photo}" style="width:52px;height:52px;border-radius:12px;object-fit:cover;" referrerpolicy="no-referrer">`;
+        } else {
+            avatarEl.textContent = (gUser.name || gUser.email || 'E')[0].toUpperCase();
+        }
+        nameEl.innerHTML = `${first} · <span class="em">vas por buen camino</span>`;
     } else {
-        card.innerHTML = `<div class="sync-card sync-off">
-            <div>
-                <strong>📲 Activa la sincronización entre dispositivos</strong>
-                <p>Introduce tu email para guardar el progreso en la nube y verlo en móvil y ordenador.</p>
-            </div>
-            <div class="sync-row">
-                <input type="email" id="sync-email-input" placeholder="tu@email.com" class="sync-input"
-                    onkeydown="if(event.key==='Enter')doSync()">
-                <button onclick="doSync()" class="sync-btn">Activar</button>
-            </div>
-        </div>`;
+        avatarEl.textContent = 'ER';
+        nameEl.innerHTML = `Vas <span class="em">por buen camino</span>`;
     }
 }
-
-function doSync() {
-    const input = document.getElementById('sync-email-input');
-    const email = input ? input.value.trim() : '';
-    if (!UserStats.setSyncEmail || !UserStats.setSyncEmail(email)) {
-        if (input) { input.style.borderColor = 'var(--danger)'; input.focus(); }
-        return;
-    }
-    const btn = document.querySelector('.sync-btn');
-    if (btn) { btn.textContent = 'Conectando…'; btn.disabled = true; }
-    UserStats.syncToCloud().then(() => {
-        UserStats.syncFromCloud().then(loaded => {
-            if (loaded) render();
-            renderSyncCard();
-        });
-    });
-}
-
-function disconnectSync() {
-    if (!confirm('¿Desconectar la sincronización? Tus datos locales se conservarán.')) return;
-    UserStats.clearSyncEmail && UserStats.clearSyncEmail();
-    renderSyncCard();
-}
-
-renderSyncCard();
+document.addEventListener('er-auth', () => { updateHero(); render(); });
+updateHero();
 </script>
 <script src="assets/js/stats-animate.js"></script>
 <script src="assets/js/analytics.js"></script>
@@ -676,10 +646,16 @@ renderSyncCard();
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>
         <span>Progreso</span>
     </a>
-    <button class="tab-item" onclick="toggleTheme()" aria-label="Cambiar tema">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <span>Tema</span>
+    <button class="tab-item tab-account-wrap" onclick="ErAuth && ErAuth.openModal()" aria-label="Mi cuenta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+        <span>Cuenta</span>
+        <span class="tab-account-badge"></span>
     </button>
 </nav>
+
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="assets/js/firebase-auth.js"></script>
 </body>
 </html>

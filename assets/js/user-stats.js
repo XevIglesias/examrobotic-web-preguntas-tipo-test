@@ -4,13 +4,18 @@ const _FB_DB = 'https://examrobotic-f7f25-default-rtdb.europe-west1.firebasedata
 
 function _fbKey() {
     try {
-        // 1) Logged-in user via api.js
+        // 1) Google Auth (prioritario — UID estable entre dispositivos)
+        if (typeof ErAuth !== 'undefined') {
+            const gu = ErAuth.getUser();
+            if (gu && gu.uid) return gu.uid;
+        }
+        // 2) Usuario de api.js (Railway)
         const u = typeof currentUser === 'function' ? currentUser() : null;
         if (u) {
             const raw = u.id || u.email || null;
             if (raw) return String(raw).replace(/[.#$[\]/]/g, '_');
         }
-        // 2) Manually set sync email (cross-device without full login)
+        // 3) Email manual (fallback)
         const syncEmail = localStorage.getItem('er_sync_email');
         if (syncEmail) return String(syncEmail).replace(/[.#$[\]/]/g, '_');
         return null;
