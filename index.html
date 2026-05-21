@@ -318,6 +318,8 @@
 </div>
 
 <script src="assets/js/analytics.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/user-stats.js"></script>
 <script>
     const subjectModal = document.getElementById('subject-modal');
     const modalTitle  = document.getElementById('modal-subject-name');
@@ -344,25 +346,23 @@
         if (e.key === 'Escape') closeSubjectModal();
     });
 
-    // ─── KPI strip: lee localStorage 'examrobotic_stats' si existe (opcional) ──
-    (function refreshKpis() {
+    // ─── KPI strip: usa UserStats.data (clave 'er_stats') ──────────
+    function refreshKpis() {
         try {
-            const raw = localStorage.getItem('examrobotic_stats');
-            if (!raw) return;
-            const data = JSON.parse(raw);
+            const data     = (typeof UserStats !== 'undefined') ? UserStats.data : JSON.parse(localStorage.getItem('er_stats') || 'null');
+            if (!data) return;
             const subjects = data.subjects || {};
             const history  = data.history  || [];
-            const scores = Object.values(subjects).flatMap(s => s.scores || []);
-            const avg = scores.length ? (scores.reduce((a,b)=>a+b,0)/scores.length) : null;
+            const scores   = Object.values(subjects).flatMap(s => s.scores || []);
+            const avg      = scores.length ? scores.reduce((a,b)=>a+b,0)/scores.length : null;
             if (avg != null) {
                 document.getElementById('kpi-avg').innerHTML = avg.toFixed(1).replace('.', ',') + '<span class="unit">/10</span>';
                 document.getElementById('kpi-avg-trend').textContent = scores.length + ' notas';
                 document.getElementById('kpi-avg-trend').style.color = avg >= 5 ? 'var(--success)' : 'var(--danger)';
             }
             document.getElementById('kpi-sess').textContent = history.length;
-            // Racha: días consecutivos con actividad
             if (history.length) {
-                const days = [...new Set(history.map(h => new Date(h.date).toLocaleDateString('en-CA')))].sort().reverse();
+                const days  = [...new Set(history.map(h => new Date(h.date).toLocaleDateString('en-CA')))].sort().reverse();
                 const today = new Date().toLocaleDateString('en-CA');
                 const yest  = new Date(Date.now()-86400000).toLocaleDateString('en-CA');
                 let streak = 0;
@@ -377,8 +377,30 @@
                 document.getElementById('kpi-streak-trend').textContent = streak > 0 ? '🔥 Sigue así' : '—';
                 if (streak > 0) document.getElementById('kpi-streak-trend').style.color = 'var(--success)';
             }
+            // Contar asignaturas con actividad
+            const subjCount = Object.keys(subjects).length;
+            const subjEl = document.getElementById('kpi-subj');
+            if (subjEl) subjEl.textContent = subjCount;
         } catch (e) { /* ignore */ }
-    })();
+    }
+
+    // Ejecutar con datos locales inmediatamente
+    refreshKpis();
+
+    // Re-ejecutar tras sync con la nube y tras cambio de sesión
+    if (typeof UserStats !== 'undefined') {
+        UserStats.syncFromCloud && UserStats.syncFromCloud().then(loaded => { if (loaded) refreshKpis(); });
+    }
+    document.addEventListener('er-auth', () => {
+        // Esperar a que el sync termine
+        setTimeout(() => {
+            if (typeof UserStats !== 'undefined' && UserStats.syncFromCloud) {
+                UserStats.syncFromCloud().then(() => refreshKpis());
+            } else {
+                refreshKpis();
+            }
+        }, 400);
+    });
 </script>
 
 <!-- Mobile bottom navigation -->

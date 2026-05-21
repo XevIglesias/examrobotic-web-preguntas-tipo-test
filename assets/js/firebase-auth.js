@@ -72,31 +72,29 @@ const ErAuth = {
     if (!_auth && !_fbInit()) return null;
     const provider = new firebase.auth.GoogleAuthProvider();
 
-    // Móvil: usar redirect (los navegadores móviles bloquean popups)
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-                     || window.innerWidth < 768;
-    if (isMobile) {
-      try {
-        await _auth.signInWithRedirect(provider);
-      } catch (e) {
-        _showAuthError('Error al redirigir: ' + e.message);
-      }
-      return null; // la página navegará a Google
-    }
-
-    // Escritorio: popup
+    // Usar siempre popup — funciona en móvil y escritorio con gesture de usuario.
+    // signInWithRedirect tiene problemas en GitHub Pages (cross-origin storage).
+    // Si el popup está bloqueado, caemos a redirect como último recurso.
     try {
       const res = await _auth.signInWithPopup(provider);
       return res.user;
     } catch (e) {
-      if (e.code === 'auth/account-exists-with-different-credential') {
-        _showAuthError('Ya existe una cuenta con ese email pero con otro proveedor. Elimina el usuario en Firebase Console → Authentication → Usuarios y vuelve a intentarlo.');
-      } else if (e.code === 'auth/popup-closed-by-user') {
+      if (e.code === 'auth/popup-blocked') {
+        // Fallback: redirect (el usuario deberá permitir popups o volverá por redirect)
+        try {
+          await _auth.signInWithRedirect(provider);
+        } catch (e2) {
+          _showAuthError('No se pudo abrir Google Sign-In. Permite popups para este sitio e inténtalo de nuevo.');
+        }
+        return null;
+      } else if (e.code === 'auth/account-exists-with-different-credential') {
+        _showAuthError('Ya existe una cuenta con ese email pero con otro proveedor.');
+      } else if (e.code === 'auth/popup-closed-by-user' || e.code === 'auth/cancelled-popup-request') {
         // el usuario cerró la ventana — sin error
       } else if (e.code === 'auth/unauthorized-domain') {
-        _showAuthError('Dominio no autorizado. Añádelo en Firebase Console → Authentication → Configuración → Dominios autorizados.');
+        _showAuthError('Dominio no autorizado en Firebase. Añade ' + location.hostname + ' en Firebase Console → Authentication → Dominios autorizados.');
       } else {
-        _showAuthError('Error: ' + e.message);
+        _showAuthError('Error al iniciar sesión: ' + (e.message || e.code));
       }
       console.warn('Google sign-in:', e.code, e.message);
       return null;
@@ -437,17 +435,16 @@ Object.assign(ErAuth, {
     document.body.style.overflow = '';
   },
   async _doSignIn(btn) {
-    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
     if (btn) {
       btn.disabled = true;
       const label = btn.querySelector('span:last-child');
-      if (label) label.textContent = isMobile ? 'Redirigiendo a Google…' : 'Conectando…';
+      if (label) label.textContent = 'Conectando…';
     }
     const user = await this.signIn();
     if (user) {
       this.closeModal();
-    } else if (!isMobile) {
-      // Solo resetear en escritorio; en móvil la página ya navegó
+    } else {
+      // Resetear botón si no navegamos a redirect
       _renderModal();
     }
   },
