@@ -48,19 +48,19 @@
 
         /* ── MÓVIL: página completa, no modal desplegable ── */
         @media (max-width: 760px) {
-            /* El overlay desaparece — la página fluye normalmente */
+            /* Mantener fixed (funciona en iOS) pero con fondo sólido = parece una página */
             #free-setup {
-                position: relative;
-                inset: auto;
-                background: none;
+                background: var(--bg);
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
+                align-items: flex-start;   /* arriba, no centrado ni abajo */
                 padding: 0;
-                display: block;
-                overflow-y: visible;
-                z-index: auto;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
-            /* El modal se convierte en una sección normal de página */
+            [data-theme="night"] #free-setup,
+            [data-theme="dark"]  #free-setup { background: var(--bg); }
+
             .fs-modal {
                 max-width: 100%;
                 border-radius: 0;
@@ -76,7 +76,7 @@
                 backdrop-filter: none;
                 border: none;
             }
-            /* Ocultar botones de navegación — la tab bar ya lo hace */
+            /* La tab bar ya gestiona navegación y cuenta */
             .fs-back,
             .fs-account-btn { display: none; }
 
