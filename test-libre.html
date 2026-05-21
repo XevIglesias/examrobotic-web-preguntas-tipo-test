@@ -51,15 +51,21 @@
             position: relative;
             /* En móvil dejamos que la altura sea libre para scrollear sin límite forzado */
         }
-        @media (max-width: 600px) {
+        @media (max-width: 760px) {
             #free-setup {
                 padding: 0;
                 align-items: flex-end;
             }
             .fs-modal {
-                padding: 24px 18px max(88px, env(safe-area-inset-bottom, 32px));
+                padding: 24px 18px 0;
                 border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-                /* sin max-height: el overlay hace el scroll, no el modal */
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            /* Botón de empezar: separación suficiente sobre la tab bar */
+            .fs-start-btn {
+                margin-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
             }
             .subj-grid { grid-template-columns: 1fr; }
         }
