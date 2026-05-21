@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Test Libre · ExamRobotic</title>
+    <link rel="manifest" href="/examrobotic-web-preguntas-tipo-test/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ExamRobotic">
     <meta name="description" content="Test libre multi-asignatura. Elige cuántas preguntas quieres y de qué asignaturas.">
     <link rel="icon" href="assets/img/images/logo/logorobot.svg" type="image/svg+xml">
 
@@ -19,7 +23,7 @@
     <style>
         /* ── SETUP SCREEN ── */
         #free-setup {
-            position: fixed; inset: 0; z-index: 9999;
+            position: fixed; inset: 0; z-index: 150;
             display: flex; align-items: center; justify-content: center;
             padding: 24px;
             background: color-mix(in oklch, var(--bg) 80%, transparent);

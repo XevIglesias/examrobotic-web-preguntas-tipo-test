@@ -1,0 +1,19 @@
+{
+  "name": "ExamRobotic",
+  "short_name": "ExamRobotic",
+  "description": "Simulacros y tests para GS Robótica y Automatización Industrial",
+  "start_url": "/examrobotic-web-preguntas-tipo-test/index.html",
+  "scope": "/examrobotic-web-preguntas-tipo-test/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07091a",
+  "theme_color": "#07091a",
+  "icons": [
+    {
+      "src": "assets/img/images/logo/logorobot.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
