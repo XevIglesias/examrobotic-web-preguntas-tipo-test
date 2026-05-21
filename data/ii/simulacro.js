@@ -838,5 +838,485 @@ const EXAM_DATA = [
         ],
         "ans": 2,
         "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de las afirmaciones siguientes es falsa sobre las funciones en programación?",
+        "opts": [
+            "Se pueden usar en los lenguajes de programación",
+            "Casi siempre devuelve un valor",
+            "Deben de seguir una sintaxis",
+            "Nunca devuelve un valor"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de las siguientes características debe seguir todo algoritmo de programación?",
+        "opts": [
+            "Ser extenso y detallado",
+            "Ser rígido y no permitir modificaciones",
+            "Ser infinito en su ejecución",
+            "Ser exacto y preciso"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de las siguientes es una ventaja de la programación estructurada en términos de la facilidad de comprensión de los programas?",
+        "opts": [
+            "Los programas estructurados son más difíciles de entender",
+            "Los programas estructurados requieren menos pruebas y depuración",
+            "Los programas estructurados se ejecutan más rápido",
+            "Los programas estructurados se crean más rápido"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de las siguientes herramientas nativas de Windows se utiliza para consultar eventos ocurridos en el sistema y comprobar el estado del equipo?",
+        "opts": [
+            "Administrador de tareas",
+            "Visor de eventos",
+            "Monitor de Rendimiento",
+            "El comando tracerpt"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de las siguientes técnicas se utiliza para analizar secuencias de información en una red informática?",
+        "opts": [
+            "Monitores de rendimiento",
+            "Monitores de servicios",
+            "Monitores de red",
+            "SNMP (Simple Network Management Protocol)"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de los siguientes atributos no es comúnmente utilizado en la etiqueta <img> de HTML para añadir imágenes a una página web?",
+        "opts": [
+            "width",
+            "border",
+            "alt",
+            "text"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de los siguientes atributos NO se utiliza en la creación de un control de selección o verificación en HTML?",
+        "opts": [
+            "type=\"radio\"",
+            "type=\"checkbox\"",
+            "type=\"combo\"",
+            "type=\"select\""
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de los siguientes es uno de los propósitos fundamentales de un sistema operativo?",
+        "opts": [
+            "Desarrollar aplicaciones de software",
+            "Simplificar las tareas de manejo del equipo",
+            "Proporcionar seguridad física al equipo",
+            "Ninguna es correcta"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál de los siguientes sería un beneficio de la refrigeración líquida de componentes electrónicos?",
+        "opts": [
+            "Menor eficiencia en la transferencia de datos",
+            "Mayor costo en comparación con la refrigeración por aire",
+            "Mayor ruido en sistemas de computación",
+            "Mayor eficiencia en la disipación del calor y funcionamiento silencioso"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es el comando para comprobar la dirección MAC de una tarjeta de red en un equipo Windows?",
+        "opts": [
+            "Ifconfig /all",
+            "Ipconfigurate",
+            "Ipconfig /all",
+            "Ip a"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es la diferencia principal entre los hipervisores de tipo 1 y tipo 2?",
+        "opts": [
+            "Los hipervisores de tipo 1 se ejecutan sobre el hardware, mientras que los de tipo 2 se ejecutan sobre el sistema operativo anfitrión",
+            "Los hipervisores de tipo 2 son nativos, mientras que los de tipo 1 son hosted",
+            "Los hipervisores de tipo 1 se utilizan para Windows y los de tipo 2 para Linux",
+            "Los hipervisores de tipo 2 son más seguros que los de tipo 1"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es la etiqueta de HTML que define el título que se muestra en la barra del navegador?",
+        "opts": [
+            "<meta>",
+            "<style>",
+            "<metrod>",
+            "Ninguna de las anteriores"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es la extensión de los ficheros de las hojas de estilo de una página web?",
+        "opts": [
+            "js",
+            "css",
+            "html",
+            "json"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es la función principal de la palabra \"Fin\" en un ordinograma o diagrama de flujo de programas?",
+        "opts": [
+            "Marcar el comienzo de la ejecución del programa",
+            "Detallar la secuencia de operaciones a seguir",
+            "Indicar la dirección de las líneas de conexión",
+            "Marcar la finalización de la ejecución del programa"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es por lo general el componente maestro de un sistema informático?",
+        "opts": [
+            "Chasis",
+            "Fluctuación",
+            "Temperatura",
+            "Todas las anteriores son incorrectas"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál es una de las funciones principales de los ordenadores en la informática industrial?",
+        "opts": [
+            "Realizar labores de control, actuación y supervisión",
+            "Realizar labores de mantenimiento preventivo en equipos industriales",
+            "Interpretar señales de radio",
+            "Gestionar recursos humanos en la planta"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Cuál fue uno de los principales beneficios de implementar un sistema SCADA en la planta de Kimberly Clark en Costa Rica?",
+        "opts": [
+            "Aumento de la carga de trabajo del personal",
+            "Reducción de la calidad del papel producido",
+            "Observación en tiempo real de variables y control del proceso",
+            "Mayor dependencia de la habilidad del operador"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿En cuál de los siguientes tipos de cables es necesario seguir la norma T568?",
+        "opts": [
+            "Coaxial",
+            "De pares",
+            "De TV",
+            "De fibra óptica"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿En qué se diferencian los medios de transmisión guiados de los medios de transmisión no guiados?",
+        "opts": [
+            "Los medios de transmisión guiados utilizan cables, mientras que los no guiados no necesitan un medio físico",
+            "Los medios de transmisión guiados son más lentos que los no guiados",
+            "Los medios de transmisión no guiados son más seguros que los guiados",
+            "Los medios de transmisión guiados se utilizan principalmente para redes inalámbricas"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Por qué es importante para un futuro técnico verificar si un equipo cuenta con una conexión a red adecuada?",
+        "opts": [
+            "Para resolver problemas de hardware únicamente",
+            "Para garantizar un buen rendimiento del software únicamente",
+            "Para asegurarse de que los cables estén organizados",
+            "Porque la falta de conexión puede causar mal funcionamiento de la máquina en general"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Qué es recomendable hacer antes de proceder con la instalación completa de un cableado?",
+        "opts": [
+            "Montar las rosetas",
+            "Medir todo de manera exacta",
+            "Documentar la estructura de red",
+            "Comprobar el funcionamiento de los cables"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Qué puede emular una máquina virtual?",
+        "opts": [
+            "Solo software",
+            "Hardware y software",
+            "Solo hardware",
+            "Solo un sistema operativo Windows"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "¿Quién es el principal responsable de gestionar los permisos y privilegios de un sistema operativo?",
+        "opts": [
+            "El administrador del sistema",
+            "El fabricante del sistema operativo",
+            "El proveedor de servicios de Internet",
+            "El fabricante de hardware del equipo"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "De los siguientes términos, ¿cuál NO se puede considerar hardware?",
+        "opts": [
+            "Memoria principal",
+            "Software de aplicación",
+            "Fuente de alimentación",
+            "Periféricos"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "En el contexto de los medios de transmisión de redes, ¿cuál es el propósito general de las organizaciones de estándares?",
+        "opts": [
+            "Fabricar elementos de redes compatibles con la electricidad",
+            "Imponer reglas únicamente a los usuarios de medios de transmisión",
+            "Establecer normas y estándares para garantizar la compatibilidad entre diferentes fabricantes",
+            "Gestionar redes de comunicación a nivel gubernamental"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "En las tablas bidimensionales el tamaño de la matriz es:",
+        "opts": [
+            "4",
+            "2x2",
+            "2x1",
+            "3x2"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "En una estructura selectiva, por lo general, existen:",
+        "opts": [
+            "Tres opciones",
+            "Cuatro opciones",
+            "Dos opciones",
+            "Una única opción"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "En una página web, la etiqueta <style> se usa para:",
+        "opts": [
+            "La definición de estilos",
+            "Para el título de la página",
+            "Uso de metadatos",
+            "Vincular ficheros JS"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Indica cuál de las siguientes es un tipo de copia de seguridad:",
+        "opts": [
+            "Incremental",
+            "Diferencial",
+            "A y B son correctas",
+            "Universal"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Indica cuál de las siguientes es un tipo de perturbación medioambiental que puede sufrir un sistema informático:",
+        "opts": [
+            "Temperatura",
+            "Humedad",
+            "A y B son correctas",
+            "Picos de tensión"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Indica cuál de los siguientes ficheros son parte de una página web:",
+        "opts": [
+            "css",
+            "js",
+            "A y B son correctas",
+            "Todas son incorrectas"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "La arquitectura básica de un SCADA se encuentra formada por...",
+        "opts": [
+            "Varios ordenadores cuánticos",
+            "Varias máquinas automáticas gigantes",
+            "Varios PLC",
+            "Ninguna es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "La corrupción de un fichero es una avería relacionada con _____ de un equipo.",
+        "opts": [
+            "El hardware",
+            "El software",
+            "La parte física",
+            "Los periféricos"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "La fecha y la hora de una avería debe de apuntarse en...",
+        "opts": [
+            "Plan de mejora",
+            "Monitor de rendimiento",
+            "Administrador de tareas",
+            "Ninguna de las anteriores"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Los STR se implementan en algunos negocios para...",
+        "opts": [
+            "Gestión",
+            "Tratamiento de datos",
+            "Mejora de las interfaces gráficas",
+            "Todas son correctas"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Si se conectan y desconectan equipos de gran consumo de red eléctrica, ¿qué perturbación eléctrica es normal que ocurra?",
+        "opts": [
+            "Ruido",
+            "Pico de tensión",
+            "Distorsión",
+            "Fluctuación de la corriente"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Si tenemos un bus de direcciones con 8 líneas, ¿cuántas direcciones de memoria es capaz de direccionar el microprocesador?",
+        "opts": [
+            "16",
+            "256",
+            "65536",
+            "4294967296"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "STR son las siglas de...",
+        "opts": [
+            "Sistemas de tiempo relacional",
+            "Sistemas de tendencia real",
+            "Sistemas de tiempo real",
+            "Secuencias de tiempo real"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Un controlador es lo mismo que un...",
+        "opts": [
+            "Periférico",
+            "Sistema operativo",
+            "Driver",
+            "Todas son incorrectas"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "8. Examen Oficial",
+        "q": "Una WLAN es lo mismo que una LAN, pero:",
+        "opts": [
+            "Cableada",
+            "Que abarca un país entero",
+            "Inalámbrica",
+            "Todas son correctas"
+        ],
+        "ans": 2,
+        "exp": ""
     }
 ];
