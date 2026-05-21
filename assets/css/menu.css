@@ -609,15 +609,11 @@ body > * { position: relative; z-index: 1; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media (max-width: 760px) {
-  /* Show bottom tab bar */
+  /* Show bottom tab bar, hide top header — no duplicar navegación */
   .mobile-tab-bar { display: flex; }
+  .app-header { display: none; }
 
-  /* Header: compact */
-  .header-nav { display: none; }
-  .header-inner { padding: 10px 16px; }
-  .brand-sub { display: none; }
-
-  /* Page: bottom padding for tab bar + safe area */
+  /* Page: top 20px + bottom padding for tab bar + safe area */
   .page { padding: 20px 16px calc(72px + env(safe-area-inset-bottom, 0px)); }
 
   /* Summary: 2 cols */
