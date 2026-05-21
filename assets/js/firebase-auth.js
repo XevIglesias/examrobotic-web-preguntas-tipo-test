@@ -150,8 +150,9 @@ function _injectModalStyles() {
 
     .er-modal-bd {
       flex: 1;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       animation: erFadeIn .25s ease;
     }
     .er-modal-sheet {
@@ -162,6 +163,8 @@ function _injectModalStyles() {
       padding-bottom: max(28px, env(safe-area-inset-bottom));
       animation: erSlideUp .32s cubic-bezier(.16,1,.3,1);
       max-height: 88vh; overflow-y: auto;
+      /* Asegurar que el sheet quede por encima del safe-area en iOS */
+      position: relative; z-index: 1;
     }
     .er-modal-handle {
       width: 40px; height: 4px; border-radius: 2px;
