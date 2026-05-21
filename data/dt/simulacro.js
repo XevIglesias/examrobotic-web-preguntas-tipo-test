@@ -718,5 +718,485 @@ const EXAM_DATA = [
         ],
         "ans": 1,
         "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cómo se llaman las partes en las que podemos dividir y calcular el presupuesto de un proyecto de forma independiente?",
+        "opts": [
+            "Cuadros",
+            "Capítulos",
+            "Mediciones",
+            "Unidades de obra"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuál de los siguientes elementos es un EPI?",
+        "opts": [
+            "Extintor de incendios",
+            "Señal de salida de emergencia",
+            "Botiquín de primeros auxilios",
+            "Cascos, guantes y botas de seguridad"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuál es el conjunto de normas de uso que permiten el montaje o instalación de un equipo?",
+        "opts": [
+            "Manual de usuario",
+            "Manual de calidad",
+            "Manual de emergencia",
+            "Manual de instrucciones"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuál es el documento que identifica los riesgos ambientales que pueda provocar una actividad empresarial?",
+        "opts": [
+            "Medidas de protección medioambiental",
+            "Evaluación de impacto ambiental",
+            "Plan de emergencia ambiental",
+            "Manual de gestión ambiental"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuál es la ventaja de CADe_SIMU respecto a ePLAN Electric?",
+        "opts": [
+            "Precio (gratuito)",
+            "Mayor librería de componentes",
+            "Interfaz más profesional",
+            "Posibilidad de importar proyectos de AutoCAD"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuáles son los costos asociados al funcionamiento de un negocio?",
+        "opts": [
+            "Costes indirectos",
+            "Costes directos",
+            "Gastos generales (GG)",
+            "Ninguna de las respuestas anteriores es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuándo realizamos la tramitación y legalización de una instalación?",
+        "opts": [
+            "Una vez se ha terminado la ejecución",
+            "En la fase inicial del proyecto",
+            "Durante la redacción de la memoria",
+            "Depende del tipo de proyecto"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Cuántos tipos de perspectiva axonométrica hay?",
+        "opts": [
+            "Cilíndrica y cónica",
+            "Caballera y militar",
+            "Cónica",
+            "Isométrica, dimétrica y trimétrica"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿De qué opción dispone CADe_SIMU para confirmar que el circuito es correcto?",
+        "opts": [
+            "Voltímetro digital",
+            "Simulación",
+            "Comprobador automático en línea",
+            "Chat con especialista"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿En qué documento figuran las características que debe tener una instalación?",
+        "opts": [
+            "Memoria descriptiva",
+            "Pliego de condiciones",
+            "Presupuesto",
+            "Planos del proyecto"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Para qué se utiliza el software CADe_SIMU?",
+        "opts": [
+            "Dibujo industrial 2D",
+            "Dibujo industrial 3D",
+            "Dibujo de esquemas eléctricos",
+            "Modelado de piezas mecánicas"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué acciones tienen como objetivo garantizar el correcto funcionamiento de los equipos e instalaciones?",
+        "opts": [
+            "Las instrucciones",
+            "El mantenimiento",
+            "Los planes de emergencia",
+            "Los planes de calidad"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué debemos especificar en un dibujo para imprimir en un plano?",
+        "opts": [
+            "Las unidades",
+            "Las coordenadas",
+            "La escala",
+            "Ninguna de las respuestas anteriores es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué estudios explican los distintos riesgos laborales?",
+        "opts": [
+            "Planes de emergencia",
+            "Plan de calidad",
+            "Estudios básicos de seguridad y salud",
+            "Ninguna de las respuestas anteriores es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué es lo primero que debe hacer una empresa interesada en crear una instalación?",
+        "opts": [
+            "Pedir los permisos pertinentes",
+            "Contar con un presupuesto",
+            "Elaborar un proyecto",
+            "Tramitar la documentación necesaria"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué es una sección?",
+        "opts": [
+            "Un recurso que consiste en cortar una parte de la figura",
+            "Una imagen aérea en 3 dimensiones de un objeto",
+            "La parte de contacto entre la pieza y el plano de corte",
+            "Ninguna de las respuestas anteriores es correcta"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué indica la medición de las unidades de obra?",
+        "opts": [
+            "Las partes en las que se puede dividir el proyecto",
+            "Los diferentes materiales que se necesitan",
+            "El número de veces que se repite cada unidad de obra",
+            "Los controles de calidad"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué ocurre cuando utilizamos la proyección cilíndrica ortogonal?",
+        "opts": [
+            "Las líneas de proyección son oblicuas al plano de proyección",
+            "El observador se sitúa en un punto fijo cercano al objeto",
+            "Las líneas de proyección son perpendiculares al plano de proyección",
+            "Las líneas de proyección son paralelas al plano de proyección"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "La vista de un objeto desde arriba se denomina:",
+        "opts": [
+            "Alzado o vista frontal",
+            "Perfil o vista lateral",
+            "Planta o vista superior",
+            "Perspectiva isométrica"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "El proceso de croquizado consiste en:",
+        "opts": [
+            "Dibujar con AutoCAD a escala",
+            "Crear planos definitivos del proyecto",
+            "Imprimir el diseño en papel normalizado",
+            "Realizar un replanteo del dibujo a mano alzada sin herramientas de precisión"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "El estado de las mediciones es:",
+        "opts": [
+            "La suma total del presupuesto",
+            "Un resumen desglosado de la cantidad de cada unidad de obra",
+            "La lista de materiales necesarios",
+            "El documento de tramitación del proyecto"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Las dimensiones del formato A4 son:",
+        "opts": [
+            "210 x 148 mm",
+            "297 x 210 mm",
+            "420 x 297 mm",
+            "594 x 420 mm"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "El pliego de condiciones establece:",
+        "opts": [
+            "El coste total de la instalación",
+            "Las condiciones mínimas técnicas y legales (REBT) que debe cumplir la instalación",
+            "Los planos detallados del proyecto",
+            "La memoria descriptiva del sistema"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En AutoCAD, para que el texto y las cotas se adapten automáticamente a la escala del plano, se utiliza:",
+        "opts": [
+            "Elemento anotativo",
+            "Estilo de cota",
+            "Tipo de línea",
+            "Ventana gráfica"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En AutoCAD, las coordenadas cartesianas relativas se introducen especificando:",
+        "opts": [
+            "Solo la distancia al origen absoluto",
+            "El ángulo y la distancia absoluta",
+            "La distancia y el sentido (+ o -) respecto al último punto introducido",
+            "Las coordenadas X, Y absolutas desde el origen"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En CADe_SIMU, si al simular el motor no se ilumina, significa que:",
+        "opts": [
+            "El motor está correctamente conectado",
+            "La simulación no está activada",
+            "No le llega la corriente al motor",
+            "El programa tiene un error interno"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Respecto a los costes de mantenimiento en los primeros años de una instalación nueva:",
+        "opts": [
+            "Son los más elevados de toda la vida útil",
+            "Dependen exclusivamente de la mano de obra",
+            "Son iguales que en años posteriores",
+            "No suelen existir gastos iniciales de mantenimiento significativos"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En AutoCAD, ¿dónde se pueden añadir tantas ventanas gráficas como sean necesarias?",
+        "opts": [
+            "En el espacio modelo",
+            "En el espacio papel",
+            "En el espacio presentación",
+            "Todas las respuestas anteriores son correctas"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué normativa regula las condiciones mínimas de seguridad y salud en los lugares de trabajo?",
+        "opts": [
+            "RD 486/1997",
+            "RD 614/2001",
+            "RD 1215/1997",
+            "Ley 31/1995"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "La previsión de cargas que aparece en la memoria descriptiva se calcula como:",
+        "opts": [
+            "La suma de todas las potencias instaladas sin criterio",
+            "La suma de la potencia de cada receptor multiplicada por su coeficiente de simultaneidad",
+            "Solo la potencia del receptor más grande",
+            "El promedio de todas las potencias instaladas"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En una perspectiva isométrica, los tres ejes forman entre sí ángulos de:",
+        "opts": [
+            "90°",
+            "120°",
+            "60°",
+            "45°"
+        ],
+        "ans": 1,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "¿Qué combinación de teclas abre la paleta de propiedades en AutoCAD?",
+        "opts": [
+            "PR + Intro",
+            "Ctrl + 1",
+            "Ctrl + P",
+            "F4"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "La puesta a tierra de una instalación eléctrica sirve para:",
+        "opts": [
+            "Mejorar la eficiencia energética",
+            "Reducir el consumo eléctrico",
+            "Aumentar la velocidad de los circuitos",
+            "Proteger contra contactos directos e indirectos"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En la señalización de seguridad, la señal de forma triangular indica:",
+        "opts": [
+            "Peligro o advertencia",
+            "Obligación",
+            "Prohibición",
+            "Información de emergencia"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Los anexos de cálculos en un proyecto técnico sirven para:",
+        "opts": [
+            "Resumir el presupuesto total",
+            "Listar los materiales necesarios",
+            "Describir el emplazamiento de la instalación",
+            "Justificar técnicamente las decisiones adoptadas en el diseño"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En el esquema de distribución de neutro tipo TN, la característica principal es que:",
+        "opts": [
+            "El neutro y la tierra son conductores independientes",
+            "Solo existe conductor de protección, sin neutro",
+            "Hay un transformador de aislamiento intermedio",
+            "El conductor de protección (PE) y el neutro están unidos o son el mismo conductor"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Los planes de emergencia describen:",
+        "opts": [
+            "Los costes de mantenimiento de la instalación",
+            "Los planos de la instalación eléctrica",
+            "Las actuaciones que deben seguir los trabajadores ante situaciones de crisis o emergencia",
+            "Los requisitos técnicos de la instalación"
+        ],
+        "ans": 2,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Los sistemas CAD (Computer Aided Design) son:",
+        "opts": [
+            "Programas de gestión de proyectos empresariales",
+            "Herramientas de cálculo estructural",
+            "Sistemas de control automatizado industrial",
+            "Herramientas informáticas para el dibujo técnico asistido por ordenador"
+        ],
+        "ans": 3,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "Según el REBT, se considera baja tensión cuando la tensión es:",
+        "opts": [
+            "Por debajo de 1000 V en corriente alterna (CA)",
+            "Por debajo de 500 V en corriente alterna",
+            "Por encima de 1000 V en corriente continua",
+            "Entre 1000 V y 36000 V"
+        ],
+        "ans": 0,
+        "exp": ""
+    },
+    {
+        "u": "7. Examen Oficial",
+        "q": "En AutoCAD, las ventanas gráficas permiten:",
+        "opts": [
+            "Editar el espacio modelo directamente desde el papel",
+            "Imprimir en color automáticamente",
+            "Mostrar vistas determinadas del modelo en el espacio presentación",
+            "Crear nuevas capas de dibujo"
+        ],
+        "ans": 2,
+        "exp": ""
     }
 ];
