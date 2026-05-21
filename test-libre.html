@@ -21,17 +21,25 @@
     <link rel="stylesheet" href="assets/css/animations.css">
 
     <style>
+        /* ── Forzar body scrolleable para que Safari esconda su barra de URL ── */
+        html, body { height: 100%; }
+        body { overflow-y: scroll; }
+
         /* ── SETUP SCREEN ── */
         #free-setup {
             position: fixed; inset: 0; z-index: 150;
             display: flex; align-items: center; justify-content: center;
             padding: 24px;
-            background: color-mix(in oklch, var(--bg) 80%, transparent);
+            background: rgba(242, 242, 248, 0.80);
             backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            /* scroll interno en iOS */
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
         }
         [data-theme="night"] #free-setup,
-        [data-theme="dark"] #free-setup { background: rgba(7,9,26,0.85); }
+        [data-theme="dark"] #free-setup { background: rgba(7,9,26,0.88); }
         .fs-modal {
             background: var(--surface);
             width: 100%; max-width: 720px;
@@ -41,16 +49,17 @@
             box-shadow: var(--shadow-3);
             animation: liftIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
             position: relative;
-            max-height: 94vh;
-            overflow-y: auto;
+            /* En móvil dejamos que la altura sea libre para scrollear sin límite forzado */
         }
         @media (max-width: 600px) {
-            #free-setup { padding: 0; align-items: flex-end; }
+            #free-setup {
+                padding: 0;
+                align-items: flex-end;
+            }
             .fs-modal {
-                padding: 24px 18px 32px;
+                padding: 24px 18px max(88px, env(safe-area-inset-bottom, 32px));
                 border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-                max-height: 96vh;
-                padding-bottom: max(32px, env(safe-area-inset-bottom));
+                /* sin max-height: el overlay hace el scroll, no el modal */
             }
             .subj-grid { grid-template-columns: 1fr; }
         }
