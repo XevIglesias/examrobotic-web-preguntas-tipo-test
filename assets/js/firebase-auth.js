@@ -30,6 +30,19 @@ const ErAuth = {
     if (!_fbInit() || this._ready) return;
     this._ready = true;
 
+    // Recoger resultado de redirect (móvil) al volver de Google
+    _auth.getRedirectResult().then(result => {
+      if (result && result.user) {
+        // onAuthStateChanged ya lo gestiona — nada más que hacer aquí
+      }
+    }).catch(e => {
+      if (e.code === 'auth/account-exists-with-different-credential') {
+        _showAuthError('Ya existe una cuenta con ese email. Elimina el usuario en Firebase Console → Authentication → Usuarios y vuelve a intentarlo.');
+      } else if (e.code && e.code !== 'auth/credential-already-in-use') {
+        console.warn('Redirect result error:', e.code);
+      }
+    });
+
     _auth.onAuthStateChanged(user => {
       if (user) {
         localStorage.setItem('er_guser', JSON.stringify({
@@ -42,9 +55,7 @@ const ErAuth = {
         setTimeout(() => {
           if (window.UserStats) {
             UserStats.syncFromCloud().then(loaded => {
-              if (loaded) {
-                if (typeof render === 'function') render();
-              }
+              if (loaded && typeof render === 'function') render();
             });
             UserStats.syncToCloud();
           }
@@ -60,18 +71,32 @@ const ErAuth = {
   async signIn() {
     if (!_auth && !_fbInit()) return null;
     const provider = new firebase.auth.GoogleAuthProvider();
+
+    // Móvil: usar redirect (los navegadores móviles bloquean popups)
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+                     || window.innerWidth < 768;
+    if (isMobile) {
+      try {
+        await _auth.signInWithRedirect(provider);
+      } catch (e) {
+        _showAuthError('Error al redirigir: ' + e.message);
+      }
+      return null; // la página navegará a Google
+    }
+
+    // Escritorio: popup
     try {
       const res = await _auth.signInWithPopup(provider);
       return res.user;
     } catch (e) {
       if (e.code === 'auth/account-exists-with-different-credential') {
-        _showAuthError('Ya existe una cuenta con ese email pero con otro proveedor. Ve a Firebase Console → Authentication → Usuarios y elimina la cuenta de correo/contraseña, luego inténtalo de nuevo.');
+        _showAuthError('Ya existe una cuenta con ese email pero con otro proveedor. Elimina el usuario en Firebase Console → Authentication → Usuarios y vuelve a intentarlo.');
       } else if (e.code === 'auth/popup-closed-by-user') {
-        // usuario cerró la ventana — no mostrar error
+        // el usuario cerró la ventana — sin error
       } else if (e.code === 'auth/unauthorized-domain') {
-        _showAuthError('Dominio no autorizado. Añade este dominio en Firebase Console → Authentication → Configuración → Dominios autorizados.');
+        _showAuthError('Dominio no autorizado. Añádelo en Firebase Console → Authentication → Configuración → Dominios autorizados.');
       } else {
-        _showAuthError('Error al iniciar sesión: ' + e.message);
+        _showAuthError('Error: ' + e.message);
       }
       console.warn('Google sign-in:', e.code, e.message);
       return null;
@@ -298,12 +323,17 @@ Object.assign(ErAuth, {
     document.body.style.overflow = '';
   },
   async _doSignIn(btn) {
-    if (btn) { btn.disabled = true; btn.querySelector('span:last-child').textContent = 'Conectando…'; }
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+    if (btn) {
+      btn.disabled = true;
+      const label = btn.querySelector('span:last-child');
+      if (label) label.textContent = isMobile ? 'Redirigiendo a Google…' : 'Conectando…';
+    }
     const user = await this.signIn();
     if (user) {
       this.closeModal();
-      // La actualización de stats la maneja onAuthStateChanged
-    } else {
+    } else if (!isMobile) {
+      // Solo resetear en escritorio; en móvil la página ya navegó
       _renderModal();
     }
   },
