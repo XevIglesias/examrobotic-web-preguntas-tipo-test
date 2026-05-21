@@ -59,9 +59,10 @@
 
         <div style="display:flex; align-items:center; gap:8px;">
             <button class="icon-btn" data-theme-toggle onclick="toggleTheme()" title="Cambiar tema (T)" aria-label="Cambiar tema"></button>
-            <a href="estadisticas.html" class="icon-btn" title="Mi progreso" aria-label="Mi progreso">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 3 5-6"/></svg>
-            </a>
+            <button class="icon-btn header-account-btn" onclick="ErAuth && ErAuth.openModal()" title="Mi cuenta" aria-label="Mi cuenta">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+                <span class="header-account-badge"></span>
+            </button>
         </div>
     </div>
 </header>
