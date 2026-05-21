@@ -491,6 +491,14 @@ function updateTimeUI() {
 function showQ() {
     const q = activeQs[current];
     if (!q) return;
+
+    // Marcar el quiz como 'listo' después de las animaciones iniciales
+    // para que no se repitan en cada cambio de pregunta
+    const quizEl = document.getElementById('quiz');
+    if (quizEl && !quizEl.classList.contains('quiz-ready')) {
+        setTimeout(() => quizEl.classList.add('quiz-ready'), 1800);
+    }
+
     document.getElementById('q-progress').innerText = `Pregunta ${current + 1} de ${totalQs}`;
     document.getElementById('q-unit').innerText = q.u;
     document.getElementById('q-text').innerText = q.q;

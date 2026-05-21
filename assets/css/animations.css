@@ -461,10 +461,9 @@ main > .panel:last-child { animation-delay: 0.8s; }
 .dot-grid .dot:nth-child(39) { --i: 20; }
 .dot-grid .dot:nth-child(40) { --i: 23; }
 
-/* The current/active dot pulses a glow */
+/* The current/active dot pulses a glow (no re-materialize — ya lo hace la regla base) */
 .dot-grid .dot.active {
-  animation: dotMaterialize 0.55s cubic-bezier(0.16,1,0.3,1) both,
-             dotActivePulse 1.8s ease-in-out infinite;
+  animation: dotActivePulse 1.8s ease-in-out infinite;
 }
 @keyframes dotActivePulse {
   0%, 100% { box-shadow: 0 0 0 0   color-mix(in oklch, var(--ink) 50%, transparent), 0 0 16px transparent; }
@@ -472,8 +471,7 @@ main > .panel:last-child { animation-delay: 0.8s; }
 }
 [data-theme="night"] .dot-grid .dot.active,
 [data-theme="dark"] .dot-grid .dot.active {
-  animation: dotMaterialize 0.55s cubic-bezier(0.16,1,0.3,1) both,
-             dotActivePulseNight 1.8s ease-in-out infinite;
+  animation: dotActivePulseNight 1.8s ease-in-out infinite;
 }
 @keyframes dotActivePulseNight {
   0%, 100% { box-shadow: 0 0 16px oklch(0.65 0.20 245 / 0.4); }
@@ -514,32 +512,61 @@ main > .panel:last-child { animation-delay: 0.8s; }
    11 · QUESTION CARD — entrada y transición entre preguntas
    ═════════════════════════════════════════════════════════════════ */
 .q-card {
-  animation: qCardIn 0.7s cubic-bezier(0.16,1,0.3,1) both;
-  animation-delay: 0.8s; /* después de los dots */
+  animation: qCardIn 0.55s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: 0.15s;
 }
 @keyframes qCardIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(8px); }
+  from { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(4px); }
   to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
 }
 
 .q-text {
-  animation: qTextReveal 0.6s 1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: qTextReveal 0.45s 0.25s cubic-bezier(0.16,1,0.3,1) both;
 }
 @keyframes qTextReveal {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 #options-area .option {
-  animation: optIn 0.45s cubic-bezier(0.16,1,0.3,1) both;
+  animation: optIn 0.35s cubic-bezier(0.16,1,0.3,1) both;
 }
-#options-area .option:nth-child(1) { animation-delay: 1.15s; }
-#options-area .option:nth-child(2) { animation-delay: 1.22s; }
-#options-area .option:nth-child(3) { animation-delay: 1.29s; }
-#options-area .option:nth-child(4) { animation-delay: 1.36s; }
+#options-area .option:nth-child(1) { animation-delay: 0.30s; }
+#options-area .option:nth-child(2) { animation-delay: 0.36s; }
+#options-area .option:nth-child(3) { animation-delay: 0.42s; }
+#options-area .option:nth-child(4) { animation-delay: 0.48s; }
 @keyframes optIn {
-  from { opacity: 0; transform: translateY(8px) translateX(-6px); }
+  from { opacity: 0; transform: translateY(6px) translateX(-4px); }
   to   { opacity: 1; transform: translateY(0)   translateX(0); }
+}
+
+/* ── Una vez cargado el quiz, las animaciones de entrada no se repiten ── */
+#quiz.quiz-ready .q-card,
+#quiz.quiz-ready .q-text {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+#quiz.quiz-ready #options-area .option {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+/* Pero conservamos el feedback visual de acierto/fallo */
+#quiz.quiz-ready #options-area .option.correct {
+  animation: optCorrect 0.6s cubic-bezier(0.16,1,0.3,1) !important;
+}
+#quiz.quiz-ready #options-area .option.incorrect {
+  animation: optWrong 0.45s ease-in-out !important;
+}
+/* Punto activo: solo pulso, sin re-materialización */
+#quiz.quiz-ready .dot-grid .dot.active {
+  animation: dotActivePulse 1.8s ease-in-out infinite !important;
+}
+[data-theme="night"] #quiz.quiz-ready .dot-grid .dot.active,
+[data-theme="dark"]  #quiz.quiz-ready .dot-grid .dot.active {
+  animation: dotActivePulseNight 1.8s ease-in-out infinite !important;
 }
 
 /* Option click ripple */
