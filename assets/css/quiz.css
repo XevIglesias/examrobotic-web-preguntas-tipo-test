@@ -449,8 +449,9 @@ header h2 {
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 720px) {
-  /* Quiz container */
-  #quiz { padding: 10px 12px calc(24px + env(safe-area-inset-bottom, 0px)); margin: 12px auto; }
+  /* Quiz container — padding inferior para que el dot-grid y botones queden
+     por encima de la tab bar flotante (~80px) + safe area iPhone */
+  #quiz { padding: 10px 12px calc(100px + env(safe-area-inset-bottom, 0px)); margin: 12px auto; }
 
   /* Question card */
   .q-card { padding: 20px 18px; min-height: auto; }
