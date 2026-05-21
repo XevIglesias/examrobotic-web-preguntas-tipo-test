@@ -355,8 +355,6 @@
                 padding: 20px 18px calc(100px + env(safe-area-inset-bottom, 0px)) !important;
                 animation: none !important;
             }
-            .fs-back,
-            .fs-account-btn { display: none !important; }
             .subj-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -372,14 +370,6 @@
 <!-- SETUP SCREEN -->
 <div id="free-setup">
     <div class="fs-modal">
-        <a href="index.html" class="fs-back" title="Volver" aria-label="Volver">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg>
-        </a>
-        <button class="fs-account-btn" id="fs-account-btn" onclick="ErAuth && ErAuth.openModal()" title="Mi cuenta" aria-label="Mi cuenta">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
-            <span class="fs-account-dot"></span>
-        </button>
-
         <div class="eyebrow fs-eyebrow">Test libre · Multi-asignatura</div>
         <div class="fs-heading">Mezcla, baraja y <span class="em">prueba</span>.</div>
         <p class="fs-sub">Combina preguntas de las asignaturas que quieras en un único examen. Ideal para simular un examen global o repasar a última hora.</p>
