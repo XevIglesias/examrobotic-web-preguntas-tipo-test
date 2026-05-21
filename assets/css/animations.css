@@ -488,24 +488,10 @@ main > .panel:last-child { animation-delay: 0.8s; }
     box-shadow 0.3s ease;
 }
 
-/* Correct/incorrect dot — small celebration / shake */
-.dot-grid .dot.correct-dot:not(.was-correct) {
-  animation: dotCorrectPop 0.55s cubic-bezier(0.16,1,0.3,1);
-}
-@keyframes dotCorrectPop {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.28); box-shadow: 0 0 22px var(--success); }
-  100% { transform: scale(1); }
-}
-.dot-grid .dot.incorrect-dot:not(.was-incorrect) {
-  animation: dotWrongShake 0.45s ease-in-out;
-}
-@keyframes dotWrongShake {
-  0%, 100% { transform: translateX(0); }
-  20%      { transform: translateX(-3px); }
-  40%      { transform: translateX(3px); }
-  60%      { transform: translateX(-2px); }
-  80%      { transform: translateX(2px); }
+/* Correct/incorrect dot — solo color, sin animación */
+.dot-grid .dot.correct-dot,
+.dot-grid .dot.incorrect-dot {
+  animation: none;
 }
 
 /* ═════════════════════════════════════════════════════════════════
@@ -553,12 +539,10 @@ main > .panel:last-child { animation-delay: 0.8s; }
   opacity: 1 !important;
   transform: none !important;
 }
-/* Pero conservamos el feedback visual de acierto/fallo */
-#quiz.quiz-ready #options-area .option.correct {
-  animation: optCorrect 0.6s cubic-bezier(0.16,1,0.3,1) !important;
-}
+/* Feedback de acierto/fallo: solo color, sin animación */
+#quiz.quiz-ready #options-area .option.correct,
 #quiz.quiz-ready #options-area .option.incorrect {
-  animation: optWrong 0.45s ease-in-out !important;
+  animation: none !important;
 }
 /* Punto activo: solo pulso, sin re-materialización */
 #quiz.quiz-ready .dot-grid .dot.active {
@@ -592,27 +576,10 @@ main > .panel:last-child { animation-delay: 0.8s; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
-/* Correct option — green sweep */
-.option.correct {
-  animation: optCorrect 0.7s cubic-bezier(0.16,1,0.3,1);
-  position: relative;
-}
-@keyframes optCorrect {
-  0%   { transform: scale(1); }
-  40%  { transform: scale(1.02); box-shadow: 0 0 26px var(--success); }
-  100% { transform: scale(1); }
-}
-
-/* Wrong option — shake */
+/* Correct / wrong option — solo cambio de color, sin animación */
+.option.correct,
 .option.incorrect {
-  animation: optWrong 0.5s ease-in-out;
-}
-@keyframes optWrong {
-  0%, 100% { transform: translateX(0); }
-  20%      { transform: translateX(-6px); }
-  40%      { transform: translateX(6px); }
-  60%      { transform: translateX(-4px); }
-  80%      { transform: translateX(4px); }
+  animation: none;
 }
 
 /* ═════════════════════════════════════════════════════════════════
