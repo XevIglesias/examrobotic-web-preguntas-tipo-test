@@ -2,12 +2,13 @@ let activeQs = [];
 let userAns = [];
 let current = 0;
 let totalQs = 0;
-let timeLeft = 0; 
+let timeLeft = 0;
 let timerID;
 let isFinished = false;
 let subjectSlug = 'unknown';
 let instantCorrection = false;
 let instantCheckedQs = new Set();
+let _prevQuestion = -1; // evita re-animar opciones en la misma pregunta
 
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
@@ -448,6 +449,7 @@ function startExam(num = 40, topics = 'all', isReview = false) {
     instantCheckedQs = new Set();
     current = 0;
     isFinished = false;
+    _prevQuestion = -1;
     timeLeft = totalQs * 75; 
 
     document.getElementById('quiz').style.display = 'block';
@@ -495,28 +497,49 @@ function showQ() {
 
     const isInstantChecked = instantCorrection && !isFinished && instantCheckedQs.has(current);
     const area = document.getElementById('options-area');
-    area.innerHTML = '';
+    const questionChanged = current !== _prevQuestion;
+    _prevQuestion = current;
 
-    q.opts.forEach((opt, i) => {
-        let cls = 'option';
+    // ── helper: clase para la opción i ──────────────────────────────
+    function optClass(i) {
         if (isFinished || isInstantChecked) {
-            if (i === q.ans) cls += ' correct';
-            else if (userAns[current] === i) cls += ' incorrect';
+            if (i === q.ans)             return 'option correct';
+            if (userAns[current] === i)  return 'option incorrect';
         } else {
-            if (userAns[current] === i) cls += ' selected';
+            if (userAns[current] === i)  return 'option selected';
         }
+        return 'option';
+    }
 
-        let icon = '';
-        if (isFinished || isInstantChecked) {
-            if (i === q.ans) icon = '<span class="icon">✓</span>';
-            else if (userAns[current] === i) icon = '<span class="icon">✗</span>';
-        }
+    const existingOpts = area.querySelectorAll('.option');
 
-        area.innerHTML += `<div class="${cls}" onclick="pick(${i})" role="button" aria-pressed="${userAns[current] === i}" style="display:flex; align-items:center; gap:1rem;">
-            <span class="letter" style="background: var(--bg); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; color: var(--muted); font-size: 0.8rem;">${String.fromCharCode(65 + i)}</span>
-            <div class="opt-text" style="flex:1;">${escHtml(opt)}</div> ${icon}
-        </div>`;
-    });
+    if (!questionChanged && existingOpts.length === q.opts.length) {
+        // Misma pregunta — actualizar clases e iconos en su sitio (sin reanimación)
+        existingOpts.forEach((el, i) => {
+            el.className = optClass(i);
+            el.setAttribute('aria-pressed', String(userAns[current] === i));
+            let iconEl = el.querySelector('.icon');
+            if (isFinished || isInstantChecked) {
+                const sym = (i === q.ans) ? '✓' : (userAns[current] === i ? '✗' : '');
+                if (sym) {
+                    if (!iconEl) { iconEl = document.createElement('span'); iconEl.className = 'icon'; el.appendChild(iconEl); }
+                    iconEl.textContent = sym;
+                } else if (iconEl) { iconEl.remove(); }
+            } else if (iconEl) { iconEl.remove(); }
+        });
+    } else {
+        // Pregunta nueva — reconstruir con animación de entrada
+        area.innerHTML = '';
+        q.opts.forEach((opt, i) => {
+            const icon = (isFinished || isInstantChecked)
+                ? (i === q.ans ? '<span class="icon">✓</span>' : userAns[current] === i ? '<span class="icon">✗</span>' : '')
+                : '';
+            area.innerHTML += `<div class="${optClass(i)}" onclick="pick(${i})" role="button" aria-pressed="${userAns[current] === i}" style="display:flex; align-items:center; gap:1rem;">
+                <span class="letter" style="background: var(--bg); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 800; color: var(--muted); font-size: 0.8rem;">${String.fromCharCode(65 + i)}</span>
+                <div class="opt-text" style="flex:1;">${escHtml(opt)}</div> ${icon}
+            </div>`;
+        });
+    }
 
     const exp = document.getElementById('explanation');
     if ((isFinished || isInstantChecked) && q.exp) {
@@ -638,6 +661,7 @@ function finish() {
 
 function showReview() {
     current = 0;
+    _prevQuestion = -1; // forzar rebuild con animación al entrar en revisión
     document.getElementById('results').style.display = 'none';
     document.getElementById('quiz').style.display = 'block';
     showQ();
