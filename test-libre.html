@@ -21,11 +21,7 @@
     <link rel="stylesheet" href="assets/css/animations.css">
 
     <style>
-        /* ── Forzar body scrolleable para que Safari esconda su barra de URL ── */
-        html, body { height: 100%; }
-        body { overflow-y: scroll; }
-
-        /* ── SETUP SCREEN ── */
+        /* ── SETUP SCREEN — escritorio: overlay centrado ── */
         #free-setup {
             position: fixed; inset: 0; z-index: 150;
             display: flex; align-items: center; justify-content: center;
@@ -33,13 +29,12 @@
             background: rgba(242, 242, 248, 0.80);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            /* scroll interno en iOS */
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
         }
         [data-theme="night"] #free-setup,
         [data-theme="dark"] #free-setup { background: rgba(7,9,26,0.88); }
+
         .fs-modal {
             background: var(--surface);
             width: 100%; max-width: 720px;
@@ -49,24 +44,42 @@
             box-shadow: var(--shadow-3);
             animation: liftIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
             position: relative;
-            /* En móvil dejamos que la altura sea libre para scrollear sin límite forzado */
         }
+
+        /* ── MÓVIL: página completa, no modal desplegable ── */
         @media (max-width: 760px) {
+            /* El overlay desaparece — la página fluye normalmente */
             #free-setup {
+                position: relative;
+                inset: auto;
+                background: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
                 padding: 0;
-                align-items: flex-end;
+                display: block;
+                overflow-y: visible;
+                z-index: auto;
             }
+            /* El modal se convierte en una sección normal de página */
             .fs-modal {
-                padding: 24px 18px 0;
-                border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-                max-height: calc(100vh - 60px);
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
+                max-width: 100%;
+                border-radius: 0;
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                padding: 24px 18px calc(100px + env(safe-area-inset-bottom, 0px));
+                animation: none;
             }
-            /* Botón de empezar: separación suficiente sobre la tab bar */
-            .fs-start-btn {
-                margin-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+            [data-theme="night"] .fs-modal,
+            [data-theme="dark"]  .fs-modal {
+                background: transparent;
+                backdrop-filter: none;
+                border: none;
             }
+            /* Ocultar botones de navegación — la tab bar ya lo hace */
+            .fs-back,
+            .fs-account-btn { display: none; }
+
             .subj-grid { grid-template-columns: 1fr; }
         }
         [data-theme="night"] .fs-modal,
