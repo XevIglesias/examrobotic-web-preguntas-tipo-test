@@ -784,12 +784,12 @@ const EXAM_DATA = [
         "q": "¿Cuáles es el código hexadecimal que corresponde con el numero en código decimal 12?",
         "opts": [
             "1D.",
-            "C.",
+            "B.",
             "C.",
             "3."
         ],
-        "ans": 1,
-        "exp": ""
+        "ans": 2,
+        "exp": "En hexadecimal, al acabar el 9 empiezan las letras: A=10, B=11, C=12, D=13, E=14, F=15. Por tanto, el número 12 equivale a la letra C."
     },
     {
         "u": "7. Sistemas de numeración y códigos",
