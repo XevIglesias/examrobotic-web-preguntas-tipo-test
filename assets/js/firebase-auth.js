@@ -64,7 +64,16 @@ const ErAuth = {
       const res = await _auth.signInWithPopup(provider);
       return res.user;
     } catch (e) {
-      console.warn('Google sign-in:', e.message);
+      if (e.code === 'auth/account-exists-with-different-credential') {
+        _showAuthError('Ya existe una cuenta con ese email pero con otro proveedor. Ve a Firebase Console → Authentication → Usuarios y elimina la cuenta de correo/contraseña, luego inténtalo de nuevo.');
+      } else if (e.code === 'auth/popup-closed-by-user') {
+        // usuario cerró la ventana — no mostrar error
+      } else if (e.code === 'auth/unauthorized-domain') {
+        _showAuthError('Dominio no autorizado. Añade este dominio en Firebase Console → Authentication → Configuración → Dominios autorizados.');
+      } else {
+        _showAuthError('Error al iniciar sesión: ' + e.message);
+      }
+      console.warn('Google sign-in:', e.code, e.message);
       return null;
     }
   },
@@ -84,6 +93,16 @@ const ErAuth = {
 };
 
 window.ErAuth = ErAuth;
+
+// ── Helpers ──────────────────────────────────────────────────────
+function _showAuthError(msg) {
+  const body = document.getElementById('er-modal-body');
+  if (!body) { alert(msg); return; }
+  const err = document.createElement('div');
+  err.style.cssText = 'background:color-mix(in oklch,var(--danger) 12%,transparent);color:var(--danger);border-radius:10px;padding:12px 14px;font-size:13px;margin-bottom:12px;line-height:1.45;';
+  err.textContent = msg;
+  body.prepend(err);
+}
 
 // ── Badge verde en el tab de cuenta ─────────────────────────────
 function _updateTabBadge(signedIn) {

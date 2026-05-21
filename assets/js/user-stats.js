@@ -22,11 +22,22 @@ function _fbKey() {
     } catch { return null; }
 }
 
+async function _fbIdToken() {
+    try {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) return null;
+        const user = firebase.auth().currentUser;
+        if (!user) return null;
+        return await user.getIdToken();
+    } catch { return null; }
+}
+
 async function _fbSave(stats) {
     const key = _fbKey();
     if (!key) return false;
     try {
-        const r = await fetch(`${_FB_DB}/stats/${key}.json`, {
+        const token = await _fbIdToken();
+        const url = `${_FB_DB}/stats/${key}.json${token ? `?auth=${token}` : ''}`;
+        const r = await fetch(url, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...stats, _savedAt: Date.now() })
@@ -39,7 +50,9 @@ async function _fbLoad() {
     const key = _fbKey();
     if (!key) return null;
     try {
-        const r = await fetch(`${_FB_DB}/stats/${key}.json`);
+        const token = await _fbIdToken();
+        const url = `${_FB_DB}/stats/${key}.json${token ? `?auth=${token}` : ''}`;
+        const r = await fetch(url);
         if (!r.ok) return null;
         const data = await r.json();
         if (!data || !Array.isArray(data.history)) return null;
