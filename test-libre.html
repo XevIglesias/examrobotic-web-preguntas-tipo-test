@@ -72,6 +72,28 @@
         [data-theme="night"] .fs-back,
         [data-theme="dark"] .fs-back { background: rgba(20,28,60,0.65); border-color: rgba(120,145,220,0.2); }
 
+        .fs-account-btn {
+            position: absolute; top: 18px; left: 18px;
+            width: 32px; height: 32px;
+            border-radius: 999px;
+            background: var(--surface-2); border: 1px solid var(--line);
+            color: var(--ink-soft);
+            display: grid; place-items: center;
+            cursor: pointer; transition: color 0.2s, background 0.2s;
+        }
+        .fs-account-btn:hover { color: var(--accent); background: color-mix(in oklch, var(--accent) 10%, var(--surface-2)); }
+        [data-theme="night"] .fs-account-btn,
+        [data-theme="dark"] .fs-account-btn { background: rgba(20,28,60,0.65); border-color: rgba(120,145,220,0.2); }
+        .fs-account-dot {
+            position: absolute; top: 5px; right: 5px;
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 1.5px solid var(--surface);
+            display: none;
+        }
+        .fs-account-btn.is-signed-in .fs-account-dot { display: block; }
+
         .fs-heading {
             font-size: clamp(28px, 3.5vw, 38px);
             font-weight: 600;
@@ -333,6 +355,10 @@
         <a href="index.html" class="fs-back" title="Volver" aria-label="Volver">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l8 8M11 3l-8 8"/></svg>
         </a>
+        <button class="fs-account-btn" id="fs-account-btn" onclick="ErAuth && ErAuth.openModal()" title="Mi cuenta" aria-label="Mi cuenta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>
+            <span class="fs-account-dot"></span>
+        </button>
 
         <div class="eyebrow fs-eyebrow">Test libre · Multi-asignatura</div>
         <div class="fs-heading">Mezcla, baraja y <span class="em">prueba</span>.</div>
@@ -625,5 +651,11 @@ async function launchTest() {
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="assets/js/firebase-auth.js"></script>
+<script>
+    document.addEventListener('er-auth', () => {
+        const btn = document.getElementById('fs-account-btn');
+        if (btn) btn.classList.toggle('is-signed-in', !!(ErAuth && ErAuth.getUser()));
+    });
+</script>
 </body>
 </html>
